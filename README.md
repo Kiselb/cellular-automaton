@@ -1,15 +1,12 @@
-# 🚀 Welcome to your new awesome project!
+# 🚀 Учебный проект Клеточный автомат по курсу [OTUS](https://otus.ru/) React.js Developer
 
-This project has been created using **webpack-cli**, you can now run
+## Используемые технологии
+Данный проект разработан с использованием библиотеки [React.js](https://ru.reactjs.org/)
+Шаблон проекта сформирован вручную на основе [Webpack](https://webpack.js.org/), [Babel](https://babeljs.io/) и [Typescript](https://www.typescriptlang.org/)
+Дополнительно использованы следующие инструменты:
+- [Jest](https://jestjs.io/ru/)
+- [ESLint](https://eslint.org/)
+- [Husky](https://www.npmjs.com/package/husky)
 
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+## Дополнительные материалы
+- [Шаблон приложения](https://codepen.io/freeCodeCamp/pen/reGdqx)
