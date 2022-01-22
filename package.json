@@ -13,7 +13,8 @@
     "serve": "webpack serve",
     "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
     "check": "npm run lint && npm run ts:check && npm test",
-    "ts:check": "npx tsc -p tsconfig.json --noEmit --diagnostics"
+    "ts:check": "npx tsc -p tsconfig.json --noEmit --diagnostics",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
