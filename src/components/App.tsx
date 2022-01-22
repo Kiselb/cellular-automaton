@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Test from "./widget";
 
 //import "../styles/App.css";
-import styles from './App.module.css';
+import styles from "./App.module.css";
 
 class App extends Component {
   constructor(props: any) {
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1 className={styles.header}>My React App!!!!</h1>
+        <h1 className={styles.header}>My React Webpack Application!</h1>
       </div>
     );
   }

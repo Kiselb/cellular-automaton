@@ -1,7 +1,7 @@
 {
-  "name": "react-template",
+  "name": "cellular-automaton",
   "version": "1.0.0",
-  "description": "React template",
+  "description": "React Application Cellular Automaton",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development --hot",
