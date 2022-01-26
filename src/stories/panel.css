@@ -1,0 +1,19 @@
+.panel {
+    display: inline-block;
+    background-color: lightslategrey;
+    padding-left: 5px;
+    padding-right: 6px;
+    padding-top: 5px;
+    padding-bottom: 6px;
+    border: 1px solid black;
+}
+.grid--cell {
+    float: left;
+    height: 10px;
+    width: 10px;
+    border-top: 1px solid lightslategrey;
+	border-left: 1px solid lightslategrey;    
+}
+.grid--wrap {
+    clear: both;
+}
