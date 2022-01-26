@@ -6,7 +6,11 @@ import { Cell } from "./Cell";
 export default {
   title: "Application/Cell",
   component: Cell,
-  argTypes: {},
+  argTypes: {
+    colorDead: { control: "color" },
+    colorAlive: { control: "color" },
+    colorOld: { control: "color" },
+  },
 } as ComponentMeta<typeof Cell>;
 
 const Template: ComponentStory<typeof Cell> = (args) => <Cell {...args} />;
@@ -38,4 +42,15 @@ OldClickable.args = {
   row: 13,
   col: 13,
   onClick: () => alert("R13C13"),
+};
+
+export const Colored = Template.bind({});
+Colored.args = {
+  status: "old",
+  row: 13,
+  col: 13,
+  onClick: () => alert("R13C13"),
+  colorDead: "blue",
+  colorAlive: "red",
+  colorOld: "green",
 };

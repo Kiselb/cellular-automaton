@@ -17,7 +17,8 @@
     "ts:check": "npx tsc -p tsconfig.json --noEmit --diagnostics",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=66e47bd82604"
   },
   "husky": {
     "hooks": {
@@ -43,6 +44,7 @@
     "@webpack-cli/generators": "^1.1.0",
     "babel-jest": "^27.4.6",
     "babel-loader": "^8.2.3",
+    "chromatic": "^6.4.1",
     "css-loader": "^6.5.1",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
