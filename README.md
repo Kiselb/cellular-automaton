@@ -7,6 +7,8 @@
 - [Jest](https://jestjs.io/ru/)
 - [ESLint](https://eslint.org/)
 - [Husky](https://www.npmjs.com/package/husky)
+- [Storybook](https://storybook.js.org/)
+- [Chromatic](https://www.chromatic.com/build?appId=61f161ff785dc7003a268cf4&number=2)
 
 ## Дополнительные материалы
 - [Шаблон приложения](https://codepen.io/freeCodeCamp/pen/reGdqx)

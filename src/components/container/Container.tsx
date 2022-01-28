@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import "./container.css";
-import { CellParams, CellStatus } from "./Cell";
-import { Panel, PanelMode } from "./Panel";
+import { CellParams, CellStatus } from "../cell/Cell";
+import { Panel, PanelMode } from "../panel/Panel";
 
 interface ContainerProps {
   rows: number;

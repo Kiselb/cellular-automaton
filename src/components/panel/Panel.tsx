@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./panel.css";
-import { Cell, CellStatus, CellParams } from "./Cell";
+import { Cell, CellStatus, CellParams } from "../cell/Cell";
 
 export type PanelMode = "display" | "paused";
 
