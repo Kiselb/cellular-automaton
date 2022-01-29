@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export type CellStatus = "dead" | "alive" | "old";
 
@@ -16,7 +16,7 @@ interface CellProps {
   colorDead: string;
   colorAlive: string;
   colorOld: string;
-  probe?: (params: any) => void
+  probe?: (params: any) => void;
 }
 
 export const Cell = ({
@@ -38,13 +38,13 @@ export const Cell = ({
   const onMouseOverHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     console.log(`Buttons: ${event.buttons}`);
-    (event.buttons === 1) && onClick({ status, row, col });
-    (event.buttons === 1) && props.probe && props.probe({ status, row, col})
+    event.buttons === 1 && onClick({ status, row, col });
+    event.buttons === 1 && props.probe && props.probe({ status, row, col });
   };
   const onDoubleClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     console.log(`Cell: ${row}x${col}`);
-    props.probe && props.probe({ status, row, col})
+    props.probe && props.probe({ status, row, col });
   };
   return (
     <div

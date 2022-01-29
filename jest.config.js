@@ -13,7 +13,7 @@ module.exports = {
   coverageDirectory: "coverage",
   testEnvironment: "jsdom",
   transform: {
-    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    "^.+\\.(ts|tsx)?$": "ts-jest",
     "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
   },
   collectCoverage: true,
