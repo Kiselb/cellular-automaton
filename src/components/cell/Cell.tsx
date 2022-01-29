@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./cell.css";
 
 export type CellStatus = "dead" | "alive" | "old";
 
@@ -17,10 +16,11 @@ interface CellProps {
   colorDead: string;
   colorAlive: string;
   colorOld: string;
+  probe?: (params: any) => void
 }
 
 export const Cell = ({
-  status = "dead",
+  status,
   row,
   col,
   onClick,
@@ -37,27 +37,24 @@ export const Cell = ({
   };
   const onMouseOverHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
-    if (event.buttons === 1) {
-      onClick({
-        status,
-        row,
-        col,
-      });
-    }
+    console.log(`Buttons: ${event.buttons}`);
+    (event.buttons === 1) && onClick({ status, row, col });
+    (event.buttons === 1) && props.probe && props.probe({ status, row, col})
   };
   const onDoubleClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
-    alert(`Cell: ${row}x${col}`);
+    console.log(`Cell: ${row}x${col}`);
+    props.probe && props.probe({ status, row, col})
   };
   return (
     <div
-      id={`R${row}:C${col}`}
+      key={`R${row}:C${col}`}
+      data-testid={`R${row}:C${col}`}
       className={["cell", `cell--${status}`].join(" ")}
       onClick={onClickHandler}
       onDoubleClick={onDoubleClickHandler}
       onMouseOver={onMouseOverHandler}
       style={{ background: colorOld }}
-      {...props}
     ></div>
   );
 };
