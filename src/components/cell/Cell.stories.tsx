@@ -23,7 +23,7 @@ Dead.args = {
   onClick: () => console.log("OK"),
   colorDead: "#ececec",
   colorAlive: "lightgreen",
-  colorOld: "green"
+  colorOld: "green",
 };
 
 export const Alive = Template.bind({});

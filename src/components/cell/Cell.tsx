@@ -1,5 +1,5 @@
 import React from "react";
-import './cell.css';
+import "./cell.css";
 export type CellStatus = "dead" | "alive" | "old";
 
 export interface CellParams {

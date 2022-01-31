@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './container.css';
+import "./container.css";
 import { CellParams, CellStatus } from "../cell/Cell";
 import { Panel, PanelMode } from "../panel/Panel";
 
@@ -9,17 +9,13 @@ interface ContainerProps {
   probe?: (params: any) => void;
 }
 
-export const Container = ({
-  rows,
-  cols,
-  ...props
-}: ContainerProps) => {
+export const Container = ({ rows, cols, ...props }: ContainerProps) => {
   const [data, setData] = useState<CellStatus[][]>([]);
   const mode: PanelMode = "paused";
   const onChangeHandler = (params: CellParams) => {
     data[params.row][params.col] = params.status === "dead" ? "alive" : "dead";
     setData([...data]);
-    props.probe && props.probe({ rows, cols});
+    props.probe && props.probe({ rows, cols });
   };
   useEffect(() => {
     const blank: CellStatus[][] = Array.from({ length: rows }, () =>
