@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-
-import "./container.css";
+import './container.css';
 import { CellParams, CellStatus } from "../cell/Cell";
 import { Panel, PanelMode } from "../panel/Panel";
 
 interface ContainerProps {
   rows: number;
   cols: number;
+  probe?: (params: any) => void;
 }
 
 export const Container = ({
-  rows = 40,
-  cols = 40,
+  rows,
+  cols,
   ...props
 }: ContainerProps) => {
   const [data, setData] = useState<CellStatus[][]>([]);
@@ -19,6 +19,7 @@ export const Container = ({
   const onChangeHandler = (params: CellParams) => {
     data[params.row][params.col] = params.status === "dead" ? "alive" : "dead";
     setData([...data]);
+    props.probe && props.probe({ rows, cols});
   };
   useEffect(() => {
     const blank: CellStatus[][] = Array.from({ length: rows }, () =>

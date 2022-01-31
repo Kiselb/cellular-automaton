@@ -2,10 +2,7 @@ import React from "react";
 import {
   render,
   fireEvent,
-  waitFor,
   screen,
-  getAllByTestId,
-  getByTestId,
 } from "@testing-library/react";
 
 import "@testing-library/jest-dom";

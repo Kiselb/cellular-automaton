@@ -1,5 +1,5 @@
 import React from "react";
-
+import './cell.css';
 export type CellStatus = "dead" | "alive" | "old";
 
 export interface CellParams {
@@ -24,6 +24,8 @@ export const Cell = ({
   row,
   col,
   onClick,
+  colorDead,
+  colorAlive,
   colorOld,
   ...props
 }: CellProps) => {
@@ -54,7 +56,7 @@ export const Cell = ({
       onClick={onClickHandler}
       onDoubleClick={onDoubleClickHandler}
       onMouseOver={onMouseOverHandler}
-      style={{ background: colorOld }}
+      style={{ background: colorDead }}
     ></div>
   );
 };
