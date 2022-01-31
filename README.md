@@ -9,6 +9,7 @@
 - [Husky](https://www.npmjs.com/package/husky)
 - [Storybook](https://storybook.js.org/)
 - [Chromatic](https://www.chromatic.com/build?appId=61f161ff785dc7003a268cf4&number=2)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 ## Дополнительные материалы
 - [Шаблон приложения](https://codepen.io/freeCodeCamp/pen/reGdqx)
