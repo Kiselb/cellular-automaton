@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Address Hide 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="1"
+  >
+    <div>
+      Hide Address
+    </div>
+    <div>
+      <div>
+        Kulas Light
+      </div>
+      <div>
+        Apt. 556
+      </div>
+      <div>
+        Gwenborough
+      </div>
+      <div>
+        92998-3874
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Address renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="1"
+  >
+    <div>
+      View Address
+    </div>
+  </div>
+</DocumentFragment>
+`;

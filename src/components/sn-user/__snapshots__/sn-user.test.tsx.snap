@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User renders correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Sincere@april.biz
+    </div>
+    <div>
+      hildegard.org
+    </div>
+    <div>
+      1-770-736-8031 x56442
+    </div>
+    <div
+      data-testid="1"
+    >
+      <div>
+        View Address
+      </div>
+    </div>
+    <div
+      data-testid="1"
+    >
+      <div>
+        View Company
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`User renders correctly Address empty 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Sincere@april.biz
+    </div>
+    <div>
+      hildegard.org
+    </div>
+    <div>
+      1-770-736-8031 x56442
+    </div>
+    <div
+      data-testid="1"
+    >
+      <div>
+        View Company
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`User renders correctly Company empty 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Sincere@april.biz
+    </div>
+    <div>
+      hildegard.org
+    </div>
+    <div>
+      1-770-736-8031 x56442
+    </div>
+    <div
+      data-testid="1"
+    >
+      <div>
+        View Address
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`User renders correctly Optional propeties 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Sincere@april.biz
+    </div>
+    <div>
+      website not listed
+    </div>
+    <div>
+      phone not listed
+    </div>
+    <div
+      data-testid="1"
+    >
+      <div>
+        View Address
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

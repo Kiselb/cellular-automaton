@@ -1,0 +1,27 @@
+.panel {
+    margin-bottom: 1.25em;
+}
+.user {
+    display: flex;
+}
+.mark {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 3.25em;
+    height: 3.25em;
+    border-style: none;
+    border-radius: 50%;
+    background: green;
+    margin-right: 0.75em;
+    color: white;
+    font-size: 1em;
+}
+.mark > div {
+    font-size: 2em;
+    cursor: pointer;
+}
+.username {
+    font-size: 1.5em;
+    cursor: pointer;
+}
