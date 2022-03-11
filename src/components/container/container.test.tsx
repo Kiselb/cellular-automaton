@@ -2,8 +2,6 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
-import { CellStatus } from "../cell/Cell";
-import { Panel, PanelMode } from "../panel/Panel";
 import { Container } from "./Container";
 
 it("Container renders correctly", () => {

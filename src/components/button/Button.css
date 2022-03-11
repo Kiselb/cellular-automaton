@@ -1,0 +1,18 @@
+.control-active {
+    color: orange;
+}
+.control-inactive {
+    color: gray;
+}
+.button {
+    width: 100%;
+    border: none;
+    background: none;
+    font-size: 1em;
+    text-decoration: underline;
+    text-align: left;
+    margin-top: 1.5em;
+}
+.button:hover {
+    cursor: pointer;
+}

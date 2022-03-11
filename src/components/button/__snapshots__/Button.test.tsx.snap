@@ -2,10 +2,11 @@
 
 exports[`Cell renders correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="cell"
-    data-testid="R1:C1"
-    style="background: rgb(93, 187, 97);"
-  />
+  <button
+    class="button control-active"
+    data-testid="actionbutton"
+  >
+    Эволюция
+  </button>
 </DocumentFragment>
 `;
