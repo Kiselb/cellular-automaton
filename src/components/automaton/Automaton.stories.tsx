@@ -15,5 +15,5 @@ const Template: ComponentStory<typeof Automaton> = (args) => (
 
 export const automaton = Template.bind({});
 automaton.args = {
-    defAutomaton: 15
+  defAutomaton: 15,
 };

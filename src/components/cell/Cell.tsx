@@ -22,12 +22,18 @@ type CalcCellColor = (colorGamma: string, generation: number) => string;
 export const calcCellColor1: CalcCellColor = (
   colorGamma: string,
   generation: number
-) => chroma(colorGamma).darken(1 + (generation - 1) * 0.1).hex();
+) =>
+  chroma(colorGamma)
+    .darken(1 + (generation - 1) * 0.1)
+    .hex();
 
 export const calcCellColor: CalcCellColor = (
   colorGamma: string,
   generation: number
-) => chroma.scale(['yellow', 'darkgreen'])((generation - 1) * 0.1).hex();
+) =>
+  chroma
+    .scale(["yellow", "darkgreen"])((generation - 1) * 0.1)
+    .hex();
 
 export const Cell = ({
   generation,

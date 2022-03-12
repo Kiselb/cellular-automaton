@@ -6,7 +6,11 @@ import { Button } from "../components/button/Button";
 import { Panel } from "../components/panel/Panel";
 import { CellParams } from "../components/cell/Cell";
 import { CalcState } from "../components/Engine";
-import { Automaton, AutomatonDescription, AutomatonsList } from "./automaton/Automaton";
+import {
+  Automaton,
+  AutomatonDescription,
+  AutomatonsList,
+} from "./automaton/Automaton";
 import {
   MIN_ROWS,
   MAX_ROWS,
@@ -18,8 +22,8 @@ import {
   MAX_FILL,
   DEF_FILL,
   DEF_VELOCITY,
-  DEF_AUTOMATON
-} from './Defaults';
+  DEF_AUTOMATON,
+} from "./Defaults";
 
 import "./App.css";
 
@@ -54,9 +58,11 @@ class App extends Component<unknown, TAppState> {
       ),
       status: false,
       velocity: DEF_VELOCITY,
-      automaton: AutomatonsList.filter(automaton => automaton.id === DEF_AUTOMATON)[0],
+      automaton: AutomatonsList.filter(
+        (automaton) => automaton.id === DEF_AUTOMATON
+      )[0],
     };
-  };
+  }
   setXSize = (size: number) => {
     this.setState((prevState) => {
       if (size > prevState.cols) {
@@ -181,7 +187,10 @@ class App extends Component<unknown, TAppState> {
           </div>
           <div className={["knob-label"].join(" ")}>Автомат:</div>
           <div>
-            <Automaton defAutomaton={DEF_AUTOMATON} onAutomatonChange={this.setAutomaton}/>
+            <Automaton
+              defAutomaton={DEF_AUTOMATON}
+              onAutomatonChange={this.setAutomaton}
+            />
           </div>
           <div className={["knob-label"].join(" ")}>Скорость:</div>
           <div>
