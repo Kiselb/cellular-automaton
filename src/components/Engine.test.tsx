@@ -1,4 +1,5 @@
 import { CalcIndexes, CalcLocality, CalcState } from "./Engine";
+import { AutomatonDescription, AutomatonsList } from './automaton/Automaton';
 
 it("Calc localty indexes is correct 1", () => {
   const data = [
@@ -118,7 +119,8 @@ it("Calc State 1", () => {
     [0, 1, 0],
     [0, 0, 0],
   ];
-  const state = CalcState(data);
+  const automaton: AutomatonDescription = AutomatonsList.filter(automaton => automaton.id === 15)[0];
+  const state = CalcState(data, automaton);
   expect(state).toEqual([
     [0, 0, 0],
     [0, 0, 0],
@@ -131,7 +133,8 @@ it("Calc State 2", () => {
     [0, 1, 0],
     [0, 0, 0],
   ];
-  const state = CalcState(data);
+  const automaton: AutomatonDescription = AutomatonsList.filter(automaton => automaton.id === 15)[0];
+  const state = CalcState(data, automaton);
   expect(state).toEqual([
     [2, 2, 1],
     [1, 2, 1],

@@ -15,8 +15,8 @@ export type VelocityProps = {
 const VelocitySet: VelocityItem[] = [
   { delay: 1000, name: "Медленно" },
   { delay: 2000, name: "Очень медленно" },
-  { delay: 250, name: "Быстро" },
-  { delay: 100, name: "Очень быстро" },
+  { delay: 100, name: "Быстро" },
+  { delay: 10, name: "Очень быстро" },
   { delay: 500, name: "Нормально" },
 ];
 

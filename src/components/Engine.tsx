@@ -1,3 +1,5 @@
+import { AutomatonDescription } from '../components/automaton/automaton';
+
 export type LocalityIndexes = {
   ur: number;
   uc: number;
@@ -55,7 +57,7 @@ export const CalcLocality = (
   ].reduce((acc, item) => acc + (item === 0 ? 0 : 1), 0);
   return locality;
 };
-export const CalcState = (state: number[][]): number[][] => {
+export const CalcState = (state: number[][], automaton: AutomatonDescription): number[][] => {
   const newState: number[][] = [];
   for (let i = 0; i < state.length; i++) {
     newState.push(state[i].slice());
@@ -64,11 +66,11 @@ export const CalcState = (state: number[][]): number[][] => {
     for (let j = 0; j < state[i].length; j++) {
       const locality = CalcLocality(state, i, j);
       if (state[i][j] === 0) {
-        if (locality === 3) {
+        if (automaton.born[locality] === 1) {
           newState[i][j] = 1;
         }
       } else {
-        if (locality === 2 || locality === 3) {
+        if (automaton.save[locality] === 1) {
           newState[i][j] = state[i][j] + 1;
         } else {
           newState[i][j] = 0;

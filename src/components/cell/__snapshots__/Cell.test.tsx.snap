@@ -5,7 +5,7 @@ exports[`Cell renders correctly 1`] = `
   <div
     class="cell"
     data-testid="R1:C1"
-    style="background: rgb(93, 187, 97);"
+    style="background: rgb(255, 255, 0);"
   />
 </DocumentFragment>
 `;

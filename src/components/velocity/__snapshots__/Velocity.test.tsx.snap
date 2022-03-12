@@ -7,13 +7,13 @@ exports[`Control Velocity renders correctly 1`] = `
     data-testid="velocity"
   >
     <option
-      selected=""
-      value="100"
+      value="10"
     >
       Очень быстро
     </option>
     <option
-      value="250"
+      selected=""
+      value="100"
     >
       Быстро
     </option>

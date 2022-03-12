@@ -6,19 +6,22 @@ import { Button } from "../components/button/Button";
 import { Panel } from "../components/panel/Panel";
 import { CellParams } from "../components/cell/Cell";
 import { CalcState } from "../components/Engine";
+import { Automaton, AutomatonDescription, AutomatonsList } from "./automaton/Automaton";
+import {
+  MIN_ROWS,
+  MAX_ROWS,
+  DEF_ROWS,
+  MIN_COLS,
+  MAX_COLS,
+  DEF_COLS,
+  MIN_FILL,
+  MAX_FILL,
+  DEF_FILL,
+  DEF_VELOCITY,
+  DEF_AUTOMATON
+} from './Defaults';
 
 import "./App.css";
-
-const MIN_ROWS = 10;
-const MAX_ROWS = 100;
-const DEF_ROWS = 50;
-const MIN_COLS = 10;
-const MAX_COLS = 100;
-const DEF_COLS = 50;
-const MIN_FILL = 10;
-const MAX_FILL = 90;
-const DEF_FILL = 25;
-const DEF_VELOCITY = 100;
 
 type TAppState = {
   epoch: number;
@@ -31,6 +34,7 @@ type TAppState = {
   deffill: number;
   status: boolean; // false - paused, true - is running
   velocity: number;
+  automaton: AutomatonDescription;
 };
 class App extends Component<unknown, TAppState> {
   timerID: NodeJS.Timer | null = null;
@@ -50,8 +54,9 @@ class App extends Component<unknown, TAppState> {
       ),
       status: false,
       velocity: DEF_VELOCITY,
+      automaton: AutomatonsList.filter(automaton => automaton.id === DEF_AUTOMATON)[0],
     };
-  }
+  };
   setXSize = (size: number) => {
     this.setState((prevState) => {
       if (size > prevState.cols) {
@@ -83,13 +88,14 @@ class App extends Component<unknown, TAppState> {
     });
   };
   tick = () => {
+    console.log(`Automaton: ${this.state.automaton}`);
     this.state.status &&
       this.setState((prevState) => {
         return { epoch: prevState.epoch + 1 };
       });
     this.state.status &&
       this.setState((prevState) => {
-        return { data: CalcState(prevState.data) };
+        return { data: CalcState(prevState.data, prevState.automaton) };
       });
   };
   run = () => {
@@ -122,6 +128,10 @@ class App extends Component<unknown, TAppState> {
     !!this.timerID && clearInterval(this.timerID);
     this.setState({ velocity: velocity });
     this.timerID = setInterval(() => this.tick(), velocity);
+  };
+  setAutomaton = (automaton: AutomatonDescription) => {
+    console.log(automaton);
+    this.setState({ automaton: automaton });
   };
   cellEvent = (cell: CellParams) => {
     console.log(cell);
@@ -168,6 +178,10 @@ class App extends Component<unknown, TAppState> {
               maxSize={MAX_ROWS}
               defSize={DEF_ROWS}
             />
+          </div>
+          <div className={["knob-label"].join(" ")}>Автомат:</div>
+          <div>
+            <Automaton defAutomaton={DEF_AUTOMATON} onAutomatonChange={this.setAutomaton}/>
           </div>
           <div className={["knob-label"].join(" ")}>Скорость:</div>
           <div>
