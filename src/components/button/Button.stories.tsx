@@ -23,7 +23,7 @@ buttonPlayInactive.args = {
 };
 export const buttonPause = Template.bind({});
 buttonPause.args = {
-  caption: "Пауза",
+  caption: "Остановить",
   status: true,
 };
 export const buttonFill = Template.bind({});
