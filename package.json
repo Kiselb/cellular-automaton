@@ -1,6 +1,5 @@
 {
   "name": "cellular-automaton",
-  "homepage": "https://kiselb.github.io/cellular-automaton",
   "version": "1.0.0",
   "description": "React Application Cellular Automaton",
   "main": "index.js",
