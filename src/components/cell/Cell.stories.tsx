@@ -7,9 +7,9 @@ export default {
   title: "Application/Cell",
   component: Cell,
   argTypes: {
-    colorDead: { control: "color" },
-    colorAlive: { control: "color" },
-    colorOld: { control: "color" },
+    colorGamma: { control: "color" },
+    colorEmpty: { control: "color" },
+    generation: { control: "number" },
   },
 } as ComponentMeta<typeof Cell>;
 
@@ -17,44 +17,60 @@ const Template: ComponentStory<typeof Cell> = (args) => <Cell {...args} />;
 
 export const Dead = Template.bind({});
 Dead.args = {
-  status: "dead",
+  generation: 0,
   row: 13,
   col: 13,
   onClick: () => console.log("OK"),
-  colorDead: "#ececec",
-  colorAlive: "lightgreen",
-  colorOld: "green",
+  colorEmpty: "#ececec",
+  colorGamma: "lightgreen",
 };
 
-export const Alive = Template.bind({});
-Alive.args = {
-  status: "alive",
+export const Generation1 = Template.bind({});
+Generation1.args = {
+  generation: 1,
   row: 13,
   col: 13,
+  onClick: () => console.log("OK"),
+  colorEmpty: "#ececec",
+  colorGamma: "lightgreen",
 };
 
-export const Old = Template.bind({});
-Old.args = {
-  status: "old",
+export const Generation5 = Template.bind({});
+Generation5.args = {
+  generation: 5,
   row: 13,
   col: 13,
+  onClick: () => console.log("OK"),
+  colorEmpty: "#ececec",
+  colorGamma: "lightgreen",
 };
 
-export const OldClickable = Template.bind({});
-OldClickable.args = {
-  status: "old",
+export const Generation10 = Template.bind({});
+Generation10.args = {
+  generation: 10,
+  row: 13,
+  col: 13,
+  onClick: () => console.log("OK"),
+  colorEmpty: "#ececec",
+  colorGamma: "lightgreen",
+};
+
+export const Generation20 = Template.bind({});
+Generation20.args = {
+  generation: 20,
+  row: 13,
+  col: 13,
+  onClick: () => console.log("OK"),
+  colorEmpty: "#ececec",
+  colorGamma: "lightgreen",
+};
+
+export const Clickable = Template.bind({});
+Clickable.args = {
+  generation: 1,
   row: 13,
   col: 13,
   onClick: () => alert("R13C13"),
-};
-
-export const Colored = Template.bind({});
-Colored.args = {
-  status: "old",
-  row: 13,
-  col: 13,
-  onClick: () => alert("R13C13"),
-  colorDead: "blue",
-  colorAlive: "red",
-  colorOld: "green",
+  colorEmpty: "#ececec",
+  colorGamma: "lightgreen",
 };

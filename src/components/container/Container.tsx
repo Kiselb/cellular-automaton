@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from "react";
 import "./container.css";
-import { CellParams, CellStatus } from "../cell/Cell";
-import { Panel, PanelMode } from "../panel/Panel";
+import { CellParams } from "../cell/Cell";
+import { Panel } from "../panel/Panel";
 
 interface ContainerProps {
   rows: number;
   cols: number;
-  probe?: (params: any) => void;
+  probe?: ({}) => void;
 }
 
 export const Container = ({ rows, cols, probe, ...props }: ContainerProps) => {
-  const [data, setData] = useState<CellStatus[][]>([]);
-  const mode: PanelMode = "paused";
+  const [data, setData] = useState<number[][]>([]);
   const onChangeHandler = (params: CellParams) => {
-    data[params.row][params.col] = params.status === "dead" ? "alive" : "dead";
+    data[params.row][params.col] = params.generation = 0;
     setData([...data]);
     probe && probe({ rows, cols });
   };
   useEffect(() => {
-    const blank: CellStatus[][] = Array.from({ length: rows }, () =>
-      Array.from({ length: cols }, () => "dead")
+    const blank: number[][] = Array.from({ length: rows }, () =>
+      Array.from({ length: cols }, () => 0)
     );
     setData(blank);
   }, [rows, cols]);
   return (
     <div className={["container"].join(" ")} {...props}>
-      <Panel data={data} mode={mode} onChange={onChangeHandler} {...props} />
+      <Panel data={data} onChange={onChangeHandler} {...props} />
     </div>
   );
 };

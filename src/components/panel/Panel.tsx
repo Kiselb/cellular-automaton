@@ -1,21 +1,13 @@
 import React from "react";
 import "./panel.css";
-import { Cell, CellStatus, CellParams } from "../cell/Cell";
-
-export type PanelMode = "display" | "paused";
+import { Cell, CellParams } from "../cell/Cell";
 
 interface PanelProps {
-  data: CellStatus[][];
-  mode: PanelMode;
+  data: number[][];
   onChange: (params: CellParams) => void;
 }
 
-export const Panel = ({
-  data,
-  mode: PanelMode,
-  onChange,
-  ...props
-}: PanelProps) => {
+export const Panel = ({ data, onChange, ...props }: PanelProps) => {
   const cellOnClick = (params: CellParams) => {
     onChange(params);
   };
@@ -36,11 +28,10 @@ export const Panel = ({
               data-testid={`R${rowindex}:C${colindex}`}
               row={rowindex}
               col={colindex}
-              status={item}
+              generation={item}
               onClick={cellOnClick}
-              colorAlive="green"
-              colorDead="#ececec"
-              colorOld="lightgreen"
+              colorEmpty="#ececec"
+              colorGamma="#77FF77"
             ></Cell>
           </div>
         ))

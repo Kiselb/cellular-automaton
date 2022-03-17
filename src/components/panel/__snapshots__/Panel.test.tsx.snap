@@ -10,7 +10,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R0:C0"
         style="background: rgb(236, 236, 236);"
       />
@@ -20,7 +20,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R0:C1"
         style="background: rgb(236, 236, 236);"
       />
@@ -30,7 +30,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R0:C2"
         style="background: rgb(236, 236, 236);"
       />
@@ -40,7 +40,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R0:C3"
         style="background: rgb(236, 236, 236);"
       />
@@ -50,7 +50,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R1:C0"
         style="background: rgb(236, 236, 236);"
       />
@@ -60,7 +60,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R1:C1"
         style="background: rgb(236, 236, 236);"
       />
@@ -70,7 +70,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R1:C2"
         style="background: rgb(236, 236, 236);"
       />
@@ -80,7 +80,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R1:C3"
         style="background: rgb(236, 236, 236);"
       />
@@ -90,7 +90,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R2:C0"
         style="background: rgb(236, 236, 236);"
       />
@@ -100,7 +100,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R2:C1"
         style="background: rgb(236, 236, 236);"
       />
@@ -110,7 +110,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R2:C2"
         style="background: rgb(236, 236, 236);"
       />
@@ -120,7 +120,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R2:C3"
         style="background: rgb(236, 236, 236);"
       />
@@ -130,7 +130,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R3:C0"
         style="background: rgb(236, 236, 236);"
       />
@@ -140,7 +140,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R3:C1"
         style="background: rgb(236, 236, 236);"
       />
@@ -150,7 +150,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R3:C2"
         style="background: rgb(236, 236, 236);"
       />
@@ -160,7 +160,7 @@ exports[`Panel renders correctly 1`] = `
       data-testid="Panel"
     >
       <div
-        class="cell cell--dead"
+        class="cell"
         data-testid="R3:C3"
         style="background: rgb(236, 236, 236);"
       />

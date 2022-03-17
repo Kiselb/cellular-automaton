@@ -2,71 +2,91 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
-import { Cell } from "./Cell";
+import { Cell, calcCellColor } from "./Cell";
 
 it("Cell renders correctly", () => {
   const { asFragment } = render(
     <Cell
       row={1}
       col={1}
-      status={"alive"}
-      onClick={() => alert("OK")}
-      colorAlive="green"
-      colorDead="#ececec"
-      colorOld="lightgreen"
+      generation={1}
+      onClick={() => console.log("OK")}
+      colorEmpty="#ececec"
+      colorGamma="lightgreen"
     />
   );
   screen.debug();
-
   expect(asFragment()).toMatchSnapshot();
 });
-it("Cell has style alive", () => {
+it("Cell has style", () => {
   render(
     <Cell
       row={1}
       col={1}
-      status={"alive"}
+      generation={1}
       onClick={() => console.log("OK")}
-      colorAlive="green"
-      colorDead="#ececec"
-      colorOld="lightgreen"
+      colorEmpty="#ececec"
+      colorGamma="lightgreen"
     />
   );
   const div = screen.getByTestId("R1:C1");
   expect(div).toHaveClass("cell");
-  expect(div).toHaveClass("cell--alive");
 });
-it("Cell has style old", () => {
+it("Cell has style background color generation 0", () => {
   render(
     <Cell
       row={1}
       col={1}
-      status={"old"}
+      generation={0}
       onClick={() => console.log("OK")}
-      colorAlive="green"
-      colorDead="#ececec"
-      colorOld="lightgreen"
+      colorEmpty="#ececec"
+      colorGamma="lightgreen"
     />
   );
   const div = screen.getByTestId("R1:C1");
-  expect(div).toHaveClass("cell");
-  expect(div).toHaveClass("cell--old");
+  expect(div).toHaveStyle({ background: "#ececec" });
 });
-it("Cell has style dead", () => {
+it("Cell has style background color generation 1", () => {
   render(
     <Cell
       row={1}
       col={1}
-      status={"dead"}
+      generation={1}
       onClick={() => console.log("OK")}
-      colorAlive="green"
-      colorDead="#ececec"
-      colorOld="lightgreen"
+      colorEmpty="#ececec"
+      colorGamma="lightgreen"
     />
   );
   const div = screen.getByTestId("R1:C1");
-  expect(div).toHaveClass("cell");
-  expect(div).toHaveClass("cell--dead");
+  expect(div).toHaveStyle({ background: calcCellColor("lightgreen", 1) });
+});
+it("Cell has style background color generation 10", () => {
+  render(
+    <Cell
+      row={1}
+      col={1}
+      generation={10}
+      onClick={() => console.log("OK")}
+      colorEmpty="#ececec"
+      colorGamma="lightgreen"
+    />
+  );
+  const div = screen.getByTestId("R1:C1");
+  expect(div).toHaveStyle({ background: calcCellColor("lightgreen", 10) });
+});
+it("Cell has style background color generation 20", () => {
+  render(
+    <Cell
+      row={1}
+      col={1}
+      generation={20}
+      onClick={() => console.log("OK")}
+      colorEmpty="#ececec"
+      colorGamma="lightgreen"
+    />
+  );
+  const div = screen.getByTestId("R1:C1");
+  expect(div).toHaveStyle({ background: calcCellColor("lightgreen", 20) });
 });
 it("Cell mouse click event", () => {
   const onClick = jest.fn();
@@ -74,16 +94,14 @@ it("Cell mouse click event", () => {
     <Cell
       row={1}
       col={1}
-      status={"alive"}
+      generation={1}
       onClick={onClick}
-      colorAlive="green"
-      colorDead="#ececec"
-      colorOld="lightgreen"
+      colorEmpty="#ececec"
+      colorGamma="lightgreen"
     />
   );
   const div = screen.getByTestId("R1:C1");
   fireEvent.click(div);
-
   expect(onClick).toBeCalled();
 });
 it("Cell mouse double click event", () => {
@@ -92,11 +110,10 @@ it("Cell mouse double click event", () => {
     <Cell
       row={1}
       col={1}
-      status={"alive"}
+      generation={1}
       onClick={() => console.log("OK")}
-      colorAlive="green"
-      colorDead="#ececec"
-      colorOld="lightgreen"
+      colorEmpty="#ececec"
+      colorGamma="lightgreen"
       probe={probe}
     />
   );
@@ -110,11 +127,10 @@ it("Cell mouse over event with pressed button", () => {
     <Cell
       row={1}
       col={1}
-      status={"alive"}
+      generation={1}
       onClick={() => console.log("OK")}
-      colorAlive="green"
-      colorDead="#ececec"
-      colorOld="lightgreen"
+      colorEmpty="#ececec"
+      colorGamma="lightgreen"
       probe={probe}
     />
   );
@@ -128,11 +144,10 @@ it("Cell mouse over event without pressed button", () => {
     <Cell
       row={1}
       col={1}
-      status={"alive"}
+      generation={1}
       onClick={() => console.log("OK")}
-      colorAlive="green"
-      colorDead="#ececec"
-      colorOld="lightgreen"
+      colorEmpty="#ececec"
+      colorGamma="lightgreen"
       probe={probe}
     />
   );

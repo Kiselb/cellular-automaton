@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Panel } from "./Panel";
-import { Cell, CellStatus, CellParams } from "../cell/Cell";
+import { Cell, CellParams } from "../cell/Cell";
 
 export default {
   title: "Application/Panel",
@@ -13,32 +13,29 @@ export default {
 
 const Template: ComponentStory<typeof Panel> = (args) => <Panel {...args} />;
 
-const mock10: CellStatus[][] = [];
+const mock10: number[][] = [];
 for (let i = 0; i < 10; i++) {
-  const row: CellStatus[] = [];
+  const row: number[] = [];
   for (let j = 0; j < 10; j++) {
-    row[j] =
-      Math.random() < 0.5 ? "alive" : Math.random() < 0.5 ? "dead" : "old";
+    row[j] = j;
   }
   mock10[i] = row;
 }
 
-const mock40: CellStatus[][] = [];
+const mock40: number[][] = [];
 for (let i = 0; i < 40; i++) {
-  const row: CellStatus[] = [];
+  const row: number[] = [];
   for (let j = 0; j < 40; j++) {
-    row[j] =
-      Math.random() < 0.5 ? "alive" : Math.random() < 0.5 ? "dead" : "old";
+    row[j] = j;
   }
   mock40[i] = row;
 }
 
-const mock75: CellStatus[][] = [];
+const mock75: number[][] = [];
 for (let i = 0; i < 75; i++) {
-  const row: CellStatus[] = [];
+  const row: number[] = [];
   for (let j = 0; j < 75; j++) {
-    row[j] =
-      Math.random() < 0.5 ? "alive" : Math.random() < 0.5 ? "dead" : "old";
+    row[j] = j;
   }
   mock75[i] = row;
 }

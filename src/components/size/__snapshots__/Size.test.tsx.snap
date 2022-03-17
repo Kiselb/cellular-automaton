@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Control Size renders correctly 1`] = `
+<DocumentFragment>
+  <input
+    class="size"
+    data-testid="size"
+    type="number"
+    value="50"
+  />
+</DocumentFragment>
+`;
