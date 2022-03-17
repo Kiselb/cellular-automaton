@@ -94,7 +94,6 @@ class App extends Component<unknown, TAppState> {
     });
   };
   tick = () => {
-    console.log(`Automaton: ${this.state.automaton}`);
     this.state.status &&
       this.setState((prevState) => {
         return { epoch: prevState.epoch + 1 };
