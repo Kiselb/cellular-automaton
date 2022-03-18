@@ -1,5 +1,8 @@
 import { CalcIndexes, CalcLocality, CalcState } from "./Engine";
-import { AutomatonDescription, AutomatonsList } from "./automaton/Automaton";
+import {
+  AutomatonDescription,
+  AutomatonsList,
+} from "./automaton/Automaton.types";
 
 it("Calc localty indexes is correct 1", () => {
   const data = [

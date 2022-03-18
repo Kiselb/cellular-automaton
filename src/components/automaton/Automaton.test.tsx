@@ -4,7 +4,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Automaton } from "./Automaton";
 import { DEF_AUTOMATON } from "../Defaults";
-import { AutomatonDescription, AutomatonsList } from "./automaton";
+import { AutomatonDescription, AutomatonsList } from "./Automaton.types";
 
 it("Automaton renders correctly", () => {
   const { asFragment } = render(

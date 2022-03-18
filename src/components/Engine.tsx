@@ -1,4 +1,4 @@
-import { AutomatonDescription } from "../components/automaton/automaton";
+import { AutomatonDescription } from "../components/automaton/Automaton.types";
 
 type LocalityTypes = "Neumann" | "Moore";
 
@@ -99,4 +99,55 @@ export const CalcState = (
     }
   }
   return newState;
+};
+export const setXSize = (data: number[][], size: number): number[][] => {
+  if (size < 4) {
+    return data.map((row) => row.slice());
+  }
+  if (size > data[0].length) {
+    return data.map((row) => [
+      ...row,
+      ...Array.from({ length: size - data[0].length }, () => 0),
+    ]);
+  }
+  return data.map((row) => row.filter((_, index) => index < size));
+};
+export const setYSize = (data: number[][], size: number): number[][] => {
+  if (size < 4) {
+    return data.map((row) => row.slice());
+  }
+  if (size > data.length) {
+    return [
+      ...data,
+      ...Array.from({ length: size - data.length }, () =>
+        Array.from({ length: data[0].length }, () => 0)
+      ),
+    ];
+  }
+  return data.filter((_, index) => index < size);
+};
+export const ClearState = (data: number[][]): number[][] => {
+  return Array.from({ length: data.length }, () =>
+    Array.from({ length: data[0].length }, () => 0)
+  );
+};
+export const FillRandom = (data: number[][], factor: number): number[][] => {
+  return data.map((row) =>
+    row.map(() => (100 * Math.random() > factor ? 0 : 1))
+  );
+};
+export const SetCell = (
+  data: number[][],
+  row: number,
+  col: number
+): number[][] => {
+  return [
+    ...data.slice(0, row),
+    [
+      ...data[row].slice(0, col),
+      data[row][col] > 0 ? 0 : 1,
+      ...data[row].slice(col + 1),
+    ],
+    ...data.slice(row + 1),
+  ];
 };

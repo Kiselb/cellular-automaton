@@ -5,12 +5,19 @@ import { Velocity } from "../components/velocity/Velocity";
 import { Button } from "../components/button/Button";
 import { Panel } from "../components/panel/Panel";
 import { CellParams } from "../components/cell/Cell";
-import { CalcState } from "../components/Engine";
 import {
-  Automaton,
+  CalcState,
+  setXSize,
+  setYSize,
+  ClearState,
+  FillRandom,
+  SetCell,
+} from "../components/Engine";
+import {
   AutomatonDescription,
   AutomatonsList,
-} from "./automaton/Automaton";
+} from "./automaton/Automaton.types";
+import { Automaton } from "./automaton/Automaton";
 import {
   MIN_ROWS,
   MAX_ROWS,
@@ -63,67 +70,47 @@ class App extends Component<unknown, TAppState> {
       )[0],
     };
   }
-  setXSize = (size: number) => {
+  onXSizeChange = (size: number) => {
     this.setState((prevState) => {
-      if (size > prevState.cols) {
-        return { cols: size, data: prevState.data.map((row) => [...row, 0]) };
-      }
-      return {
-        cols: size,
-        data: prevState.data.map((row) =>
-          row.filter((_, index) => index < size)
-        ),
-      };
+      const data = setXSize(prevState.data, size);
+      return { cols: data[0].length, data: data };
     });
   };
-  setYSize = (size: number) => {
+  onYSizeChange = (size: number) => {
     this.setState((prevState) => {
-      if (size > prevState.rows) {
-        return {
-          rows: size,
-          data: [
-            ...prevState.data,
-            Array.from({ length: prevState.cols }, () => 0),
-          ],
-        };
-      }
-      return {
-        rows: size,
-        data: prevState.data.filter((_, index) => index < size),
-      };
+      const data = setYSize(prevState.data, size);
+      return { rows: data.length, data: data };
     });
   };
   tick = () => {
-    this.state.status &&
-      this.setState((prevState) => {
-        return { epoch: prevState.epoch + 1 };
-      });
-    this.state.status &&
-      this.setState((prevState) => {
-        return { data: CalcState(prevState.data, prevState.automaton) };
-      });
+    this.setState((prevState) => {
+      return {
+        epoch: prevState.epoch + 1,
+        data: CalcState(prevState.data, prevState.automaton),
+      };
+    });
   };
   run = () => {
-    this.setState({ status: true });
+    if (!this.state.status) {
+      this.setState({ status: true });
+      this.timerID = setInterval(() => this.tick(), this.state.velocity);
+    }
   };
   mute = () => {
     this.setState({ status: false });
+    !!this.timerID && clearInterval(this.timerID);
   };
   clear = () => {
-    this.setState({ epoch: 0 });
     this.setState({
+      epoch: 0,
       status: false,
-      data: Array.from({ length: this.state.rows }, () =>
-        Array.from({ length: this.state.cols }, () => 0)
-      ),
+      data: ClearState(this.state.data),
     });
   };
   fill = () => {
-    this.setState({ epoch: 0 });
     this.setState({
-      data: this.state.data.map((row) =>
-        row.map(() => (100 * Math.random() > this.state.factor ? 0 : 1))
-      ),
+      epoch: 0,
+      data: FillRandom(this.state.data, this.state.factor),
     });
   };
   setFillFactor = (factor: number) => {
@@ -141,22 +128,9 @@ class App extends Component<unknown, TAppState> {
   cellEvent = (cell: CellParams) => {
     console.log(cell);
     this.setState((prevState) => {
-      return {
-        data: [
-          ...prevState.data.slice(0, cell.row),
-          [
-            ...prevState.data[cell.row].slice(0, cell.col),
-            cell.generation > 0 ? 0 : 1,
-            ...prevState.data[cell.row].slice(cell.col + 1),
-          ],
-          ...prevState.data.slice(cell.row + 1),
-        ],
-      };
+      return { data: SetCell(prevState.data, cell.row, cell.col) };
     });
   };
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), this.state.velocity);
-  }
   componentWillUnmount() {
     !!this.timerID && clearInterval(this.timerID);
   }
@@ -164,34 +138,34 @@ class App extends Component<unknown, TAppState> {
     return (
       <div className="app">
         <div className="control">
-          <div className={["knob-label"].join(" ")}>Эпоха:</div>
-          <div className={["epoch"].join(" ")}>{this.state.epoch}</div>
-          <div className={["knob-label"].join(" ")}>Размер X:</div>
+          <div className="knob-label">Эпоха:</div>
+          <div className="epoch">{this.state.epoch}</div>
+          <div className="knob-label">Размер X:</div>
           <div>
             <Size
-              onSizeChange={this.setXSize}
+              onSizeChange={this.onXSizeChange}
               minSize={MIN_COLS}
               maxSize={MAX_COLS}
               defSize={DEF_COLS}
             />
           </div>
-          <div className={["knob-label"].join(" ")}>Размер Y:</div>
+          <div className="knob-label">Размер Y:</div>
           <div>
             <Size
-              onSizeChange={this.setYSize}
+              onSizeChange={this.onYSizeChange}
               minSize={MIN_ROWS}
               maxSize={MAX_ROWS}
               defSize={DEF_ROWS}
             />
           </div>
-          <div className={["knob-label"].join(" ")}>Автомат:</div>
+          <div className="knob-label">Автомат:</div>
           <div>
             <Automaton
               defAutomaton={DEF_AUTOMATON}
               onAutomatonChange={this.setAutomaton}
             />
           </div>
-          <div className={["knob-label"].join(" ")}>Скорость:</div>
+          <div className="knob-label">Скорость:</div>
           <div>
             <Velocity
               onVelocityChange={this.setVelocity}
@@ -215,7 +189,7 @@ class App extends Component<unknown, TAppState> {
           <div>
             <Button onAction={this.clear} status={false} caption="Сбросить" />
           </div>
-          <div className={["knob-label"].join(" ")}>Заполнение:</div>
+          <div className="knob-label">Заполнение:</div>
           <div>
             <Size
               onSizeChange={this.setFillFactor}
