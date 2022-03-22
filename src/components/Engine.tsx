@@ -1,6 +1,6 @@
 import { AutomatonDescription } from "../components/automaton/Automaton.types";
 
-type LocalityTypes = "Neumann" | "Moore";
+export type LocalityTypes = "Neumann" | "Moore";
 
 export type LocalityIndexes = {
   ur: number;
@@ -12,6 +12,9 @@ export type LocalityIndexes = {
   lr: number;
   lc: number;
 };
+
+export const MIN_SIZE = 4;
+
 export const CalcIndexes = (
   state: number[][],
   row: number,
@@ -101,7 +104,7 @@ export const CalcState = (
   return newState;
 };
 export const setXSize = (data: number[][], size: number): number[][] => {
-  if (size < 4) {
+  if (size < MIN_SIZE) {
     return data.map((row) => row.slice());
   }
   if (size > data[0].length) {

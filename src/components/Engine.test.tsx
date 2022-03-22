@@ -1,4 +1,14 @@
-import { CalcIndexes, CalcLocality, CalcState } from "./Engine";
+import {
+  CalcIndexes,
+  CalcLocality,
+  CalcState,
+  ClearState,
+  FillRandom,
+  setXSize,
+  setYSize,
+  MIN_SIZE,
+  SetCell,
+} from "./Engine";
 import {
   AutomatonDescription,
   AutomatonsList,
@@ -80,7 +90,7 @@ it("Calc localty indexes is correct 4", () => {
   expect(indexes.lr).toEqual(2);
   expect(indexes.lc).toEqual(2);
 });
-it("Calc cell locality 1", () => {
+it("Calc cell locality Moore 1", () => {
   const data = [
     [1, 1, 1],
     [1, 1, 1],
@@ -89,7 +99,7 @@ it("Calc cell locality 1", () => {
   const locality = CalcLocality(data, 1, 1);
   expect(locality).toEqual(8);
 });
-it("Calc cell locality 2", () => {
+it("Calc cell locality Moore 2", () => {
   const data = [
     [0, 0, 0],
     [0, 1, 0],
@@ -98,7 +108,7 @@ it("Calc cell locality 2", () => {
   const locality = CalcLocality(data, 1, 1);
   expect(locality).toEqual(0);
 });
-it("Calc cell locality 3", () => {
+it("Calc cell locality Moore 3", () => {
   const data = [
     [1, 0, 0],
     [0, 1, 0],
@@ -107,13 +117,49 @@ it("Calc cell locality 3", () => {
   const locality = CalcLocality(data, 1, 1);
   expect(locality).toEqual(1);
 });
-it("Calc cell locality 4", () => {
+it("Calc cell locality Moore 4", () => {
   const data = [
     [1, 1, 0],
     [0, 1, 0],
     [0, 0, 0],
   ];
   const locality = CalcLocality(data, 1, 0);
+  expect(locality).toEqual(3);
+});
+it("Calc cell locality Neumann 1", () => {
+  const data = [
+    [1, 1, 1],
+    [1, 1, 1],
+    [1, 1, 1],
+  ];
+  const locality = CalcLocality(data, 1, 1, "Neumann");
+  expect(locality).toEqual(4);
+});
+it("Calc cell locality Neumann 2", () => {
+  const data = [
+    [0, 0, 0],
+    [0, 1, 0],
+    [0, 0, 0],
+  ];
+  const locality = CalcLocality(data, 1, 1, "Neumann");
+  expect(locality).toEqual(0);
+});
+it("Calc cell locality Neumann 3", () => {
+  const data = [
+    [1, 0, 0],
+    [0, 1, 0],
+    [0, 0, 0],
+  ];
+  const locality = CalcLocality(data, 1, 1, "Neumann");
+  expect(locality).toEqual(0);
+});
+it("Calc cell locality Neumann 4", () => {
+  const data = [
+    [1, 1, 0],
+    [0, 1, 0],
+    [0, 1, 0],
+  ];
+  const locality = CalcLocality(data, 0, 1, "Neumann");
   expect(locality).toEqual(3);
 });
 it("Calc State 1", () => {
@@ -147,4 +193,141 @@ it("Calc State 2", () => {
     [1, 2, 1],
     [1, 1, 1],
   ]);
+});
+it("Clear field", () => {
+  const data: number[][] = [
+    [1, 1, 1],
+    [1, 1, 1],
+    [1, 1, 1],
+  ];
+  const result: number[][] = ClearState(data);
+  expect(
+    result.reduce(
+      (acc, item) => acc + item.reduce((acc, cell) => acc + cell, 0),
+      0
+    )
+  ).toEqual(0);
+});
+it("Fill random field", () => {
+  const data: number[][] = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+  ];
+  const result: number[][] = FillRandom(data, 50);
+  const filling: number = result.reduce(
+    (acc, item) => acc + item.reduce((acc, cell) => acc + cell, 0),
+    0
+  );
+  expect(filling).toBeLessThanOrEqual(9);
+});
+it("X Size changing", () => {
+  const data: number[][] = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+  ];
+
+  const result = setXSize(data, 5);
+  expect(result.length).toEqual(3);
+  expect(result[0].length).toEqual(5);
+});
+it("X Size changing low limit", () => {
+  const data: number[][] = [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ];
+
+  const result = setXSize(data, MIN_SIZE - 1);
+  expect(result.length).toEqual(5);
+  expect(result[0].length).toEqual(5);
+});
+it("X Size changing same", () => {
+  const data: number[][] = [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ];
+
+  const result = setXSize(data, 5);
+  expect(result.length).toEqual(5);
+  expect(result[0].length).toEqual(5);
+});
+it("Y Size changing", () => {
+  const data: number[][] = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+  ];
+
+  const result = setYSize(data, 5);
+  expect(result.length).toEqual(5);
+  expect(result[0].length).toEqual(3);
+});
+it("Y Size changing low limit", () => {
+  const data: number[][] = [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ];
+
+  const result = setYSize(data, MIN_SIZE - 1);
+  expect(result.length).toEqual(5);
+  expect(result[0].length).toEqual(5);
+});
+it("Y Size changing same", () => {
+  const data: number[][] = [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ];
+
+  const result = setYSize(data, 5);
+  expect(result.length).toEqual(5);
+  expect(result[0].length).toEqual(5);
+});
+it("Set Cell to 1", () => {
+  const data: number[][] = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+  ];
+
+  const result = SetCell(data, 1, 1);
+  expect(result[0][0]).toEqual(0);
+  expect(result[0][1]).toEqual(0);
+  expect(result[0][2]).toEqual(0);
+  expect(result[1][0]).toEqual(0);
+  expect(result[1][1]).toEqual(1);
+  expect(result[1][2]).toEqual(0);
+  expect(result[2][0]).toEqual(0);
+  expect(result[2][1]).toEqual(0);
+  expect(result[2][2]).toEqual(0);
+});
+it("Set Cell to 0", () => {
+  const data: number[][] = [
+    [0, 0, 0],
+    [0, 1, 0],
+    [0, 0, 0],
+  ];
+
+  const result = SetCell(data, 1, 1);
+  expect(result[0][0]).toEqual(0);
+  expect(result[0][1]).toEqual(0);
+  expect(result[0][2]).toEqual(0);
+  expect(result[1][0]).toEqual(0);
+  expect(result[1][1]).toEqual(0);
+  expect(result[1][2]).toEqual(0);
+  expect(result[2][0]).toEqual(0);
+  expect(result[2][1]).toEqual(0);
+  expect(result[2][2]).toEqual(0);
 });

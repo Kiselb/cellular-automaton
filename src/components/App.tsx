@@ -48,7 +48,7 @@ type TAppState = {
   automaton: AutomatonDescription;
 };
 class App extends Component<unknown, TAppState> {
-  timerID: NodeJS.Timer | null = null;
+  timerID: number | null = null;
 
   constructor(props: any) {
     super(props);
@@ -79,16 +79,14 @@ class App extends Component<unknown, TAppState> {
   onYSizeChange = (size: number) => {
     this.setState((prevState) => {
       const data = setYSize(prevState.data, size);
-      return { rows: data.length, data: data };
+      return { rows: data.length, data };
     });
   };
   tick = () => {
-    this.setState((prevState) => {
-      return {
-        epoch: prevState.epoch + 1,
-        data: CalcState(prevState.data, prevState.automaton),
-      };
-    });
+    this.setState((prevState) => ({
+      epoch: prevState.epoch + 1,
+      data: CalcState(prevState.data, prevState.automaton),
+    }));
   };
   run = () => {
     if (!this.state.status) {
