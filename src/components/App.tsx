@@ -48,7 +48,7 @@ type TAppState = {
   automaton: AutomatonDescription;
 };
 class App extends Component<unknown, TAppState> {
-  timerID: number | null = null;
+  timerID: NodeJS.Timer | null = null;
 
   constructor(props: any) {
     super(props);
