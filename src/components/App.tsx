@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import Main from "./Main/Main";
+import Main from "./main/Main";
 import SignIn from "./signin/SignIn";
 
 const App = () => {
