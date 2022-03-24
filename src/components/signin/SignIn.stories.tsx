@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof SignIn> = (args) => <SignIn {...args} />;
 
 export const signIn = Template.bind({});
 signIn.args = {
-  cbSignedIn: () => console.log("OK"),
+  onSignedIn: () => console.log("OK"),
 };
