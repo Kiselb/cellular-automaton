@@ -239,4 +239,4 @@ export default class Main extends Component<TMainProps, TAppState> {
       </div>
     );
   }
-};
+}
