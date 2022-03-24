@@ -9,6 +9,7 @@ type SizeProps = {
   minSize: number;
   maxSize: number;
   defSize: number;
+  testId: string;
 };
 
 export const Size = ({
@@ -16,6 +17,7 @@ export const Size = ({
   minSize,
   maxSize,
   defSize,
+  testId,
   ...props
 }: SizeProps) => {
   const [size, setSize] = useState(defSize);
@@ -37,7 +39,7 @@ export const Size = ({
   };
   return (
     <input
-      data-testid="size"
+      data-testid={testId}
       className="size"
       type="number"
       value={size}

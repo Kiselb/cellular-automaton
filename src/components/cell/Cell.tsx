@@ -70,7 +70,7 @@ export const Cell = ({
     <div
       key={`R${row}:C${col}`}
       data-testid={`R${row}:C${col}`}
-      className={["cell"].join(" ")}
+      className="cell"
       onClick={onClickHandler}
       onDoubleClick={onDoubleClickHandler}
       onMouseOver={onMouseOverHandler}

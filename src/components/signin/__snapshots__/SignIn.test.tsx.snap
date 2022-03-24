@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Control SignIn renders correctly 1`] = `
+<DocumentFragment>
+  <form
+    class="username"
+    data-testid="usernameform"
+  >
+    <input
+      data-testid="username"
+      placeholder="Введите Ваше имя"
+      type="text"
+    />
+    <input
+      data-testid="usernamesubmit"
+      type="submit"
+      value="Войти"
+    />
+  </form>
+</DocumentFragment>
+`;

@@ -8,10 +8,24 @@ body {
     margin: 0 auto;
     box-sizing: border-box;
     display: grid;
-    grid-template-areas: "control panel";
-    grid-template-rows: auto;
+    grid-template-areas: 
+        "header header"
+        "control panel";
+    grid-template-rows: auto 1fr;
     grid-template-columns: 10em 1fr;
     grid-gap: 10px;
+}
+.header {
+    grid-area: header;
+    font-size: 1.5em;
+    text-decoration: underline;
+}
+.header > button {
+    border: none;
+    background: transparent;
+    text-decoration: underline;
+    margin-left: 2em;
+    cursor: pointer;
 }
 .control {
     grid-area: control;

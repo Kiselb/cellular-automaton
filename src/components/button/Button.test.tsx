@@ -6,14 +6,24 @@ import { Button, ButtonCaption } from "./Button";
 
 it("Cell renders correctly", () => {
   const { asFragment } = render(
-    <Button onAction={() => console.log("OK")} caption="Эволюция" status />
+    <Button
+      onAction={() => console.log("OK")}
+      caption="Эволюция"
+      status
+      testId="actionbutton"
+    />
   );
   screen.debug();
   expect(asFragment()).toMatchSnapshot();
 });
 it("Button has style active", () => {
   render(
-    <Button onAction={() => console.log("OK")} caption="Эволюция" status />
+    <Button
+      onAction={() => console.log("OK")}
+      caption="Эволюция"
+      status
+      testId="actionbutton"
+    />
   );
   const control = screen.getByTestId("actionbutton");
   expect(control).toHaveClass("control-active");
@@ -24,6 +34,7 @@ it("Button has style inactive", () => {
       onAction={() => console.log("OK")}
       caption="Эволюция"
       status={false}
+      testId="actionbutton"
     />
   );
   const control = screen.getByTestId("actionbutton");
@@ -36,6 +47,7 @@ it("Button has valid caption (content)", () => {
       onAction={() => console.log("OK")}
       caption={caption}
       status={false}
+      testId="actionbutton"
     />
   );
   const control = screen.getByTestId("actionbutton");
@@ -43,7 +55,9 @@ it("Button has valid caption (content)", () => {
 });
 it("Button call event handler", () => {
   const probe = jest.fn();
-  render(<Button onAction={probe} caption="Эволюция" status />);
+  render(
+    <Button onAction={probe} caption="Эволюция" status testId="actionbutton" />
+  );
   const control = screen.getByTestId("actionbutton");
   fireEvent.click(control);
   expect(probe).toBeCalled();

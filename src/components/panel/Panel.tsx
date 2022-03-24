@@ -12,7 +12,7 @@ export const Panel = ({ data, onChange, ...props }: PanelProps) => {
     onChange(params);
   };
   return (
-    <div className={["panel"].join(" ")} {...props}>
+    <div className="panel">
       {data.map((row, rowindex) =>
         row.map((item, colindex) => (
           <div
