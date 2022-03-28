@@ -14,7 +14,7 @@ exports[`Control SignIn renders correctly 1`] = `
     <input
       data-testid="usernamesubmit"
       type="submit"
-      value="Войти"
+      value="Старт"
     />
   </form>
 </DocumentFragment>

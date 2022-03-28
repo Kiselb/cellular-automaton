@@ -1,29 +1,45 @@
 import React, { useEffect } from "react";
 
-import Main from "./main/Main";
+import {
+  Link,
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+  useLocation,
+  BrowserRouter as Router,
+} from "react-router-dom";
+
+import { Main } from "./main/Main";
 import SignIn from "./signin/SignIn";
+
+import { AuthProvider, RequireAuth, AuthConsumer } from "./Auth";
 
 const App = () => {
   const [user, setUser] = React.useState(
     () => localStorage.getItem("cellular-automaton.user") || ""
   );
-  const cbSignedIn = (user: string) => {
-    setUser(user);
-  };
-  const cbSignedOut = () => {
-    setUser("");
-  };
   useEffect(() => {
     localStorage.setItem("cellular-automaton.user", user);
   }, [user]);
 
   return (
     <div className="container">
-      {!user ? (
-        <SignIn onSignedIn={cbSignedIn} />
-      ) : (
-        <Main onSignedOut={cbSignedOut} user={user} />
-      )}
+      <Router>
+        <AuthProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <RequireAuth>
+                  <Main />
+                </RequireAuth>
+              }
+            />
+            <Route path="/login" element={<SignIn />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
     </div>
   );
 };

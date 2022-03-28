@@ -9,9 +9,6 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof SignIn>;
 
-const Template: ComponentStory<typeof SignIn> = (args) => <SignIn {...args} />;
+const Template: ComponentStory<typeof SignIn> = (args) => <SignIn />;
 
 export const signIn = Template.bind({});
-signIn.args = {
-  onSignedIn: () => console.log("OK"),
-};
