@@ -1,7 +1,7 @@
 {
   "name": "cellular-automaton",
   "version": "1.0.0",
-  "description": "React Application Cellular Automaton",
+  "description": "OTUS React Developer course: React Application Cellular Automaton",
   "homepage": "https://kiselb.github.io/",
   "main": "index.js",
   "scripts": {
