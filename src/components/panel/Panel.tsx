@@ -13,29 +13,29 @@ export const Panel = ({ data, onChange, ...props }: PanelProps) => {
   };
   return (
     <div className="panel">
-      {data.map((row, rowindex) =>
-        row.map((item, colindex) => (
-          <div
-            key={`Wrap:R${rowindex}:C${colindex}`}
-            className={[
-              "grid",
-              "grid--cell",
-              colindex % row.length === 0 ? "grid--wrap" : "",
-            ].join(" ")}
-            data-testid="Panel"
-          >
-            <Cell
-              data-testid={`R${rowindex}:C${colindex}`}
-              row={rowindex}
-              col={colindex}
-              generation={item}
-              onClick={cellOnClick}
-              colorEmpty="#ececec"
-              colorGamma="#77FF77"
-            ></Cell>
+      {data.map((row, rowindex) => {
+        return (
+          <div className="grid--row">
+            {row.map((item, colindex) => (
+              <div
+                key={`Wrap:R${rowindex}:C${colindex}`}
+                className={["grid", "grid--cell"].join(" ")}
+                data-testid="Panel"
+              >
+                <Cell
+                  data-testid={`R${rowindex}:C${colindex}`}
+                  row={rowindex}
+                  col={colindex}
+                  generation={item}
+                  onClick={cellOnClick}
+                  colorEmpty="#ececec"
+                  colorGamma="#77FF77"
+                ></Cell>
+              </div>
+            ))}
           </div>
-        ))
-      )}
+        );
+      })}
     </div>
   );
 };

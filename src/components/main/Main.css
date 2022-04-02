@@ -9,7 +9,7 @@ body {
     box-sizing: border-box;
     display: grid;
     grid-template-areas: 
-        "header header"
+        "empty header"
         "control panel";
     grid-template-rows: auto 1fr;
     grid-template-columns: 10em 1fr;
@@ -17,13 +17,16 @@ body {
 }
 .header {
     grid-area: header;
-    font-size: 1.5em;
+    display: flex;
+    justify-content:end;
+    font-size: 1em;
     text-decoration: underline;
 }
 .header > button {
     border: none;
     background: transparent;
     text-decoration: underline;
+    font-size: 1em;
     margin-left: 2em;
     cursor: pointer;
 }
