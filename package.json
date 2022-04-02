@@ -2,7 +2,7 @@
   "name": "cellular-automaton",
   "version": "1.0.0",
   "description": "React Application Cellular Automaton",
-  "homepage": "https://kiselb.github.io/cellular-automaton/",
+  "homepage": "https://kiselb.github.io/",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development --hot",
