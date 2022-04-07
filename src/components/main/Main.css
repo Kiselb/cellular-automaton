@@ -20,7 +20,10 @@ body {
     display: flex;
     justify-content:end;
     font-size: 1em;
+}
+.header > p {
     text-decoration: underline;
+    font: inherit;
 }
 .header > button {
     border: none;
@@ -29,6 +32,14 @@ body {
     font-size: 1em;
     margin-left: 2em;
     cursor: pointer;
+    font: inherit;
+}
+.header > select {
+    border: none;
+    margin-right: 2em;
+    text-decoration: none;
+    font: inherit;
+    outline: none;
 }
 .control {
     grid-area: control;

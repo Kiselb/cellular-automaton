@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
+import { Provider } from "react-redux";
 
+// Never use BrowserRouter on GitHub Pages. There are some issues with it, it always shows blank screen. Use HashRouter instead, that will most probably work
+//
 import {
   Link,
   Routes,
@@ -7,13 +10,14 @@ import {
   useNavigate,
   Navigate,
   useLocation,
-  BrowserRouter as Router,
+  HashRouter as Router,
 } from "react-router-dom";
 
 import { Main } from "./main/Main";
 import SignIn from "./signin/SignIn";
+import store from "./ducks/store";
 
-import { AuthProvider, RequireAuth, AuthConsumer } from "./Auth";
+import { AuthProvider, RequireAuth } from "./Auth";
 
 const App = () => {
   const [user, setUser] = React.useState(
@@ -25,21 +29,23 @@ const App = () => {
 
   return (
     <div className="container">
-      <Router>
-        <AuthProvider>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <RequireAuth>
-                  <Main />
-                </RequireAuth>
-              }
-            />
-            <Route path="/login" element={<SignIn />} />
-          </Routes>
-        </AuthProvider>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <AuthProvider>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <RequireAuth>
+                    <Main />
+                  </RequireAuth>
+                }
+              />
+              <Route path="/login" element={<SignIn />} />
+            </Routes>
+          </AuthProvider>
+        </Router>
+      </Provider>
     </div>
   );
 };

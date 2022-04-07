@@ -6,7 +6,6 @@ import {
   FillRandom,
   setXSize,
   setYSize,
-  MIN_SIZE,
   SetCell,
 } from "./Engine";
 import {
@@ -223,14 +222,21 @@ it("Fill random field", () => {
 });
 it("X Size changing", () => {
   const data: number[][] = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
 
-  const result = setXSize(data, 5);
-  expect(result.length).toEqual(3);
-  expect(result[0].length).toEqual(5);
+  const result = setXSize(data, 15);
+  expect(result.length).toEqual(10);
+  expect(result[0].length).toEqual(15);
 });
 it("X Size changing low limit", () => {
   const data: number[][] = [
@@ -241,7 +247,7 @@ it("X Size changing low limit", () => {
     [0, 0, 0, 0, 0],
   ];
 
-  const result = setXSize(data, MIN_SIZE - 1);
+  const result = setXSize(data, 4 - 1);
   expect(result.length).toEqual(5);
   expect(result[0].length).toEqual(5);
 });
@@ -260,14 +266,21 @@ it("X Size changing same", () => {
 });
 it("Y Size changing", () => {
   const data: number[][] = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
 
-  const result = setYSize(data, 5);
-  expect(result.length).toEqual(5);
-  expect(result[0].length).toEqual(3);
+  const result = setYSize(data, 15);
+  expect(result.length).toEqual(15);
+  expect(result[0].length).toEqual(10);
 });
 it("Y Size changing low limit", () => {
   const data: number[][] = [
@@ -278,7 +291,7 @@ it("Y Size changing low limit", () => {
     [0, 0, 0, 0, 0],
   ];
 
-  const result = setYSize(data, MIN_SIZE - 1);
+  const result = setYSize(data, 4 - 1);
   expect(result.length).toEqual(5);
   expect(result[0].length).toEqual(5);
 });

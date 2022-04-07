@@ -8,6 +8,20 @@ exports[`App renders correctly 1`] = `
     <div
       class="header"
     >
+      <select>
+        <option
+          selected=""
+          value="Native"
+        >
+          Native
+        </option>
+        <option
+          value="Redux"
+        >
+          Redux
+        </option>
+      </select>
+      <p />
       <button>
         Выйти
       </button>

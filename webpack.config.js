@@ -49,6 +49,7 @@ const config = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
+  devtool: "source-map",
 };
 
 module.exports = () => {

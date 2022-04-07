@@ -15,7 +15,7 @@ export const Panel = ({ data, onChange, ...props }: PanelProps) => {
     <div className="panel">
       {data.map((row, rowindex) => {
         return (
-          <div className="grid--row">
+          <div className="grid--row" key={`Row${rowindex}`}>
             {row.map((item, colindex) => (
               <div
                 key={`Wrap:R${rowindex}:C${colindex}`}

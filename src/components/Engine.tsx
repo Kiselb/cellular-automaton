@@ -1,4 +1,5 @@
 import { AutomatonDescription } from "../components/automaton/Automaton.types";
+import { MIN_COLS, MIN_ROWS } from "./Defaults";
 
 export type LocalityTypes = "Neumann" | "Moore";
 
@@ -12,8 +13,6 @@ export type LocalityIndexes = {
   lr: number;
   lc: number;
 };
-
-export const MIN_SIZE = 4;
 
 export const CalcIndexes = (
   state: number[][],
@@ -104,7 +103,7 @@ export const CalcState = (
   return newState;
 };
 export const setXSize = (data: number[][], size: number): number[][] => {
-  if (size < MIN_SIZE) {
+  if (size < MIN_COLS) {
     return data.map((row) => row.slice());
   }
   if (size > data[0].length) {
@@ -116,7 +115,7 @@ export const setXSize = (data: number[][], size: number): number[][] => {
   return data.map((row) => row.filter((_, index) => index < size));
 };
 export const setYSize = (data: number[][], size: number): number[][] => {
-  if (size < 4) {
+  if (size < MIN_ROWS) {
     return data.map((row) => row.slice());
   }
   if (size > data.length) {

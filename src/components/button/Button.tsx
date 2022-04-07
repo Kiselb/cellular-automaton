@@ -6,7 +6,10 @@ export type ButtonCaption =
   | "Эволюция"
   | "Остановить"
   | "Заполнить"
-  | "Сбросить";
+  | "Сбросить"
+  | "Сохранить"
+  | "Восстановить";
+
 export type ButtonAction = () => void;
 export type ButtonProps = {
   status: boolean;

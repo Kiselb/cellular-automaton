@@ -16,3 +16,6 @@
 .button:hover {
     cursor: pointer;
 }
+.button:active {
+    color: aquamarine;
+}
