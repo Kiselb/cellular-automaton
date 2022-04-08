@@ -1,14 +1,16 @@
 import { DEF_VELOCITY } from "../Defaults";
 
+const SET_VELOCITY = "cellular-automaton/velocity/set";
+export const SET_VELOCITY_UNKNOWN = "cellular-automaton/velocity/unknown";
+
 export type TState = {
   value: number;
 };
 export type TActionVelocity = {
-  type: string;
+  type: typeof SET_VELOCITY | typeof SET_VELOCITY_UNKNOWN;
   value: number;
 };
 
-const SET_VELOCITY = "cellular-automaton/velocity/set";
 export const initialState: TState = {
   value: DEF_VELOCITY,
 };

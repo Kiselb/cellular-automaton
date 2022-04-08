@@ -19,6 +19,7 @@ const STATE_SAVE_CONFIRM = "cellular-automaton/state/save/confirm";
 const STATE_SAVE_REJECT = "cellular-automaton/state/save/failed";
 const STATE_LOAD_CONFIRM = "cellular-automaton/state/load/confirm";
 const STATE_LOAD_REJECT = "cellular-automaton/state/load/failed";
+export const STATE_LOAD_UNKNOWN = "cellular-automaton/state/unknown";
 
 export type TState = {
   error: string;
@@ -37,16 +38,20 @@ type TActionLoadStateReject = {
   type: typeof STATE_LOAD_REJECT;
   error: string;
 };
-type TAction =
+export type TActionUnknown = {
+  type: typeof STATE_LOAD_UNKNOWN;
+};
+
+export type TAction =
   | TActionSaveStateConfim
   | TActionSaveStateReject
   | TActionLoadStateConfim
-  | TActionLoadStateReject;
+  | TActionLoadStateReject
+  | TActionUnknown;
 
-export default function reducer(
-  state: TState = { error: "" },
-  action: TAction
-) {
+export const initialState = { error: "" };
+
+export default function reducer(state: TState = initialState, action: TAction) {
   switch (action.type) {
     case STATE_SAVE_CONFIRM:
       return {
@@ -82,7 +87,7 @@ export const thunkSaveState = async (
   getState: () => TAppReduxState
 ) => {
   try {
-    localStorage.setItem(
+    await localStorage.setItem(
       "cellular-automaton.state",
       JSON.stringify(getState())
     );
@@ -114,7 +119,7 @@ export const thunkLoadState = async (
 ) => {
   try {
     const state = JSON.parse(
-      localStorage.getItem("cellular-automaton.state") || ""
+      (await localStorage.getItem("cellular-automaton.state")) || ""
     );
     dispatch(actionLoadStateConfirm());
     if (!!state) {

@@ -1,7 +1,14 @@
-import reducer, { TState, initialState, actionSetVelocity } from "./velocity";
+import reducer, {
+  TState,
+  initialState,
+  actionSetVelocity,
+  SET_VELOCITY_UNKNOWN,
+  TActionVelocity,
+} from "./velocity";
 
 it("Epoch reducer initial state", () => {
-  const newState = reducer(undefined, { type: "UNKNOWN", value: 100 });
+  const action: TActionVelocity = { type: SET_VELOCITY_UNKNOWN, value: 100 };
+  const newState = reducer(undefined, action);
   expect(newState).toEqual(initialState);
 });
 it("Epoch reducer values", () => {
@@ -12,7 +19,7 @@ it("Epoch reducer values", () => {
   expect(newState).toEqual(expectedState);
 });
 it("Epoch reducer unknown action", () => {
-  const newState = reducer(initialState, { type: "UNKNOWN", value: 100 });
-
+  const action: TActionVelocity = { type: SET_VELOCITY_UNKNOWN, value: 100 };
+  const newState = reducer(initialState, action);
   expect(newState).toEqual(initialState);
 });
