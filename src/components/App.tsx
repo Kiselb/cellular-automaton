@@ -3,15 +3,7 @@ import { Provider } from "react-redux";
 
 // Never use BrowserRouter on GitHub Pages. There are some issues with it, it always shows blank screen. Use HashRouter instead, that will most probably work
 //
-import {
-  Link,
-  Routes,
-  Route,
-  useNavigate,
-  Navigate,
-  useLocation,
-  HashRouter as Router,
-} from "react-router-dom";
+import { Routes, Route, HashRouter as Router } from "react-router-dom";
 
 import { Main } from "./main/Main";
 import SignIn from "./signin/SignIn";
