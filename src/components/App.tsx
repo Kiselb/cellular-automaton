@@ -7,7 +7,9 @@ import { Routes, Route, HashRouter as Router } from "react-router-dom";
 
 import { Main } from "./main/Main";
 import SignIn from "./signin/SignIn";
-import store from "./ducks/store";
+
+//import store from "./ducks/store";
+import store from "./sagas/index";
 
 import { AuthProvider, RequireAuth } from "./Auth";
 

@@ -18,6 +18,11 @@ import { actionSetVelocity } from "../ducks/velocity";
 import { actionSaveState, actionLoadState } from "../ducks/state";
 import { TAppReduxState } from "../ducks/reducer";
 
+import {
+  actionSagaSaveState,
+  actionSagaRestoreState,
+} from "../sagas/StateSaga";
+
 import { Size } from "../size/Size";
 import { Velocity } from "../velocity/Velocity";
 import { Button } from "../button/Button";
@@ -67,6 +72,8 @@ export const Main = ({ probe, onSelectMode }: TMainProps) => {
   const data = useSelector<TAppReduxState, number[][]>(
     (state) => state.gameLife.data
   );
+  const state = useSelector<TAppReduxState, TAppReduxState>((state) => state);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -134,11 +141,13 @@ export const Main = ({ probe, onSelectMode }: TMainProps) => {
   };
   const saveState = () => {
     !!probe && probe({});
-    dispatch(actionSaveState());
+    //dispatch(actionSaveState());
+    dispatch(actionSagaSaveState(state));
   };
   const restoreState = () => {
     !!probe && probe({});
-    dispatch(actionLoadState());
+    //dispatch(actionLoadState());
+    dispatch(actionSagaRestoreState());
   };
 
   return (

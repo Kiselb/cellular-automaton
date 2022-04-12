@@ -2,11 +2,11 @@ import { ThunkDispatch } from "redux-thunk";
 
 import { TAppReduxState } from "./reducer";
 import { TActionSizeX, TActionSizeY, TActionFieldLoad } from "./gamelife";
-import { TActionAutomaton } from "../ducks/automaton";
-import { TActionEpoch } from "../ducks/epoch";
-import { TActionFactor } from "../ducks/factor";
-import { TActionStatus } from "../ducks/status";
-import { TActionVelocity } from "../ducks/velocity";
+import { TActionAutomaton } from "./automaton";
+import { TActionEpoch } from "./epoch";
+import { TActionFactor } from "./factor";
+import { TActionStatus } from "./status";
+import { TActionVelocity } from "./velocity";
 
 import { actionSetSizeX, actionSetSizeY, actionLoadField } from "./gamelife";
 import { actionSetAutomaton } from "./automaton";

@@ -1,10 +1,10 @@
 import reducer, { TState, initialState, actionSetStatus } from "./status";
 
-it("Epoch reducer initial state", () => {
+it("Status reducer initial state", () => {
   const newState = reducer(undefined, { type: "UNKNOWN", status: "stopped" });
   expect(newState).toEqual(initialState);
 });
-it("Epoch reducer values", () => {
+it("Status reducer values", () => {
   let newState = reducer(initialState, actionSetStatus("playing"));
   let expectedState: TState = {
     value: "playing",
@@ -17,7 +17,7 @@ it("Epoch reducer values", () => {
   };
   expect(newState).toEqual(expectedState);
 });
-it("Epoch reducer unknown action", () => {
+it("Status reducer unknown action", () => {
   const newState = reducer(initialState, {
     type: "UNKNOWN",
     status: "stopped",
