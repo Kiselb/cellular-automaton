@@ -83,3 +83,21 @@ it("Restore state saga api call", () => {
   const apiCall = call(restoreState);
   expect(iterator.next().value).toEqual(apiCall);
 });
+it("Save state saga api throw", () => {
+  const message = "Test save state error";
+  const iterator = saveStateSaga(actionSagaSaveState(state));
+  const error = new Error(message);
+  iterator.next();
+  expect(iterator.throw(error).value).toEqual(
+    put(actionSaveStateReject(message))
+  );
+});
+it("Restore state saga api throw", () => {
+  const message = "Test restore state error";
+  const iterator = restoreStateSaga();
+  const error = new Error(message);
+  iterator.next();
+  expect(iterator.throw(error).value).toEqual(
+    put(actionLoadStateReject(message))
+  );
+});
