@@ -1,7 +1,7 @@
 import React from "react";
 
 import { AutomatonsList, Props } from "./types";
-import "./automaton.css";
+import "./Automaton.css";
 
 export const Automaton: React.FC<Props> = ({
   defAutomaton,

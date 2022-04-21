@@ -2,7 +2,7 @@ import React, { useState, FC } from "react";
 
 import { Props } from "./types";
 
-import "./size.css";
+import "./Size.css";
 
 export const Size: FC<Props> = ({
   onSizeChange,

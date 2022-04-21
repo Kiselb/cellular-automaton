@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import { Props, VelocitySet } from "./types";
 
-import "./velocity.css";
+import "./Velocity.css";
 
 export const Velocity: FC<Props> = ({
   onVelocityChange,
