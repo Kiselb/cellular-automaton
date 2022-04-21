@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Size } from "./Size";
+import { Size } from "./types";
 
 export default {
   title: "Application/Size",

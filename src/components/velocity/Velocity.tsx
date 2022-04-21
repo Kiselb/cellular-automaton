@@ -1,30 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 
-import "./Velocity.css";
+import { Props, VelocitySet } from "./types";
 
-type VelocityItem = {
-  delay: number;
-  name: string;
-};
-export type VelocityHandler = (delay: number) => void;
-export type VelocityProps = {
-  onVelocityChange: VelocityHandler;
-  defVelocity: number;
-};
+import "./velocity.css";
 
-const VelocitySet: VelocityItem[] = [
-  { delay: 1000, name: "Медленно" },
-  { delay: 2000, name: "Очень медленно" },
-  { delay: 100, name: "Быстро" },
-  { delay: 10, name: "Очень быстро" },
-  { delay: 500, name: "Нормально" },
-];
-
-export const Velocity = ({
+export const Velocity: FC<Props> = ({
   onVelocityChange,
   defVelocity,
-  ...props
-}: VelocityProps) => {
+}: Props) => {
   const onChange = (event: React.FormEvent<HTMLSelectElement>) => {
     event.preventDefault();
     onVelocityChange(parseInt(event.currentTarget.value));

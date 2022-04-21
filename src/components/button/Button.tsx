@@ -1,29 +1,15 @@
 import React from "react";
 
-import "./Button.css";
+import { Props } from "./types";
 
-export type ButtonCaption =
-  | "Эволюция"
-  | "Остановить"
-  | "Заполнить"
-  | "Сбросить"
-  | "Сохранить"
-  | "Восстановить";
+import "./button.css";
 
-export type ButtonAction = () => void;
-export type ButtonProps = {
-  status: boolean;
-  caption: ButtonCaption;
-  onAction: ButtonAction;
-  testId: string;
-};
-export const Button = ({
+export const Button: React.FC<Props> = ({
   onAction,
   status,
   caption,
   testId,
-  ...props
-}: ButtonProps) => {
+}: Props) => {
   const onClick = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
     onAction();

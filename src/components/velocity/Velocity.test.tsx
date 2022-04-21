@@ -2,7 +2,7 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
-import { Velocity } from "./Velocity";
+import { Velocity } from "./types";
 
 it("Control Velocity renders correctly", () => {
   const { asFragment } = render(

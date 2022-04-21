@@ -2,7 +2,7 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
-import { Panel } from "./Panel";
+import { Panel } from "./types";
 
 it("Panel renders correctly", () => {
   const data: number[][] = Array.from({ length: 4 }, () =>

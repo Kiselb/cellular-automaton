@@ -2,7 +2,9 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
-import { Button, ButtonCaption } from "./Button";
+
+import { Button } from "./types";
+import { ButtonCaption } from "../../domain/types";
 
 it("Cell renders correctly", () => {
   const { asFragment } = render(

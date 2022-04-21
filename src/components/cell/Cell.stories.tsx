@@ -1,6 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
+import { EMPTY_CELL_COLOR } from "../../domain/defaults";
 import { Cell } from "./Cell";
 
 export default {
@@ -21,8 +22,7 @@ Dead.args = {
   row: 13,
   col: 13,
   onClick: () => console.log("OK"),
-  colorEmpty: "#ececec",
-  colorGamma: "lightgreen",
+  colorEmpty: EMPTY_CELL_COLOR,
 };
 
 export const Generation1 = Template.bind({});
@@ -31,8 +31,7 @@ Generation1.args = {
   row: 13,
   col: 13,
   onClick: () => console.log("OK"),
-  colorEmpty: "#ececec",
-  colorGamma: "lightgreen",
+  colorEmpty: EMPTY_CELL_COLOR,
 };
 
 export const Generation5 = Template.bind({});
@@ -41,8 +40,7 @@ Generation5.args = {
   row: 13,
   col: 13,
   onClick: () => console.log("OK"),
-  colorEmpty: "#ececec",
-  colorGamma: "lightgreen",
+  colorEmpty: EMPTY_CELL_COLOR,
 };
 
 export const Generation10 = Template.bind({});
@@ -51,8 +49,7 @@ Generation10.args = {
   row: 13,
   col: 13,
   onClick: () => console.log("OK"),
-  colorEmpty: "#ececec",
-  colorGamma: "lightgreen",
+  colorEmpty: EMPTY_CELL_COLOR,
 };
 
 export const Generation20 = Template.bind({});
@@ -61,8 +58,7 @@ Generation20.args = {
   row: 13,
   col: 13,
   onClick: () => console.log("OK"),
-  colorEmpty: "#ececec",
-  colorGamma: "lightgreen",
+  colorEmpty: EMPTY_CELL_COLOR,
 };
 
 export const Clickable = Template.bind({});
@@ -71,6 +67,5 @@ Clickable.args = {
   row: 13,
   col: 13,
   onClick: () => alert("R13C13"),
-  colorEmpty: "#ececec",
-  colorGamma: "lightgreen",
+  colorEmpty: EMPTY_CELL_COLOR,
 };

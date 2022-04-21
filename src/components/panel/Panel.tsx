@@ -1,26 +1,26 @@
-import React from "react";
-import "./panel.css";
-import { Cell, CellParams } from "../cell/Cell";
+import React, { FC } from "react";
 
-interface PanelProps {
-  data: number[][];
-  onChange: (params: CellParams) => void;
-}
+import { EMPTY_CELL_COLOR } from "../../domain/defaults";
+import { Cell, Params as CellParams } from "../cell/types";
+import { Props } from "./types";
+import { Nest } from "./components/nest/types";
+import { Row } from "./components/row/types";
+import { Plate } from "./components/plate/Plate";
 
-export const Panel = ({ data, onChange, ...props }: PanelProps) => {
+export const Panel: FC<Props> = ({ data, onChange }: Props) => {
   const cellOnClick = (params: CellParams) => {
     onChange(params);
   };
   return (
-    <div className="panel">
+    <Plate>
       {data.map((row, rowindex) => {
         return (
-          <div className="grid--row" key={`Row${rowindex}`}>
+          <Row row={rowindex} key={`R:${rowindex}`}>
             {row.map((item, colindex) => (
-              <div
-                key={`Wrap:R${rowindex}:C${colindex}`}
-                className={["grid", "grid--cell"].join(" ")}
-                data-testid="Panel"
+              <Nest
+                row={rowindex}
+                col={colindex}
+                key={`R:${rowindex}C:${colindex}`}
               >
                 <Cell
                   data-testid={`R${rowindex}:C${colindex}`}
@@ -28,14 +28,13 @@ export const Panel = ({ data, onChange, ...props }: PanelProps) => {
                   col={colindex}
                   generation={item}
                   onClick={cellOnClick}
-                  colorEmpty="#ececec"
-                  colorGamma="#77FF77"
+                  colorEmpty={EMPTY_CELL_COLOR}
                 ></Cell>
-              </div>
+              </Nest>
             ))}
-          </div>
+          </Row>
         );
       })}
-    </div>
+    </Plate>
   );
 };

@@ -1,55 +1,32 @@
-import React from "react";
+import React, { FC } from "react";
 import chroma from "chroma-js";
+
+import { Params, Props, CalcColor } from "./types";
 
 import "./cell.css";
 
-export type CellParams = {
-  generation: number;
-  row: number;
-  col: number;
-  colorGamma: string;
-  colorEmpty: string;
-  colorCell: string;
-};
-
-type CellProps = Omit<CellParams, "colorCell"> & {
-  onClick: (cell: CellParams) => void;
-  probe?: ({}) => void;
-};
-
-type CalcCellColor = (colorGamma: string, generation: number) => string;
-
-export const calcCellColor1: CalcCellColor = (
-  colorGamma: string,
-  generation: number
-) =>
-  chroma(colorGamma)
-    .darken(1 + (generation - 1) * 0.1)
-    .hex();
-
-export const calcCellColor: CalcCellColor = (
-  colorGamma: string,
-  generation: number
+export const calcCellColor: CalcColor = (
+  generation: number,
+  colorScaleMin = "yellow",
+  colorScaleMax = "darkgreen"
 ) =>
   chroma
-    .scale(["yellow", "darkgreen"])((generation - 1) * 0.1)
+    .scale([colorScaleMin, colorScaleMax])((generation - 1) * 0.1)
     .hex();
 
-export const Cell = ({
+export const Cell: FC<Props> = ({
   generation,
   row,
   col,
   onClick,
-  colorGamma,
   colorEmpty,
-  ...props
-}: CellProps) => {
-  const colorCell: string = calcCellColor(colorGamma, generation);
-  const cellParams: CellParams = {
+  probe,
+}: Props) => {
+  const colorCell: string = calcCellColor(generation);
+  const cellParams: Params = {
     generation,
     row,
     col,
-    colorGamma,
     colorEmpty,
     colorCell,
   };
@@ -60,11 +37,11 @@ export const Cell = ({
   const onMouseOverHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     event.buttons === 1 && onClick(cellParams);
-    event.buttons === 1 && props.probe && props.probe(cellParams);
+    event.buttons === 1 && probe && probe(cellParams);
   };
   const onDoubleClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
-    props.probe && props.probe(cellParams);
+    probe && probe(cellParams);
   };
   return (
     <div

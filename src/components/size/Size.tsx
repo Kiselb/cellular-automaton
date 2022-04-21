@@ -1,25 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 
-import "./Size.css";
+import { Props } from "./types";
 
-export type SizeHandler = (size: number) => void;
+import "./size.css";
 
-type SizeProps = {
-  onSizeChange: SizeHandler;
-  minSize: number;
-  maxSize: number;
-  defSize: number;
-  testId: string;
-};
-
-export const Size = ({
+export const Size: FC<Props> = ({
   onSizeChange,
   minSize,
   maxSize,
   defSize,
   testId,
-  ...props
-}: SizeProps) => {
+}: Props) => {
   const [size, setSize] = useState(defSize);
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();

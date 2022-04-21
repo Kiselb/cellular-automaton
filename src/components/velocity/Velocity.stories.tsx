@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Velocity } from "./Velocity";
+import { Velocity } from "./types";
 
 export default {
   title: "Application/Velocity",

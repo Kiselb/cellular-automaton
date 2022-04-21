@@ -1,8 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Panel } from "./Panel";
-import { Cell, CellParams } from "../cell/Cell";
+import { Panel } from "./types";
+import { Cell } from "../cell/types";
 
 export default {
   title: "Application/Panel",

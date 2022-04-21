@@ -1,0 +1,10 @@
+.panel {
+    display: inline-block;
+    background-color: lightslategrey;
+    padding-left: 5px;
+    padding-right: 6px;
+    padding-top: 5px;
+    padding-bottom: 6px;
+    border: 1px solid black;
+
+}

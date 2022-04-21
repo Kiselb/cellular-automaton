@@ -2,9 +2,9 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
-import { Automaton } from "./Automaton";
-import { DEF_AUTOMATON } from "../Defaults";
-import { AutomatonDescription, AutomatonsList } from "./Automaton.types";
+import { Automaton } from "./types";
+import { DEF_AUTOMATON } from "../../domain/defaults";
+import { AutomatonDescription, AutomatonsList } from "./types";
 
 it("Automaton renders correctly", () => {
   const { asFragment } = render(

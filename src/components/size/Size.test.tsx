@@ -2,7 +2,7 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
-import { Size } from "./Size";
+import { Size } from "./types";
 
 it("Control Size renders correctly", () => {
   const { asFragment } = render(

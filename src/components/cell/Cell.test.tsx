@@ -2,7 +2,9 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
-import { Cell, calcCellColor } from "./Cell";
+
+import { EMPTY_CELL_COLOR } from "../../domain/defaults";
+import { Cell, calcCellColor } from "./types";
 
 it("Cell renders correctly", () => {
   const { asFragment } = render(
@@ -11,8 +13,7 @@ it("Cell renders correctly", () => {
       col={1}
       generation={1}
       onClick={() => console.log("OK")}
-      colorEmpty="#ececec"
-      colorGamma="lightgreen"
+      colorEmpty={EMPTY_CELL_COLOR}
     />
   );
   screen.debug();
@@ -25,8 +26,7 @@ it("Cell has style", () => {
       col={1}
       generation={1}
       onClick={() => console.log("OK")}
-      colorEmpty="#ececec"
-      colorGamma="lightgreen"
+      colorEmpty={EMPTY_CELL_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
@@ -39,12 +39,11 @@ it("Cell has style background color generation 0", () => {
       col={1}
       generation={0}
       onClick={() => console.log("OK")}
-      colorEmpty="#ececec"
-      colorGamma="lightgreen"
+      colorEmpty={EMPTY_CELL_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
-  expect(div).toHaveStyle({ background: "#ececec" });
+  expect(div).toHaveStyle({ background: EMPTY_CELL_COLOR });
 });
 it("Cell has style background color generation 1", () => {
   render(
@@ -53,12 +52,11 @@ it("Cell has style background color generation 1", () => {
       col={1}
       generation={1}
       onClick={() => console.log("OK")}
-      colorEmpty="#ececec"
-      colorGamma="lightgreen"
+      colorEmpty={EMPTY_CELL_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
-  expect(div).toHaveStyle({ background: calcCellColor("lightgreen", 1) });
+  expect(div).toHaveStyle({ background: calcCellColor(1) });
 });
 it("Cell has style background color generation 10", () => {
   render(
@@ -67,12 +65,11 @@ it("Cell has style background color generation 10", () => {
       col={1}
       generation={10}
       onClick={() => console.log("OK")}
-      colorEmpty="#ececec"
-      colorGamma="lightgreen"
+      colorEmpty={EMPTY_CELL_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
-  expect(div).toHaveStyle({ background: calcCellColor("lightgreen", 10) });
+  expect(div).toHaveStyle({ background: calcCellColor(10) });
 });
 it("Cell has style background color generation 20", () => {
   render(
@@ -81,12 +78,11 @@ it("Cell has style background color generation 20", () => {
       col={1}
       generation={20}
       onClick={() => console.log("OK")}
-      colorEmpty="#ececec"
-      colorGamma="lightgreen"
+      colorEmpty={EMPTY_CELL_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
-  expect(div).toHaveStyle({ background: calcCellColor("lightgreen", 20) });
+  expect(div).toHaveStyle({ background: calcCellColor(20) });
 });
 it("Cell mouse click event", () => {
   const onClick = jest.fn();
@@ -96,8 +92,7 @@ it("Cell mouse click event", () => {
       col={1}
       generation={1}
       onClick={onClick}
-      colorEmpty="#ececec"
-      colorGamma="lightgreen"
+      colorEmpty={EMPTY_CELL_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
@@ -112,8 +107,7 @@ it("Cell mouse double click event", () => {
       col={1}
       generation={1}
       onClick={() => console.log("OK")}
-      colorEmpty="#ececec"
-      colorGamma="lightgreen"
+      colorEmpty={EMPTY_CELL_COLOR}
       probe={probe}
     />
   );
@@ -129,8 +123,7 @@ it("Cell mouse over event with pressed button", () => {
       col={1}
       generation={1}
       onClick={() => console.log("OK")}
-      colorEmpty="#ececec"
-      colorGamma="lightgreen"
+      colorEmpty={EMPTY_CELL_COLOR}
       probe={probe}
     />
   );
@@ -146,8 +139,7 @@ it("Cell mouse over event without pressed button", () => {
       col={1}
       generation={1}
       onClick={() => console.log("OK")}
-      colorEmpty="#ececec"
-      colorGamma="lightgreen"
+      colorEmpty={EMPTY_CELL_COLOR}
       probe={probe}
     />
   );
