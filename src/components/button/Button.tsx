@@ -2,7 +2,7 @@ import React from "react";
 
 import { Props } from "./types";
 
-import "./button.css";
+import "./Button.css";
 
 export const Button: React.FC<Props> = ({
   onAction,
