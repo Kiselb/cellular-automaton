@@ -2,22 +2,20 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  actionNextEpoch,
-  actionClearFeild,
-  actionFillField,
-  actionSetSizeX,
-  actionSetSizeY,
-  actionToggleCell,
-} from "../../store/ducks/gamelife";
-import { actionSetAutomaton } from "../../store/ducks/automaton";
-import { actionResetEpoch, actionIncEpoch } from "../../store/ducks/epoch";
-import { actionSetFactor } from "../../store/ducks/factor";
+import { actionToggleCell } from "../../store/ducks/gamelife";
 import { actionSetStatus } from "../../store/ducks/status";
-import { actionSetVelocity } from "../../store/ducks/velocity";
-import { actionSaveState, actionLoadState } from "../../store/ducks/state";
 import { AppReduxState } from "../../store/ducks/reducer";
 
+import {
+  createSagaActionSetSizeX,
+  createSagaActionSetSizeY,
+  createSagaActionIncEpoch,
+  createSagaActionResetEpoch,
+  createSagaFillField,
+  createSagaSetFactor,
+  createSagaSetAutomaton,
+  createSagaSetVelocity,
+} from "../../store/effects/index";
 import {
   actionSagaSaveState,
   actionSagaRestoreState,
@@ -51,25 +49,18 @@ import "./main.css";
 
 type MainProps = {
   onModeChange: (event: React.FormEvent<HTMLSelectElement>) => void;
-  useSaga: boolean;
   probe?: ({}) => void;
 };
 
-export const Main = ({ probe, onModeChange, useSaga }: MainProps) => {
+export const Main = ({ probe, onModeChange }: MainProps) => {
   const context = useContext(authContext);
   const [ticks, setTicks] = useState(0);
 
-  const automaton = useSelector<AppReduxState, AutomatonDescription>(
-    (state) => state.automaton.value
-  );
   const status = useSelector<AppReduxState, Status>(
     (state) => state.status.value
   );
   const velocity = useSelector<AppReduxState, number>(
     (state) => state.velocity.value
-  );
-  const factor = useSelector<AppReduxState, number>(
-    (state) => state.factor.value
   );
   const epoch = useSelector<AppReduxState, number>(
     (state) => state.epoch.value
@@ -97,16 +88,15 @@ export const Main = ({ probe, onModeChange, useSaga }: MainProps) => {
   }, [ticks, status, velocity]);
   const onXSizeChange = (size: number) => {
     !!probe && probe(size);
-    dispatch(actionSetSizeX(size));
+    dispatch(createSagaActionSetSizeX(size));
   };
   const onYSizeChange = (size: number) => {
     !!probe && probe(size);
-    dispatch(actionSetSizeY(size));
+    dispatch(createSagaActionSetSizeY(size));
   };
   const tick = () => {
     !!probe && probe({});
-    dispatch(actionIncEpoch());
-    dispatch(actionNextEpoch(automaton));
+    dispatch(createSagaActionIncEpoch());
     setTicks((ticks) => ticks + 1);
   };
   const run = () => {
@@ -120,25 +110,24 @@ export const Main = ({ probe, onModeChange, useSaga }: MainProps) => {
   const clear = () => {
     !!probe && probe({});
     dispatch(actionSetStatus("stopped"));
-    dispatch(actionClearFeild());
-    dispatch(actionResetEpoch());
+    dispatch(createSagaActionResetEpoch());
   };
   const fill = () => {
     !!probe && probe({});
-    dispatch(actionFillField(factor));
-    dispatch(actionResetEpoch());
+    dispatch(createSagaActionResetEpoch());
+    dispatch(createSagaFillField());
   };
   const setFillFactor = (factor: number) => {
     !!probe && probe(factor);
-    dispatch(actionSetFactor(factor));
+    dispatch(createSagaSetFactor(factor));
   };
   const setVelocity = (velocity: number) => {
     !!probe && probe(velocity);
-    dispatch(actionSetVelocity(velocity));
+    dispatch(createSagaSetVelocity(velocity));
   };
   const setAutomaton = (automaton: AutomatonDescription) => {
     !!probe && probe(automaton);
-    dispatch(actionSetAutomaton(automaton));
+    dispatch(createSagaSetAutomaton(automaton));
   };
   const cellEvent = (cell: CellParams) => {
     !!probe && probe(cell);
@@ -146,25 +135,17 @@ export const Main = ({ probe, onModeChange, useSaga }: MainProps) => {
   };
   const saveState = () => {
     !!probe && probe({});
-    if (useSaga) {
-      dispatch(actionSagaSaveState(state));
-    } else {
-      dispatch(actionSaveState());
-    }
+    dispatch(actionSagaSaveState(state));
   };
   const restoreState = () => {
     !!probe && probe({});
-    if (useSaga) {
-      dispatch(actionSagaRestoreState());
-    } else {
-      dispatch(actionLoadState());
-    }
+    dispatch(actionSagaRestoreState());
   };
 
   return (
     <div className="app">
       <div className="header">
-        <select onChange={onModeChange} defaultValue="ReduxThunk">
+        <select onChange={onModeChange} defaultValue="ReduxEffects">
           <option value="Native">Native</option>
           <option value="ReduxThunk">Redux (Thunk)</option>
           <option value="ReduxSaga">Redux (Saga)</option>

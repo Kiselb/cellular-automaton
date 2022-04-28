@@ -11,7 +11,11 @@ export type LocalityIndexes = {
 };
 export type Status = "stopped" | "playing";
 
-export type AppStoreMode = "Native" | "ReduxThunk" | "ReduxSaga";
+export type AppStoreMode =
+  | "Native"
+  | "ReduxThunk"
+  | "ReduxSaga"
+  | "ReduxEffects";
 export type ButtonCaption =
   | "Эволюция"
   | "Остановить"

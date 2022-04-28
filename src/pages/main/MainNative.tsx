@@ -75,13 +75,20 @@ type MainProps = {
 };
 
 export const Main = ({ probe, onModeChange }: MainProps) => {
+  let timerId: number | null = null;
+
   const context = useContext(authContext);
   const [state, setState] = useState(initialState);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    state.status === "playing" && setTimeout(tick, state.velocity);
+    if (state.status === "playing") {
+      timerId = window.setTimeout(tick, state.velocity);
+    }
+    return () => {
+      !!timerId && window.clearTimeout(timerId);
+    };
   }, [state.status, state.epoch]);
 
   const onXSizeChange = (size: number) => {
@@ -175,6 +182,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
           <option value="Native">Native</option>
           <option value="ReduxThunk">Redux (Thunk)</option>
           <option value="ReduxSaga">Redux (Saga)</option>
+          <option value="ReduxEffects">Redux (Effects)</option>
         </select>
         <p>{!!context ? context.user : ""}</p>
         <button

@@ -22,21 +22,21 @@ import { AppReduxState } from "../ducks/reducer";
 export const STATE_SAVE_SAGA = "STATE_SAVE_SAGA";
 export const STATE_RESTORE_SAGA = "STATE_RESTORE_SAGA";
 
-export type TSagaActionSaveStateRequest = {
+export type SagaActionSaveStateRequest = {
   type: typeof STATE_SAVE_SAGA;
   state: AppReduxState;
 };
-export type TSagaActionRestoreStateRequest = {
+export type SagaActionRestoreStateRequest = {
   type: typeof STATE_RESTORE_SAGA;
 };
 
 export const actionSagaSaveState = (
   state: AppReduxState
-): TSagaActionSaveStateRequest => ({
+): SagaActionSaveStateRequest => ({
   type: STATE_SAVE_SAGA,
   state,
 });
-export const actionSagaRestoreState = (): TSagaActionRestoreStateRequest => ({
+export const actionSagaRestoreState = (): SagaActionRestoreStateRequest => ({
   type: STATE_RESTORE_SAGA,
 });
 
@@ -45,7 +45,7 @@ export const saveState = (state: AppReduxState) =>
 export const restoreState = () =>
   JSON.parse(localStorage.getItem("cellular-automaton.state") || "");
 
-export function* saveStateSaga(action: TSagaActionSaveStateRequest) {
+export function* saveStateSaga(action: SagaActionSaveStateRequest) {
   try {
     yield call(saveState, action.state);
     yield put(actionSaveStateConfirm());

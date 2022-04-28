@@ -25,6 +25,11 @@ exports[`App renders correctly 1`] = `
         >
           Redux (Saga)
         </option>
+        <option
+          value="ReduxEffects"
+        >
+          Redux (Effects)
+        </option>
       </select>
       <p />
       <button>

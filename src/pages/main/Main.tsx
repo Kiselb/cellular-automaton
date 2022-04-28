@@ -3,6 +3,7 @@ import React from "react";
 import { AppStoreMode } from "../../domain/types";
 import { Main as MainNative } from "./MainNative";
 import { Main as MainRedux } from "./MainRedux";
+import { Main as MainEffects } from "./MainEffects";
 
 type MainProps = {
   onModeChange: (mode: AppStoreMode) => void;
@@ -17,17 +18,38 @@ const Main = ({ mode, probe, onModeChange }: MainProps) => {
 
   return (
     <>
-      {mode === "Native" ? (
-        <MainNative probe={probe} onModeChange={onModeChangeHandler} />
-      ) : mode === "ReduxThunk" ? (
-        <MainRedux
-          probe={probe}
-          onModeChange={onModeChangeHandler}
-          useSaga={false}
-        />
-      ) : (
-        <MainRedux probe={probe} onModeChange={onModeChangeHandler} useSaga />
-      )}
+      {(() => {
+        switch (mode) {
+          case "Native":
+            return (
+              <MainNative probe={probe} onModeChange={onModeChangeHandler} />
+            );
+          case "ReduxThunk":
+            return (
+              <MainRedux
+                probe={probe}
+                onModeChange={onModeChangeHandler}
+                useSaga={false}
+              />
+            );
+          case "ReduxSaga":
+            return (
+              <MainRedux
+                probe={probe}
+                onModeChange={onModeChangeHandler}
+                useSaga
+              />
+            );
+          case "ReduxEffects":
+            return (
+              <MainEffects probe={probe} onModeChange={onModeChangeHandler} />
+            );
+          default:
+            return (
+              <MainNative probe={probe} onModeChange={onModeChangeHandler} />
+            );
+        }
+      })()}
     </>
   );
 };
