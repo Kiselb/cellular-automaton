@@ -1,9 +1,9 @@
 import React from "react";
 
 import { AppStoreMode } from "../../domain/types";
-import { Main as MainNative } from "./MainNative";
-import { Main as MainRedux } from "./MainRedux";
-import { Main as MainEffects } from "./MainEffects";
+import { Main as MainNative } from "./components/native/MainNative";
+import { Main as MainRedux } from "./components/redux/MainRedux";
+import { Main as MainEffects } from "./components/effects/MainEffects";
 
 type MainProps = {
   onModeChange: (mode: AppStoreMode) => void;

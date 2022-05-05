@@ -1,0 +1,10 @@
+.size{
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom: 1px solid lightgray;
+    outline: none;
+}

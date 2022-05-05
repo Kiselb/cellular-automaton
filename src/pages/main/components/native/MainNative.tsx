@@ -5,13 +5,13 @@ import {
   AutomatonDescription,
   AutomatonsList,
   Automaton,
-} from "../../components/automaton/types";
-import { Status } from "../../domain/types";
-import { Size } from "../../components/size/types";
-import { Velocity } from "../../components/velocity/types";
-import { Button } from "../../components/button/types";
-import { Panel } from "../../components/panel/types";
-import { Params as CellParams } from "../../components/cell/types";
+} from "../../../../components/automaton/types";
+import { Status } from "../../../../domain/types";
+import { Size } from "../../../../components/size/types";
+import { Velocity } from "../../../../components/velocity/types";
+import { Button } from "../../../../components/button/types";
+import { Panel } from "../../../../components/panel/types";
+import { Params as CellParams } from "../../../../components/cell/types";
 import {
   CalcState,
   setXSize,
@@ -19,7 +19,7 @@ import {
   ClearState,
   FillRandom,
   SetCell,
-} from "../../domain/types";
+} from "../../../../domain/types";
 import {
   MIN_ROWS,
   MAX_ROWS,
@@ -32,10 +32,11 @@ import {
   DEF_FILL,
   DEF_VELOCITY,
   DEF_AUTOMATON,
-} from "../../domain/defaults";
-import { authContext } from "../../services/auth/Auth";
+} from "../../../../domain/defaults";
+import { authContext } from "../../../../services/auth/Auth";
 
-import "./main.css";
+//import "./main.css";
+import styles from "./main.module.css";
 
 export type AppState = {
   epoch: number;
@@ -80,7 +81,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
   const context = useContext(authContext);
   const [state, setState] = useState(initialState);
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   useEffect(() => {
     if (state.status === "playing") {
@@ -176,8 +177,8 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
   };
 
   return (
-    <div className="app">
-      <div className="header">
+    <div className={styles["app"]}>
+      <div className={styles["header"]}>
         <select onChange={onModeChange} defaultValue="Native">
           <option value="Native">Native</option>
           <option value="ReduxThunk">Redux (Thunk)</option>
@@ -185,19 +186,19 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
           <option value="ReduxEffects">Redux (Effects)</option>
         </select>
         <p>{!!context ? context.user : ""}</p>
-        <button
+        {/* <button
           onClick={() => {
             !!context &&
               context.logout(() => navigate("/login", { replace: true }));
           }}
         >
           Выйти
-        </button>
+        </button> */}
       </div>
-      <div className="control">
-        <div className="knob-label">Эпоха:</div>
-        <div className="epoch">{state.epoch}</div>
-        <div className="knob-label">Размер X:</div>
+      <div className={styles["control"]}>
+        <div className={styles["knob-label"]}>Эпоха:</div>
+        <div className={styles["epoch"]}>{state.epoch}</div>
+        <div className={styles["knob-label"]}>Размер X:</div>
         <div>
           <Size
             onSizeChange={onXSizeChange}
@@ -207,7 +208,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
             testId="sizex"
           />
         </div>
-        <div className="knob-label">Размер Y:</div>
+        <div className={styles["knob-label"]}>Размер Y:</div>
         <div>
           <Size
             onSizeChange={onYSizeChange}
@@ -217,14 +218,14 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
             testId="sizey"
           />
         </div>
-        <div className="knob-label">Автомат:</div>
+        <div className={styles["knob-label"]}>Автомат:</div>
         <div>
           <Automaton
             defAutomaton={DEF_AUTOMATON}
             onAutomatonChange={setAutomaton}
           />
         </div>
-        <div className="knob-label">Скорость:</div>
+        <div className={styles["knob-label"]}>Скорость:</div>
         <div>
           <Velocity onVelocityChange={setVelocity} defVelocity={DEF_VELOCITY} />
         </div>
@@ -252,7 +253,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
             testId="actionclear"
           />
         </div>
-        <div className="knob-label">Заполнение:</div>
+        <div className={styles["knob-label"]}>Заполнение:</div>
         <div>
           <Size
             onSizeChange={setFillFactor}
@@ -271,7 +272,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
           />
         </div>
       </div>
-      <div className="lifecontainer">
+      <div className={styles["lifecontainer"]}>
         <Panel data={state.data} onChange={cellEvent} />
       </div>
     </div>

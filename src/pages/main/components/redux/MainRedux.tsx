@@ -2,33 +2,41 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { actionToggleCell } from "../../store/ducks/gamelife";
-import { actionSetStatus } from "../../store/ducks/status";
-import { AppReduxState } from "../../store/ducks/reducer";
-
 import {
-  createSagaActionSetSizeX,
-  createSagaActionSetSizeY,
-  createSagaActionIncEpoch,
-  createSagaActionResetEpoch,
-  createSagaFillField,
-  createSagaSetFactor,
-  createSagaSetAutomaton,
-  createSagaSetVelocity,
-} from "../../store/effects/index";
+  actionNextEpoch,
+  actionClearFeild,
+  actionFillField,
+  actionSetSizeX,
+  actionSetSizeY,
+  actionToggleCell,
+} from "../../../../store/ducks/gamelife";
+import { actionSetAutomaton } from "../../../../store/ducks/automaton";
+import {
+  actionResetEpoch,
+  actionIncEpoch,
+} from "../../../../store/ducks/epoch";
+import { actionSetFactor } from "../../../../store/ducks/factor";
+import { actionSetStatus } from "../../../../store/ducks/status";
+import { actionSetVelocity } from "../../../../store/ducks/velocity";
+import {
+  actionSaveState,
+  actionLoadState,
+} from "../../../../store/ducks/state";
+import { AppReduxState } from "../../../..//store/ducks/reducer";
+
 import {
   actionSagaSaveState,
   actionSagaRestoreState,
-} from "../../store/sagas/StateSaga";
+} from "../../../../store/sagas/StateSaga";
 
-import { Size } from "../../components/size/types";
-import { Velocity } from "../../components/velocity/types";
-import { Button } from "../../components/button/types";
-import { Panel } from "../../components/panel/types";
-import { Params as CellParams } from "../../components/cell/types";
+import { Size } from "../../../../components/size/types";
+import { Velocity } from "../../../../components/velocity/types";
+import { Button } from "../../../../components/button/types";
+import { Panel } from "../../../../components/panel/types";
+import { Params as CellParams } from "../../../../components/cell/types";
 
-import { AutomatonDescription } from "../../components/automaton/types";
-import { Automaton } from "../../components/automaton/types";
+import { AutomatonDescription } from "../../../../components/automaton/types";
+import { Automaton } from "../../../../components/automaton/types";
 import {
   MIN_ROWS,
   MAX_ROWS,
@@ -41,26 +49,34 @@ import {
   DEF_FILL,
   DEF_VELOCITY,
   DEF_AUTOMATON,
-} from "../../domain/defaults";
-import { authContext } from "../../services/auth/Auth";
-import { Status } from "../../domain/types";
+} from "../../../../domain/defaults";
+import { authContext } from "../../../../services/auth/Auth";
+import { Status } from "../../../../domain/types";
 
-import "./main.css";
+//import "./main.css";
+import styles from "./main.module.css";
 
 type MainProps = {
   onModeChange: (event: React.FormEvent<HTMLSelectElement>) => void;
+  useSaga: boolean;
   probe?: ({}) => void;
 };
 
-export const Main = ({ probe, onModeChange }: MainProps) => {
+export const Main = ({ probe, onModeChange, useSaga }: MainProps) => {
   const context = useContext(authContext);
   const [ticks, setTicks] = useState(0);
 
+  const automaton = useSelector<AppReduxState, AutomatonDescription>(
+    (state) => state.automaton.value
+  );
   const status = useSelector<AppReduxState, Status>(
     (state) => state.status.value
   );
   const velocity = useSelector<AppReduxState, number>(
     (state) => state.velocity.value
+  );
+  const factor = useSelector<AppReduxState, number>(
+    (state) => state.factor.value
   );
   const epoch = useSelector<AppReduxState, number>(
     (state) => state.epoch.value
@@ -72,7 +88,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
 
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   let timerID: number | null = null;
 
   useEffect(() => {
@@ -88,15 +104,16 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
   }, [ticks, status, velocity]);
   const onXSizeChange = (size: number) => {
     !!probe && probe(size);
-    dispatch(createSagaActionSetSizeX(size));
+    dispatch(actionSetSizeX(size));
   };
   const onYSizeChange = (size: number) => {
     !!probe && probe(size);
-    dispatch(createSagaActionSetSizeY(size));
+    dispatch(actionSetSizeY(size));
   };
   const tick = () => {
     !!probe && probe({});
-    dispatch(createSagaActionIncEpoch());
+    dispatch(actionIncEpoch());
+    dispatch(actionNextEpoch(automaton));
     setTicks((ticks) => ticks + 1);
   };
   const run = () => {
@@ -110,24 +127,25 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
   const clear = () => {
     !!probe && probe({});
     dispatch(actionSetStatus("stopped"));
-    dispatch(createSagaActionResetEpoch());
+    dispatch(actionClearFeild());
+    dispatch(actionResetEpoch());
   };
   const fill = () => {
     !!probe && probe({});
-    dispatch(createSagaActionResetEpoch());
-    dispatch(createSagaFillField());
+    dispatch(actionFillField(factor));
+    dispatch(actionResetEpoch());
   };
   const setFillFactor = (factor: number) => {
     !!probe && probe(factor);
-    dispatch(createSagaSetFactor(factor));
+    dispatch(actionSetFactor(factor));
   };
   const setVelocity = (velocity: number) => {
     !!probe && probe(velocity);
-    dispatch(createSagaSetVelocity(velocity));
+    dispatch(actionSetVelocity(velocity));
   };
   const setAutomaton = (automaton: AutomatonDescription) => {
     !!probe && probe(automaton);
-    dispatch(createSagaSetAutomaton(automaton));
+    dispatch(actionSetAutomaton(automaton));
   };
   const cellEvent = (cell: CellParams) => {
     !!probe && probe(cell);
@@ -135,36 +153,44 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
   };
   const saveState = () => {
     !!probe && probe({});
-    dispatch(actionSagaSaveState(state));
+    if (useSaga) {
+      dispatch(actionSagaSaveState(state));
+    } else {
+      dispatch(actionSaveState());
+    }
   };
   const restoreState = () => {
     !!probe && probe({});
-    dispatch(actionSagaRestoreState());
+    if (useSaga) {
+      dispatch(actionSagaRestoreState());
+    } else {
+      dispatch(actionLoadState());
+    }
   };
 
   return (
-    <div className="app">
-      <div className="header">
-        <select onChange={onModeChange} defaultValue="ReduxEffects">
+    <div className={styles["app"]}>
+      <div className={styles["header"]}>
+        <select onChange={onModeChange} defaultValue="ReduxThunk">
           <option value="Native">Native</option>
           <option value="ReduxThunk">Redux (Thunk)</option>
           <option value="ReduxSaga">Redux (Saga)</option>
           <option value="ReduxEffects">Redux (Effects)</option>
         </select>
         <p>{!!context ? context.user : ""}</p>
-        <button
+        {/* <button
           onClick={() => {
             !!context &&
               context.logout(() => navigate("/login", { replace: true }));
           }}
         >
           Выйти
-        </button>
+        </button> */}
       </div>
-      <div className="control">
-        <div className="knob-label">Эпоха:</div>
-        <div className="epoch">{epoch}</div>
-        <div className="knob-label">Размер X:</div>
+      <div className={styles["control"]}>
+        <div className={styles["knob-label"]}>Эпоха:</div>
+        <div className={styles["epoch"]}>{epoch}</div>
+        <div className={styles["knob-label"]}>Размер X:</div>
         <div>
           <Size
             onSizeChange={onXSizeChange}
@@ -174,7 +200,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
             testId="sizex"
           />
         </div>
-        <div className="knob-label">Размер Y:</div>
+        <div className={styles["knob-label"]}>Размер Y:</div>
         <div>
           <Size
             onSizeChange={onYSizeChange}
@@ -184,14 +210,14 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
             testId="sizey"
           />
         </div>
-        <div className="knob-label">Автомат:</div>
+        <div className={styles["knob-label"]}>Автомат:</div>
         <div>
           <Automaton
             defAutomaton={DEF_AUTOMATON}
             onAutomatonChange={setAutomaton}
           />
         </div>
-        <div className="knob-label">Скорость:</div>
+        <div className={styles["knob-label"]}>Скорость:</div>
         <div>
           <Velocity onVelocityChange={setVelocity} defVelocity={DEF_VELOCITY} />
         </div>
@@ -219,7 +245,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
             testId="actionclear"
           />
         </div>
-        <div className="knob-label">Заполнение:</div>
+        <div className={styles["knob-label"]}>Заполнение:</div>
         <div>
           <Size
             onSizeChange={setFillFactor}
@@ -254,7 +280,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
           />
         </div>
       </div>
-      <div className="lifecontainer">
+      <div className={styles["lifecontainer"]}>
         <Panel data={data} onChange={cellEvent} />
       </div>
     </div>

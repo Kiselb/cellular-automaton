@@ -12,9 +12,9 @@ import {
   DEF_COLS,
   DEF_FILL,
   DEF_VELOCITY,
-} from "../../domain/defaults";
-import { AuthProvider } from "../../services/auth/Auth";
-import store from "../../store/ducks/store";
+} from "../../../../domain/defaults";
+import { AuthProvider } from "../../../../services/auth/Auth";
+import store from "../../../../store/ducks/store";
 
 const mockedUsedNavigate = jest.fn();
 

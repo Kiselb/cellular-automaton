@@ -2,7 +2,8 @@ import React, { FC } from "react";
 
 import { Props, VelocitySet } from "./types";
 
-import "./Velocity.css";
+//import "./Velocity.css";
+import styles from "./Velocity.module.css";
 
 export const Velocity: FC<Props> = ({
   onVelocityChange,
@@ -14,7 +15,7 @@ export const Velocity: FC<Props> = ({
   };
   return (
     <select
-      className="velocity"
+      className={styles["velocity"]}
       data-testid="velocity"
       onChange={onChange}
       defaultValue={defVelocity}

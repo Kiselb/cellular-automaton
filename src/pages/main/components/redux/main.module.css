@@ -1,0 +1,58 @@
+/* body {
+    margin: 0;
+    padding: 0;    
+} */
+.app {
+    width: 1000px;
+    height: 100vh;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-areas: 
+        "empty header"
+        "control panel";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 10em 1fr;
+    grid-gap: 10px;
+}
+.header {
+    grid-area: header;
+    display: flex;
+    justify-content:end;
+    font-size: 1em;
+}
+.header > p {
+    text-decoration: underline;
+    font: inherit;
+}
+.header > button {
+    border: none;
+    background: transparent;
+    text-decoration: underline;
+    font-size: 1em;
+    margin-left: 2em;
+    cursor: pointer;
+    font: inherit;
+}
+.header > select {
+    border: none;
+    margin-right: 2em;
+    text-decoration: none;
+    font: inherit;
+    outline: none;
+}
+.control {
+    grid-area: control;
+}
+.epoch {
+    font-size: 1.25em;
+}
+.knob-label {
+    color: lightgray;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+.lifecontainer {
+    grid-area: panel;
+    overflow: scroll;
+}

@@ -2,7 +2,8 @@ import React, { useState, FC } from "react";
 
 import { Props } from "./types";
 
-import "./Size.css";
+//import "./Size.css";
+import styles from "./Size.module.css";
 
 export const Size: FC<Props> = ({
   onSizeChange,
@@ -31,7 +32,7 @@ export const Size: FC<Props> = ({
   return (
     <input
       data-testid={testId}
-      className="size"
+      className={styles["size"]}
       type="number"
       value={size}
       onChange={onChange}

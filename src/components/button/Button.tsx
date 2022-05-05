@@ -2,7 +2,8 @@ import React from "react";
 
 import { Props } from "./types";
 
-import "./Button.css";
+//import "./Button.css";
+import styles from "./Button.module.css";
 
 export const Button: React.FC<Props> = ({
   onAction,
@@ -18,8 +19,8 @@ export const Button: React.FC<Props> = ({
     <button
       data-testid={testId}
       className={[
-        "button",
-        status ? "control-active" : "control-inactive",
+        styles["button"],
+        status ? styles["control-active"] : styles["control-inactive"],
       ].join(" ")}
       onClick={onClick}
     >

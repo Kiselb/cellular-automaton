@@ -10,8 +10,8 @@ import {
   DEF_COLS,
   DEF_FILL,
   DEF_VELOCITY,
-} from "../../domain/defaults";
-import { AuthProvider } from "../../services/auth/Auth";
+} from "../../../../domain/defaults";
+import { AuthProvider } from "../../../../services/auth/Auth";
 
 const mockedUsedNavigate = jest.fn();
 

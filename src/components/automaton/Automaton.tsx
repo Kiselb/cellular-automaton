@@ -1,7 +1,9 @@
 import React from "react";
 
 import { AutomatonsList, Props } from "./types";
-import "./Automaton.css";
+
+//import "./Automaton.css";
+import styles from "./Automaton.module.css";
 
 export const Automaton: React.FC<Props> = ({
   defAutomaton,
@@ -17,7 +19,7 @@ export const Automaton: React.FC<Props> = ({
   };
   return (
     <select
-      className="automaton"
+      className={styles["automaton"]}
       data-testid="automaton"
       onChange={onChange}
       defaultValue={defAutomaton}

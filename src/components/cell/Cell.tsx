@@ -3,7 +3,8 @@ import chroma from "chroma-js";
 
 import { Params, Props, CalcColor } from "./types";
 
-import "./cell.css";
+//import "./cell.css";
+import styles from "./cell.module.css";
 
 export const calcCellColor: CalcColor = (
   generation: number,
@@ -47,7 +48,7 @@ export const Cell: FC<Props> = ({
     <div
       key={`R${row}:C${col}`}
       data-testid={`R${row}:C${col}`}
-      className="cell"
+      className={styles["cell"]}
       onClick={onClickHandler}
       onDoubleClick={onDoubleClickHandler}
       onMouseOver={onMouseOverHandler}

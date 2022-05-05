@@ -1,0 +1,20 @@
+.container {
+}
+.username {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block; 
+}
+.input {
+    box-sizing: border-box;
+    border: 1px solid lightgray;
+    outline: none;
+    font-size: 1.25em;
+    width: 13em;
+    display: block;
+    clear: both;
+    margin-bottom: 0.5em;
+    padding: 0.25em;
+}
