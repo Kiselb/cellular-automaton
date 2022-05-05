@@ -2,7 +2,9 @@ import React, { useContext, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { authContext } from "../../services/auth/Auth";
-import "./signIn.css";
+
+//import "./signIn.css";
+import styles from "./signIn.module.css";
 
 interface ILocationState {
   from: {
@@ -28,14 +30,24 @@ const SignIn = ({ probe }: TSignInProps) => {
     }
   };
   return (
-    <form data-testid="usernameform" className="username" onSubmit={onSubmit}>
+    <form
+      data-testid="usernameform"
+      className={styles["username"]}
+      onSubmit={onSubmit}
+    >
       <input
+        className={styles["input"]}
         data-testid="username"
         ref={refUserName}
         type="text"
         placeholder="Введите Ваше имя"
       />
-      <input data-testid="usernamesubmit" type="submit" value="Старт" />
+      <input
+        className={styles["input"]}
+        data-testid="usernamesubmit"
+        type="submit"
+        value="Старт"
+      />
     </form>
   );
 };

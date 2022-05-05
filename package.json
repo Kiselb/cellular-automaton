@@ -19,7 +19,10 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=66e47bd82604"
+    "chromatic": "npx chromatic --project-token=66e47bd82604",
+    "next:dev": "next dev",
+    "next:build": "next build",
+    "next:start": "next start"    
   },
   "author": "Mikhail V. Kiselev",
   "license": "ISC",
@@ -75,6 +78,8 @@
     "@babel/runtime": "^7.17.9",
     "@types/react-redux": "^7.1.23",
     "chroma-js": "^2.4.2",
+    "identity-obj-proxy": "^3.0.0",
+    "next": "^12.1.6",
     "ramda": "^0.28.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
