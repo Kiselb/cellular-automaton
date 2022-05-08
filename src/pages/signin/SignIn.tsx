@@ -26,7 +26,7 @@ const SignIn = ({ probe }: TSignInProps) => {
     if (!!refUserName && !!refUserName.current && refUserName.current.value) {
       !!probe && probe();
       context?.login(refUserName.current.value);
-      navigate(from, { replace: true });
+      navigate(from || "/", { replace: true });
     }
   };
   return (

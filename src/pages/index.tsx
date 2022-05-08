@@ -23,12 +23,31 @@ const App = () => {
   const onModeChange = (storeMode: AppStoreMode) => {
     setMode(storeMode as AppStoreMode);
   };
-
   return (
     <StoreProvider mode={mode}>
-      <Main mode={mode} onModeChange={onModeChange} />
+      <Router>
+        <AuthProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <RequireAuth>
+                  <Main mode={mode} onModeChange={onModeChange} />
+                </RequireAuth>
+              }
+            />
+            <Route path="/login" element={<SignIn />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
     </StoreProvider>
   );
+
+  // return (
+  //   <StoreProvider mode={mode}>
+  //     <Main mode={mode} onModeChange={onModeChange} />
+  //   </StoreProvider>
+  // );
 };
 
 export default App;

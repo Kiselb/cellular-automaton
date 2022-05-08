@@ -6,3 +6,4 @@ coverage
 .husky
 build-storybook.log
 .eslintcache
+.next
