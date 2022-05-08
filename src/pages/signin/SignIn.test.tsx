@@ -14,6 +14,10 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedUsedNavigate,
   useLocation: () => mockedUsedLocation,
 }));
+jest.mock("next/router", () => ({
+  ...jest.requireActual("next/router"),
+  useRouter: () => ({ push: jest.fn() }),
+}));
 
 it("Control SignIn renders correctly", () => {
   const { asFragment } = render(<SignIn />);

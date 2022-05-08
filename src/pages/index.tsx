@@ -25,21 +25,11 @@ const App = () => {
   };
   return (
     <StoreProvider mode={mode}>
-      <Router>
-        <AuthProvider>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <RequireAuth>
-                  <Main mode={mode} onModeChange={onModeChange} />
-                </RequireAuth>
-              }
-            />
-            <Route path="/login" element={<SignIn />} />
-          </Routes>
-        </AuthProvider>
-      </Router>
+      <AuthProvider>
+        <RequireAuth>
+          <Main mode={mode} onModeChange={onModeChange} />
+        </RequireAuth>
+      </AuthProvider>
     </StoreProvider>
   );
 

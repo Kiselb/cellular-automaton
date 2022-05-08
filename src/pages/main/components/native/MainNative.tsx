@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 import {
   AutomatonDescription,
@@ -82,6 +83,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
   const [state, setState] = useState(initialState);
 
   //const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     if (state.status === "playing") {
@@ -186,14 +188,13 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
           <option value="ReduxEffects">Redux (Effects)</option>
         </select>
         <p>{!!context ? context.user : ""}</p>
-        {/* <button
+        <button
           onClick={() => {
-            !!context &&
-              context.logout(() => navigate("/login", { replace: true }));
+            !!context && context.logout(() => router.push("/"));
           }}
         >
           Выйти
-        </button> */}
+        </button>
       </div>
       <div className={styles["control"]}>
         <div className={styles["knob-label"]}>Эпоха:</div>

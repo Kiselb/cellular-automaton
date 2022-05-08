@@ -32,6 +32,9 @@ exports[`App renders correctly 1`] = `
         </option>
       </select>
       <p />
+      <button>
+        Выйти
+      </button>
     </div>
     <div
       class="control"

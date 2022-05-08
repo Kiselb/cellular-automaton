@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import Link from "next/link";
+
+import SignIn from "../../pages/signin/SignIn";
 
 type AuthContext = {
   user: string;
@@ -15,15 +18,22 @@ export const authContext = React.createContext<AuthContext | null>(null);
 
 export const useAuth = (): UseAuthReturn => {
   const [user, setUser] = React.useState(
-    () => localStorage.getItem("cellular-automaton.user") || ""
+    ""
+    // () => localStorage.getItem("cellular-automaton.user") || ""
   );
+  useEffect(() => {
+    setUser(localStorage.getItem("cellular-automaton.user") || "");
+    console.log("Auth useEffect");
+  });
   return {
     user,
     login: (userName: string) => {
+      console.log("Auth Login");
       !!userName && localStorage.setItem("cellular-automaton.user", userName);
       !!userName && setUser(userName);
     },
     logout: (callback: () => void) => {
+      console.log("Auth Logout");
       localStorage.removeItem("cellular-automaton.user");
       setUser("");
       callback();
@@ -42,9 +52,14 @@ export const AuthConsumer = () => {
 
 export const RequireAuth = ({ children }: { children: JSX.Element }) => {
   const { user } = useAuth();
-  const location = useLocation();
+  //const location = useLocation();
   if (!user) {
-    return <Navigate to="/login" replace state={{ path: location.pathname }} />;
+    // return <Navigate to="/login" replace state={{ path: location.pathname }} />;
+    return (
+      <Link href="/" replace>
+        <SignIn />
+      </Link>
+    );
   }
   return children;
 };
