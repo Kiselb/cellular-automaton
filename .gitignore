@@ -7,3 +7,4 @@ coverage
 build-storybook.log
 .eslintcache
 .next
+.next/
