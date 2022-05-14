@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Navigate, useLocation } from "react-router-dom";
 import Link from "next/link";
 
 import SignIn from "../../pages/signin/SignIn";
@@ -46,9 +45,7 @@ export const AuthConsumer = () => {
 
 export const RequireAuth = ({ children }: { children: JSX.Element }) => {
   const { user } = useAuth();
-  //const location = useLocation();
   if (!user) {
-    // return <Navigate to="/login" replace state={{ path: location.pathname }} />;
     return (
       <Link href="/" replace>
         <SignIn />

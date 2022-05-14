@@ -1,8 +1,5 @@
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
-import { ThunkDispatch } from "redux-thunk";
-
-import rootReducer from "./reducer";
 
 import reducer, {
   State,
@@ -20,7 +17,6 @@ import reducer, {
   STATE_LOAD_CONFIRM,
   STATE_LOAD_REJECT,
   STATE_LOAD_UNKNOWN,
-  thunkSaveState,
 } from "./state";
 import {
   DEF_AUTOMATON,
@@ -31,17 +27,8 @@ import {
 } from "../../domain/defaults";
 
 import { AutomatonsList } from "../../components/automaton/types";
-import storeThunk from "../../store/ducks/store";
 
 import { AppReduxState } from "./reducer";
-import { ActionSizeX, ActionSizeY, ActionFieldLoad } from "./gamelife";
-import { ActionAutomaton } from "./automaton";
-import { ActionEpoch } from "./epoch";
-import { ActionFactor } from "./factor";
-import { ActionStatus } from "./status";
-import { ActionVelocity } from "./velocity";
-import { AnyAction } from "redux";
-import { resolveConfig } from "prettier";
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);

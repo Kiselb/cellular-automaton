@@ -3,7 +3,7 @@ import React from "react";
 import { AuthProvider, RequireAuth } from "../services/auth/Auth";
 import { StoreProvider } from "../services/store/StoreProvider";
 
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import Main from "./main/Main";

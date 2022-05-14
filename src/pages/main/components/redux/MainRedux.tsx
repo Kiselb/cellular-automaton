@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -53,7 +52,6 @@ import {
 import { authContext } from "../../../../services/auth/Auth";
 import { Status } from "../../../../domain/types";
 
-//import "./main.css";
 import styles from "./main.module.css";
 
 type MainProps = {
@@ -85,10 +83,8 @@ export const Main = ({ probe, onModeChange, useSaga }: MainProps) => {
     (state) => state.gameLife.data
   );
   const state = useSelector<AppReduxState, AppReduxState>((state) => state);
-
   const dispatch = useDispatch();
 
-  // const navigate = useNavigate();
   let timerID: number | null = null;
 
   useEffect(() => {

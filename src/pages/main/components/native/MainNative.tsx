@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { useRouter } from "next/router";
 
 import {
@@ -36,7 +35,6 @@ import {
 } from "../../../../domain/defaults";
 import { authContext } from "../../../../services/auth/Auth";
 
-//import "./main.css";
 import styles from "./main.module.css";
 
 export type AppState = {
@@ -81,8 +79,6 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
 
   const context = useContext(authContext);
   const [state, setState] = useState(initialState);
-
-  //const navigate = useNavigate();
   const router = useRouter();
 
   useEffect(() => {

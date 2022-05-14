@@ -1,26 +1,16 @@
 import React, { useContext, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
 import { useRouter } from "next/router";
 
 import { authContext } from "../../services/auth/Auth";
 
-//import "./signIn.css";
 import styles from "./signIn.module.css";
 
-interface ILocationState {
-  from: {
-    pathname: string;
-  };
-}
 type TSignInProps = {
   probe?: () => void;
 };
 const SignIn = ({ probe }: TSignInProps) => {
   const refUserName = useRef<HTMLInputElement>(null);
   const context = useContext(authContext);
-  //const navigate = useNavigate();
-  //const state: ILocationState = useLocation().state as ILocationState;
-  //const from = !!state ? state.from?.pathname : "/";
   const router = useRouter();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +18,6 @@ const SignIn = ({ probe }: TSignInProps) => {
     if (!!refUserName && !!refUserName.current && refUserName.current.value) {
       !!probe && probe();
       context?.login(refUserName.current.value);
-      //navigate(from || "/", { replace: true });
       router.push("/");
     }
   };

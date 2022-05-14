@@ -3,7 +3,6 @@ import chroma from "chroma-js";
 
 import { Params, Props, CalcColor } from "./types";
 
-//import "./cell.css";
 import styles from "./cell.module.css";
 
 export const calcCellColor: CalcColor = (

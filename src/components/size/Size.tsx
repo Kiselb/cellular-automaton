@@ -2,7 +2,6 @@ import React, { useState, FC } from "react";
 
 import { Props } from "./types";
 
-//import "./Size.css";
 import styles from "./Size.module.css";
 
 export const Size: FC<Props> = ({

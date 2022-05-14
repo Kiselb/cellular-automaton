@@ -2,7 +2,6 @@ import React, { FC } from "react";
 
 import { Props, VelocitySet } from "./types";
 
-//import "./Velocity.css";
 import styles from "./Velocity.module.css";
 
 export const Velocity: FC<Props> = ({

@@ -2,7 +2,6 @@ import React from "react";
 
 import { AutomatonsList, Props } from "./types";
 
-//import "./Automaton.css";
 import styles from "./Automaton.module.css";
 
 export const Automaton: React.FC<Props> = ({
