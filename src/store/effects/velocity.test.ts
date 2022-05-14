@@ -10,12 +10,12 @@ import {
 it("Velocity saga naming convention", () => {
   expect(SET_VELOCITY_SAGA).toMatch(/SET_VELOCITY_SAGA/);
 });
-it("Set Factor saga works", () => {
+it("Set Velocity saga works", () => {
   return expectSaga(sagaSetVelocity, createSagaSetVelocity(1000))
     .put(actionSetVelocity(1000))
     .run();
 });
-it("Handles Factor reducer", () => {
+it("Handles Velocity reducer", () => {
   return expectSaga(sagaSetVelocity, createSagaSetVelocity(1000))
     .withReducer(reducer)
     .run();

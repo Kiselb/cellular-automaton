@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App renders correctly 1`] = `
+exports[`App renders correctly Native 1`] = `
 <DocumentFragment>
   <form
     class="username"
@@ -22,7 +22,7 @@ exports[`App renders correctly 1`] = `
 </DocumentFragment>
 `;
 
-exports[`App renders correctly 2`] = `
+exports[`App renders correctly ReduxEffects 1`] = `
 <DocumentFragment>
   <form
     class="username"
@@ -44,7 +44,7 @@ exports[`App renders correctly 2`] = `
 </DocumentFragment>
 `;
 
-exports[`App renders correctly 3`] = `
+exports[`App renders correctly ReduxSaga 1`] = `
 <DocumentFragment>
   <form
     class="username"
@@ -66,7 +66,7 @@ exports[`App renders correctly 3`] = `
 </DocumentFragment>
 `;
 
-exports[`App renders correctly 4`] = `
+exports[`App renders correctly ReduxThunk 1`] = `
 <DocumentFragment>
   <form
     class="username"

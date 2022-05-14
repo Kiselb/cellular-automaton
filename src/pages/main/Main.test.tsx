@@ -12,6 +12,7 @@ import "@testing-library/jest-dom";
 import Main from "./Main";
 
 it("App renders correctly", () => {
+  localStorage.setItem("cellular-automaton.user", "Test");
   const { asFragment } = render(
     <StoreProvider mode={"Native"}>
       <AuthProvider>
@@ -25,6 +26,7 @@ it("App renders correctly", () => {
   expect(asFragment()).toMatchSnapshot();
 });
 it("App renders correctly", () => {
+  localStorage.setItem("cellular-automaton.user", "Test");
   const { asFragment } = render(
     <StoreProvider mode={"ReduxThunk"}>
       <AuthProvider>
@@ -38,6 +40,7 @@ it("App renders correctly", () => {
   expect(asFragment()).toMatchSnapshot();
 });
 it("App renders correctly", () => {
+  localStorage.setItem("cellular-automaton.user", "Test");
   const { asFragment } = render(
     <StoreProvider mode={"ReduxSaga"}>
       <AuthProvider>
@@ -51,6 +54,7 @@ it("App renders correctly", () => {
   expect(asFragment()).toMatchSnapshot();
 });
 it("App renders correctly", () => {
+  localStorage.setItem("cellular-automaton.user", "Test");
   const { asFragment } = render(
     <StoreProvider mode={"ReduxEffects"}>
       <AuthProvider>

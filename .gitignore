@@ -11,3 +11,4 @@ build-storybook.log
 
 # stryker temp files
 .stryker-tmp
+.strykerTmp

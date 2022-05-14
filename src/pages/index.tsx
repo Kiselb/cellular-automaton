@@ -9,9 +9,9 @@ const App = () => {
   const [user, setUser] = React.useState("");
   const [mode, setMode] = React.useState<AppStoreMode>("Native");
 
-  useEffect(() => {
-    localStorage.setItem("cellular-automaton.user", user);
-  }, [user, mode]);
+  // useEffect(() => {
+  //   localStorage.setItem("cellular-automaton.user", user);
+  // }, [user, mode]);
   useEffect(() => {
     setUser(localStorage.getItem("cellular-automaton.user") || "");
   }, []);

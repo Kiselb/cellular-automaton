@@ -8,7 +8,7 @@ import "@testing-library/jest-dom";
 
 import Main from "./main/Main";
 
-it("App renders correctly", () => {
+it("App renders correctly Native", () => {
   const { asFragment } = render(
     <StoreProvider mode={"Native"}>
       <AuthProvider>
@@ -21,7 +21,7 @@ it("App renders correctly", () => {
   screen.debug();
   expect(asFragment()).toMatchSnapshot();
 });
-it("App renders correctly", () => {
+it("App renders correctly ReduxThunk", () => {
   const { asFragment } = render(
     <StoreProvider mode={"ReduxThunk"}>
       <AuthProvider>
@@ -34,7 +34,7 @@ it("App renders correctly", () => {
   screen.debug();
   expect(asFragment()).toMatchSnapshot();
 });
-it("App renders correctly", () => {
+it("App renders correctly ReduxSaga", () => {
   const { asFragment } = render(
     <StoreProvider mode={"ReduxSaga"}>
       <AuthProvider>
@@ -47,7 +47,7 @@ it("App renders correctly", () => {
   screen.debug();
   expect(asFragment()).toMatchSnapshot();
 });
-it("App renders correctly", () => {
+it("App renders correctly ReduxEffects", () => {
   const { asFragment } = render(
     <StoreProvider mode={"ReduxEffects"}>
       <AuthProvider>

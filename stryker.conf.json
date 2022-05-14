@@ -11,5 +11,5 @@
   "coverageAnalysis": "perTest",
   "checkers": ["typescript"],
   "tsconfigFile": "tsconfig.json",
-  "mutate": ["src/store/effects/index.ts", "!{src,lib}/**/__tests__/**/*.ts?(x)", "!{src,lib}/**/?(*.)+(spec|test|stories).ts?(x)", "!{src,lib}/**/*+(Spec|Test|Stories).ts?(x)"]
+  "mutate": ["{src,lib}/**/*.ts?(x)", "!{src,lib}/**/__tests__/**/*.ts?(x)", "!{src,lib}/**/?(*.)+(spec|test|stories).ts?(x)", "!{src,lib}/**/*+(Spec|Test|Stories).ts?(x)"]
 }
