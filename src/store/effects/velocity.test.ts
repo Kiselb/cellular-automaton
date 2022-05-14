@@ -1,8 +1,15 @@
 import { expectSaga } from "redux-saga-test-plan";
 
 import reducer, { actionSetVelocity } from "../ducks/velocity";
-import { createSagaSetVelocity, sagaSetVelocity } from "./velocity";
+import {
+  createSagaSetVelocity,
+  sagaSetVelocity,
+  SET_VELOCITY_SAGA,
+} from "./velocity";
 
+it("Velocity saga naming convention", () => {
+  expect(SET_VELOCITY_SAGA).toMatch(/SET_VELOCITY_SAGA/);
+});
 it("Set Factor saga works", () => {
   return expectSaga(sagaSetVelocity, createSagaSetVelocity(1000))
     .put(actionSetVelocity(1000))

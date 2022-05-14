@@ -12,7 +12,7 @@ export type ActionAutomaton = {
   automaton: AutomatonDescription;
 };
 
-const SET_AUTOMATON = "cellular-automaton/automaton/set";
+export const SET_AUTOMATON = "cellular-automaton/automaton/set";
 export const initialState: State = {
   value: AutomatonsList.filter(
     (automaton) => automaton.id === DEF_AUTOMATON

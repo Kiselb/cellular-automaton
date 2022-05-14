@@ -14,6 +14,7 @@ type MainProps = {
 const Main = ({ mode, probe, onModeChange }: MainProps) => {
   const onModeChangeHandler = (event: React.FormEvent<HTMLSelectElement>) => {
     onModeChange(event.currentTarget.value as AppStoreMode);
+    !!probe && probe({});
   };
 
   return (

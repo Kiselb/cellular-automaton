@@ -9,6 +9,14 @@ import reducer, {
   actionToggleCell,
   actionLoadField,
   actionGameLifeIdle,
+  NEXT_EPOCH,
+  CLEAR_FIELD,
+  FILL_FIELD,
+  SET_SIZE_X,
+  SET_SIZE_Y,
+  TOGGLE_CELL,
+  LOAD_FIELD,
+  IDLE,
 } from "./gamelife";
 import {
   MIN_ROWS,
@@ -21,6 +29,16 @@ import {
 } from "../../domain/defaults";
 import { AutomatonsList } from "../../components/automaton/types";
 
+it("Actions naming convention", () => {
+  expect(NEXT_EPOCH).toMatch(/cellular-automaton\/epoch\//);
+  expect(CLEAR_FIELD).toMatch(/cellular-automaton\/field\//);
+  expect(FILL_FIELD).toMatch(/cellular-automaton\/field\//);
+  expect(SET_SIZE_X).toMatch(/cellular-automaton\/size/);
+  expect(SET_SIZE_Y).toMatch(/cellular-automaton\/size/);
+  expect(TOGGLE_CELL).toMatch(/cellular-automaton\/cell\/toggle/);
+  expect(LOAD_FIELD).toMatch(/cellular-automaton\/field\//);
+  expect(IDLE).toMatch(/cellular-automaton\/idle/);
+});
 it("Game Life reducer initial state", () => {
   const newState = reducer(undefined, actionGameLifeIdle());
   expect(newState).toEqual(initialState);

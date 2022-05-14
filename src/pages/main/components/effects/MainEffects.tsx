@@ -146,7 +146,11 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
   return (
     <div className={styles["app"]}>
       <div className={styles["header"]}>
-        <select onChange={onModeChange} defaultValue="ReduxEffects">
+        <select
+          data-testid="changeMode"
+          onChange={onModeChange}
+          defaultValue="ReduxEffects"
+        >
           <option value="Native">Native</option>
           <option value="ReduxThunk">Redux (Thunk)</option>
           <option value="ReduxSaga">Redux (Saga)</option>

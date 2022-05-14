@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly 1`] = `
+<DocumentFragment>
+  <form
+    class="username"
+    data-testid="usernameform"
+  >
+    <input
+      class="input"
+      data-testid="username"
+      placeholder="Введите Ваше имя"
+      type="text"
+    />
+    <input
+      class="input"
+      data-testid="usernamesubmit"
+      type="submit"
+      value="Старт"
+    />
+  </form>
+</DocumentFragment>
+`;
+
+exports[`App renders correctly 2`] = `
+<DocumentFragment>
+  <form
+    class="username"
+    data-testid="usernameform"
+  >
+    <input
+      class="input"
+      data-testid="username"
+      placeholder="Введите Ваше имя"
+      type="text"
+    />
+    <input
+      class="input"
+      data-testid="usernamesubmit"
+      type="submit"
+      value="Старт"
+    />
+  </form>
+</DocumentFragment>
+`;
+
+exports[`App renders correctly 3`] = `
+<DocumentFragment>
+  <form
+    class="username"
+    data-testid="usernameform"
+  >
+    <input
+      class="input"
+      data-testid="username"
+      placeholder="Введите Ваше имя"
+      type="text"
+    />
+    <input
+      class="input"
+      data-testid="usernamesubmit"
+      type="submit"
+      value="Старт"
+    />
+  </form>
+</DocumentFragment>
+`;
+
+exports[`App renders correctly 4`] = `
+<DocumentFragment>
+  <form
+    class="username"
+    data-testid="usernameform"
+  >
+    <input
+      class="input"
+      data-testid="username"
+      placeholder="Введите Ваше имя"
+      type="text"
+    />
+    <input
+      class="input"
+      data-testid="usernamesubmit"
+      type="submit"
+      value="Старт"
+    />
+  </form>
+</DocumentFragment>
+`;

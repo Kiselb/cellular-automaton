@@ -17,23 +17,17 @@ export type UseAuthReturn = {
 export const authContext = React.createContext<AuthContext | null>(null);
 
 export const useAuth = (): UseAuthReturn => {
-  const [user, setUser] = React.useState(
-    ""
-    // () => localStorage.getItem("cellular-automaton.user") || ""
-  );
+  const [user, setUser] = React.useState("");
   useEffect(() => {
     setUser(localStorage.getItem("cellular-automaton.user") || "");
-    console.log("Auth useEffect");
   });
   return {
     user,
     login: (userName: string) => {
-      console.log("Auth Login");
       !!userName && localStorage.setItem("cellular-automaton.user", userName);
       !!userName && setUser(userName);
     },
     logout: (callback: () => void) => {
-      console.log("Auth Logout");
       localStorage.removeItem("cellular-automaton.user");
       setUser("");
       callback();

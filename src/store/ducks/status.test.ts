@@ -1,5 +1,13 @@
-import reducer, { State, initialState, actionSetStatus } from "./status";
+import reducer, {
+  State,
+  initialState,
+  actionSetStatus,
+  SET_STATUS,
+} from "./status";
 
+it("Status action naming convention", () => {
+  expect(SET_STATUS).toMatch(/cellular-automaton\/status\//);
+});
 it("Status reducer initial state", () => {
   const newState = reducer(undefined, { type: "UNKNOWN", status: "stopped" });
   expect(newState).toEqual(initialState);

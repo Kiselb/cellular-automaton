@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "_comment": "This config was generated using 'stryker init'. Please take a look at: https://stryker-mutator.io/docs/stryker-js/configuration/ for more information",
+  "packageManager": "npm",
+  "reporters": [
+    "html",
+    "clear-text",
+    "progress"
+  ],
+  "testRunner": "jest",
+  "coverageAnalysis": "perTest",
+  "checkers": ["typescript"],
+  "tsconfigFile": "tsconfig.json",
+  "mutate": ["src/store/effects/index.ts", "!{src,lib}/**/__tests__/**/*.ts?(x)", "!{src,lib}/**/?(*.)+(spec|test|stories).ts?(x)", "!{src,lib}/**/*+(Spec|Test|Stories).ts?(x)"]
+}

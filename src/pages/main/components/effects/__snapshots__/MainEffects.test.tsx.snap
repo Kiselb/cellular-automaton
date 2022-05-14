@@ -12,7 +12,6 @@ exports[`App renders correctly 1`] = `
         data-testid="changeMode"
       >
         <option
-          selected=""
           value="Native"
         >
           Native
@@ -28,15 +27,13 @@ exports[`App renders correctly 1`] = `
           Redux (Saga)
         </option>
         <option
+          selected=""
           value="ReduxEffects"
         >
           Redux (Effects)
         </option>
       </select>
       <p />
-      <button>
-        Выйти
-      </button>
     </div>
     <div
       class="control"
@@ -336,6 +333,22 @@ exports[`App renders correctly 1`] = `
           data-testid="actionfill"
         >
           Заполнить
+        </button>
+      </div>
+      <div>
+        <button
+          class="button control-inactive"
+          data-testid="actionSave"
+        >
+          Сохранить
+        </button>
+      </div>
+      <div>
+        <button
+          class="button control-inactive"
+          data-testid="actionRestore"
+        >
+          Восстановить
         </button>
       </div>
     </div>

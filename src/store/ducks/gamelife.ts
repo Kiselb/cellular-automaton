@@ -17,14 +17,14 @@ import {
   SetCell,
 } from "../../domain/engine";
 
-const NEXT_EPOCH = "cellular-automaton/epoch/next";
-const CLEAR_FIELD = "cellular-automaton/field/clear";
-const FILL_FIELD = "cellular-automaton/field/fill";
-const SET_SIZE_X = "cellular-automaton/sizex/set";
-const SET_SIZE_Y = "cellular-automaton/sizey/set";
-const TOGGLE_CELL = "cellular-automaton/cell/toggle";
-const LOAD_FIELD = "cellular-automaton/field/load";
-const IDLE = "cellular-automaton/idle";
+export const NEXT_EPOCH = "cellular-automaton/epoch/next";
+export const CLEAR_FIELD = "cellular-automaton/field/clear";
+export const FILL_FIELD = "cellular-automaton/field/fill";
+export const SET_SIZE_X = "cellular-automaton/sizex/set";
+export const SET_SIZE_Y = "cellular-automaton/sizey/set";
+export const TOGGLE_CELL = "cellular-automaton/cell/toggle";
+export const LOAD_FIELD = "cellular-automaton/field/load";
+export const IDLE = "cellular-automaton/idle";
 
 export type State = {
   data: number[][];

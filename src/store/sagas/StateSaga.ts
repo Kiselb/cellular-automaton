@@ -19,6 +19,8 @@ import { actionSetVelocity } from "../ducks/velocity";
 
 import { AppReduxState } from "../ducks/reducer";
 
+export const LOCAL_STORAGE_KEY = "cellular-automaton.state";
+
 export const STATE_SAVE_SAGA = "STATE_SAVE_SAGA";
 export const STATE_RESTORE_SAGA = "STATE_RESTORE_SAGA";
 
@@ -41,9 +43,9 @@ export const actionSagaRestoreState = (): SagaActionRestoreStateRequest => ({
 });
 
 export const saveState = (state: AppReduxState) =>
-  localStorage.setItem("cellular-automaton.state", JSON.stringify(state));
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
 export const restoreState = () =>
-  JSON.parse(localStorage.getItem("cellular-automaton.state") || "");
+  JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "");
 
 export function* saveStateSaga(action: SagaActionSaveStateRequest) {
   try {

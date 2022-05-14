@@ -5,8 +5,8 @@ export type ActionEpoch = {
   type: string;
 };
 
-const RESET_EPOCH = "cellular-automaton/epoch/reset";
-const INC_EPOCH = "cellular-automaton/epoch/inc";
+export const RESET_EPOCH = "cellular-automaton/epoch/reset";
+export const INC_EPOCH = "cellular-automaton/epoch/inc";
 
 export const initialState: State = {
   value: 0,

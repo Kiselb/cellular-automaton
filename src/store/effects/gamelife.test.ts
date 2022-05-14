@@ -1,8 +1,23 @@
 import { expectSaga } from "redux-saga-test-plan";
 
 import reducer, { actionFillField, actionClearFeild } from "../ducks/gamelife";
-import { sagaClearField, sagaFillField } from "./gamelife";
+import {
+  sagaClearField,
+  sagaFillField,
+  CLEAR_FIELD_SAGA,
+  FILL_FIELD_SAGA,
+  createSagaClearField,
+  createSagaFillField,
+} from "./gamelife";
 
+it("Game Life saga naming convention", () => {
+  expect(CLEAR_FIELD_SAGA).toMatch(/CLEAR_FIELD_SAGA/);
+  expect(FILL_FIELD_SAGA).toMatch(/FILL_FIELD_SAGA/);
+});
+it("Game Life saga actions objects", () => {
+  expect(createSagaClearField()).toEqual({ type: CLEAR_FIELD_SAGA });
+  expect(createSagaFillField()).toEqual({ type: FILL_FIELD_SAGA });
+});
 it("Set Clear Field saga works", () => {
   return expectSaga(sagaClearField).put(actionClearFeild()).run();
 });

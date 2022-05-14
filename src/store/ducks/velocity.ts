@@ -1,6 +1,6 @@
 import { DEF_VELOCITY } from "../../domain/defaults";
 
-const SET_VELOCITY = "cellular-automaton/velocity/set";
+export const SET_VELOCITY = "cellular-automaton/velocity/set";
 export const SET_VELOCITY_UNKNOWN = "cellular-automaton/velocity/unknown";
 
 export type State = {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC } from "react";
 
 // Never use BrowserRouter on GitHub Pages. There are some issues with it, it always shows blank screen. Use HashRouter instead, that will most probably work
 import { Routes, Route, HashRouter as Router } from "react-router-dom";
@@ -10,16 +10,13 @@ import { AuthProvider, RequireAuth } from "./services/auth/Auth";
 import { StoreProvider } from "./services/store/StoreProvider";
 import { AppStoreMode } from "./domain/types";
 
-const App = () => {
-  const [user] = React.useState(
-    () => localStorage.getItem("cellular-automaton.user") || ""
-  );
+type Props = {
+  probe?: ({}) => void;
+};
+const App: FC<Props> = ({ probe }) => {
   const [mode, setMode] = React.useState<AppStoreMode>("Native");
-
-  useEffect(() => {
-    localStorage.setItem("cellular-automaton.user", user);
-  }, [user, mode]);
   const onModeChange = (storeMode: AppStoreMode) => {
+    !!probe && probe({});
     setMode(storeMode as AppStoreMode);
   };
 

@@ -202,3 +202,14 @@ it("Main should fire Tick", () => {
   container.remove();
   container = null;
 });
+// it("Main Native change mode", () => {
+//   const probe = jest.fn();
+//   render(
+//     <AuthProvider>
+//       <Main probe={probe} onModeChange={() => console.log("OK")} />
+//     </AuthProvider>
+//   );
+//   const control = screen.getByTestId("changeMode");
+//   fireEvent.change(control);
+//   expect(probe).toBeCalled();
+// });

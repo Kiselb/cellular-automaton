@@ -8,7 +8,9 @@ exports[`App renders correctly 1`] = `
     <div
       class="header"
     >
-      <select>
+      <select
+        data-testid="changeMode"
+      >
         <option
           value="Native"
         >

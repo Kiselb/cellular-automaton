@@ -15,11 +15,13 @@ import { actionSetFactor } from "./factor";
 import { actionSetStatus } from "./status";
 import { actionSetVelocity } from "./velocity";
 
-const STATE_SAVE_CONFIRM = "cellular-automaton/state/save/confirm";
-const STATE_SAVE_REJECT = "cellular-automaton/state/save/failed";
-const STATE_LOAD_CONFIRM = "cellular-automaton/state/load/confirm";
-const STATE_LOAD_REJECT = "cellular-automaton/state/load/failed";
-export const STATE_LOAD_UNKNOWN = "cellular-automaton/state/unknown";
+export const LOCAL_STORAGE_KEY = "cellular-automaton.state";
+
+export const STATE_SAVE_CONFIRM = "cellular-automaton/state/save/confirm";
+export const STATE_SAVE_REJECT = "cellular-automaton/state/save/failed";
+export const STATE_LOAD_CONFIRM = "cellular-automaton/state/load/confirm";
+export const STATE_LOAD_REJECT = "cellular-automaton/state/load/failed";
+export const STATE_LOAD_UNKNOWN = "cellular-automaton/state/load/unknown";
 
 export type State = {
   error: string;
@@ -87,10 +89,7 @@ export const thunkSaveState = async (
   getState: () => AppReduxState
 ) => {
   try {
-    await localStorage.setItem(
-      "cellular-automaton.state",
-      JSON.stringify(getState())
-    );
+    await localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(getState()));
     dispatch(actionSaveStateConfirm());
   } catch (e: unknown) {
     dispatch(
@@ -118,7 +117,7 @@ export const thunkLoadState = async (
 ) => {
   try {
     const state = JSON.parse(
-      (await localStorage.getItem("cellular-automaton.state")) || ""
+      (await localStorage.getItem(LOCAL_STORAGE_KEY)) || ""
     );
     dispatch(actionLoadStateConfirm());
     if (!!state) {

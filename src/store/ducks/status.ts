@@ -8,7 +8,7 @@ export type ActionStatus = {
   status: Status;
 };
 
-const SET_STATUS = "cellular-automaton/status/set";
+export const SET_STATUS = "cellular-automaton/status/set";
 
 export const initialState: State = {
   value: "stopped",

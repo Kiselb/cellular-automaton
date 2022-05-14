@@ -6,8 +6,14 @@ import {
   createSagaActionSetSizeY,
   sagaSetSizeX,
   sagaSetSizeY,
+  SET_SIZE_X_SAGA,
+  SET_SIZE_Y_SAGA,
 } from "./sizes";
 
+it("Sizes sagas naming convention", () => {
+  expect(SET_SIZE_X_SAGA).toMatch(/SET_SIZE_X_SAGA/);
+  expect(SET_SIZE_Y_SAGA).toMatch(/SET_SIZE_Y_SAGA/);
+});
 it("Set Size X saga works", () => {
   return expectSaga(sagaSetSizeX, createSagaActionSetSizeX(55))
     .put(actionSetSizeX(55))

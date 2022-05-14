@@ -8,7 +8,7 @@ export type ActionFactor = {
   factor: number;
 };
 
-const SET_FILLFACTOR = "cellular-automaton/factor/set";
+export const SET_FILLFACTOR = "cellular-automaton/factor/set";
 
 export const initialState: State = {
   value: DEF_FILL,

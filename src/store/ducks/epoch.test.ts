@@ -3,8 +3,14 @@ import reducer, {
   actionResetEpoch,
   actionIncEpoch,
   initialState,
+  RESET_EPOCH,
+  INC_EPOCH,
 } from "./epoch";
 
+it("Epoch actions naming convention", () => {
+  expect(RESET_EPOCH).toMatch(/cellular-automaton\/epoch\//);
+  expect(INC_EPOCH).toMatch(/cellular-automaton\/epoch\//);
+});
 it("Epoch reducer initial state", () => {
   const newState = reducer(undefined, { type: "UNKNOWN" });
   expect(newState).toEqual(initialState);
