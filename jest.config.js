@@ -23,5 +23,5 @@ module.exports = {
     "^.+\\.module\\.css$": "identity-obj-proxy",
     "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
   },
-  testPathIgnorePatterns: ["<rootDir>/strykerTmp/"],
+  testPathIgnorePatterns: ["<rootDir>/strykerTmp/", "<rootDir>/build/"],
 };

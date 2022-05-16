@@ -8,6 +8,7 @@ build-storybook.log
 .eslintcache
 .next
 .next/
+build
 
 # stryker temp files
 .stryker-tmp
