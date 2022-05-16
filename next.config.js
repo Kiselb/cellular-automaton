@@ -5,5 +5,5 @@ module.exports = {
     ignoreDuringBuilds: true,
   },
   pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
-  assetPrefix: isProd ? "https://kiselb.github.io/cellular-automaton/" : "",
+  assetPrefix: "/cellular-automaton/",
 };
