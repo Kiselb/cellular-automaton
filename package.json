@@ -22,7 +22,8 @@
     "chromatic": "npx chromatic --project-token=66e47bd82604",
     "next:dev": "next dev",
     "next:build": "next build",
-    "next:start": "next start"
+    "next:start": "next start",
+    "export": "next export"
   },
   "author": "Mikhail V. Kiselev",
   "license": "ISC",
