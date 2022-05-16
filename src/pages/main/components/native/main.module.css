@@ -12,7 +12,7 @@
         "empty header"
         "control panel";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 10em 1fr;
+    grid-template-columns: 15em 1fr;
     grid-gap: 10px;
 }
 .header {

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 
+import { HexColorPicker } from "react-colorful";
+
 import {
   AutomatonDescription,
   AutomatonsList,
@@ -271,6 +273,10 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
             caption="Заполнить"
             testId="actionfill"
           />
+        </div>
+        <div className={styles["knob-label"]}>Гамма:</div>
+        <div>
+          <HexColorPicker />
         </div>
       </div>
       <div className={styles["lifecontainer"]}>
