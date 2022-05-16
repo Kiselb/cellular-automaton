@@ -22,7 +22,6 @@ export function* sagaIncEpoch() {
   const automaton: AutomatonDescription = yield select<
     (state: AppReduxState) => AutomatonDescription
   >((state) => {
-    console.log(state);
     return state.automaton.value;
   });
   yield put(actionIncEpoch());
