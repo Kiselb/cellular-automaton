@@ -1,5 +1,5 @@
 module.exports = {
-  basePath: "/",
+  basePath: "",
   distDir: "build",
   eslint: {
     ignoreDuringBuilds: true,
