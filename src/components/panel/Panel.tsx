@@ -7,7 +7,12 @@ import { Nest } from "./components/nest/types";
 import { Row } from "./components/row/types";
 import { Plate } from "./components/plate/Plate";
 
-export const Panel: FC<Props> = ({ data, onChange }: Props) => {
+export const Panel: FC<Props> = ({
+  data,
+  onChange,
+  minColor,
+  maxColor,
+}: Props) => {
   const cellOnClick = (params: CellParams) => {
     onChange(params);
   };
@@ -29,6 +34,8 @@ export const Panel: FC<Props> = ({ data, onChange }: Props) => {
                   generation={item}
                   onClick={cellOnClick}
                   colorEmpty={EMPTY_CELL_COLOR}
+                  minColor={minColor}
+                  maxColor={maxColor}
                 ></Cell>
               </Nest>
             ))}

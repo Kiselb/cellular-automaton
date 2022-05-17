@@ -34,6 +34,8 @@ import {
   DEF_FILL,
   DEF_VELOCITY,
   DEF_AUTOMATON,
+  DEF_MIN_COLOR,
+  DEF_MAX_COLOR,
 } from "../../../../domain/defaults";
 import { authContext } from "../../../../services/auth/Auth";
 
@@ -51,6 +53,8 @@ export type AppState = {
   status: Status;
   velocity: number;
   automaton: AutomatonDescription;
+  minColor: string;
+  maxColor: string;
 };
 
 export const initialState: AppState = {
@@ -69,6 +73,8 @@ export const initialState: AppState = {
   automaton: AutomatonsList.filter(
     (automaton) => automaton.id === DEF_AUTOMATON
   )[0],
+  minColor: DEF_MIN_COLOR,
+  maxColor: DEF_MAX_COLOR,
 };
 
 type MainProps = {
@@ -175,6 +181,28 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
       data: SetCell(prevState.data, cell.row, cell.col),
     }));
   };
+  const setMinColor = (event: React.FormEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const color = event.currentTarget.value;
+    console.log(color);
+    !!probe && probe({ color: event.currentTarget.value });
+    !!event.currentTarget.value &&
+      setState((prevState) => ({
+        ...prevState,
+        minColor: color,
+      }));
+  };
+  const setMaxColor = (event: React.FormEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const color = event.currentTarget.value;
+    console.log(color);
+    !!probe && probe({ color: event.currentTarget.value });
+    !!event.currentTarget.value &&
+      setState((prevState) => ({
+        ...prevState,
+        maxColor: color,
+      }));
+  };
 
   return (
     <div className={styles["app"]}>
@@ -274,13 +302,32 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
             testId="actionfill"
           />
         </div>
-        <div className={styles["knob-label"]}>Гамма:</div>
+        <div className={styles["knob-label"]}>Младший:</div>
         <div>
-          <HexColorPicker />
+          <input
+            className={styles["color-picker"]}
+            type="color"
+            defaultValue={state.minColor}
+            onChange={setMinColor}
+          />
+        </div>
+        <div className={styles["knob-label"]}>Старший:</div>
+        <div>
+          <input
+            className={styles["color-picker"]}
+            type="color"
+            defaultValue={state.maxColor}
+            onChange={setMaxColor}
+          />
         </div>
       </div>
       <div className={styles["lifecontainer"]}>
-        <Panel data={state.data} onChange={cellEvent} />
+        <Panel
+          data={state.data}
+          minColor={state.minColor}
+          maxColor={state.maxColor}
+          onChange={cellEvent}
+        />
       </div>
     </div>
   );

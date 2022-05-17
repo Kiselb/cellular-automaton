@@ -3,7 +3,11 @@ import { render, fireEvent, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
 
-import { EMPTY_CELL_COLOR } from "../../domain/defaults";
+import {
+  EMPTY_CELL_COLOR,
+  DEF_MIN_COLOR,
+  DEF_MAX_COLOR,
+} from "../../domain/defaults";
 import { Cell, calcCellColor } from "./types";
 
 it("Cell renders correctly", () => {
@@ -14,6 +18,8 @@ it("Cell renders correctly", () => {
       generation={1}
       onClick={() => console.log("OK")}
       colorEmpty={EMPTY_CELL_COLOR}
+      minColor={DEF_MIN_COLOR}
+      maxColor={DEF_MAX_COLOR}
     />
   );
   screen.debug();
@@ -27,6 +33,8 @@ it("Cell has style", () => {
       generation={1}
       onClick={() => console.log("OK")}
       colorEmpty={EMPTY_CELL_COLOR}
+      minColor={DEF_MIN_COLOR}
+      maxColor={DEF_MAX_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
@@ -40,6 +48,8 @@ it("Cell has style background color generation 0", () => {
       generation={0}
       onClick={() => console.log("OK")}
       colorEmpty={EMPTY_CELL_COLOR}
+      minColor={DEF_MIN_COLOR}
+      maxColor={DEF_MAX_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
@@ -53,6 +63,8 @@ it("Cell has style background color generation 1", () => {
       generation={1}
       onClick={() => console.log("OK")}
       colorEmpty={EMPTY_CELL_COLOR}
+      minColor={DEF_MIN_COLOR}
+      maxColor={DEF_MAX_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
@@ -66,6 +78,8 @@ it("Cell has style background color generation 10", () => {
       generation={10}
       onClick={() => console.log("OK")}
       colorEmpty={EMPTY_CELL_COLOR}
+      minColor={DEF_MIN_COLOR}
+      maxColor={DEF_MAX_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
@@ -79,6 +93,8 @@ it("Cell has style background color generation 20", () => {
       generation={20}
       onClick={() => console.log("OK")}
       colorEmpty={EMPTY_CELL_COLOR}
+      minColor={DEF_MIN_COLOR}
+      maxColor={DEF_MAX_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
@@ -93,6 +109,8 @@ it("Cell mouse click event", () => {
       generation={1}
       onClick={onClick}
       colorEmpty={EMPTY_CELL_COLOR}
+      minColor={DEF_MIN_COLOR}
+      maxColor={DEF_MAX_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
@@ -109,6 +127,8 @@ it("Cell mouse double click event", () => {
       onClick={() => console.log("OK")}
       colorEmpty={EMPTY_CELL_COLOR}
       probe={probe}
+      minColor={DEF_MIN_COLOR}
+      maxColor={DEF_MAX_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1") as HTMLDivElement;
@@ -125,6 +145,8 @@ it("Cell mouse over event with pressed button", () => {
       onClick={() => console.log("OK")}
       colorEmpty={EMPTY_CELL_COLOR}
       probe={probe}
+      minColor={DEF_MIN_COLOR}
+      maxColor={DEF_MAX_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");
@@ -141,6 +163,8 @@ it("Cell mouse over event without pressed button", () => {
       onClick={() => console.log("OK")}
       colorEmpty={EMPTY_CELL_COLOR}
       probe={probe}
+      minColor={DEF_MIN_COLOR}
+      maxColor={DEF_MAX_COLOR}
     />
   );
   const div = screen.getByTestId("R1:C1");

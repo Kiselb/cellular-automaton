@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import { DEF_MIN_COLOR, DEF_MAX_COLOR } from "../../../../domain/defaults";
+
 import { actionToggleCell } from "../../../../store/ducks/gamelife";
 import { actionSetStatus } from "../../../../store/ducks/status";
 import { AppReduxState } from "../../../../store/ducks/reducer";
@@ -257,7 +259,12 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
         </div>
       </div>
       <div className={styles["lifecontainer"]}>
-        <Panel data={data} onChange={cellEvent} />
+        <Panel
+          data={data}
+          onChange={cellEvent}
+          minColor={DEF_MIN_COLOR}
+          maxColor={DEF_MAX_COLOR}
+        />
       </div>
     </div>
   );

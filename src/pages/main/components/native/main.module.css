@@ -12,7 +12,7 @@
         "empty header"
         "control panel";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 15em 1fr;
+    grid-template-columns: 10em 1fr;
     grid-gap: 10px;
 }
 .header {
@@ -43,6 +43,8 @@
 }
 .control {
     grid-area: control;
+    margin: 0;
+    padding: 0;    
 }
 .epoch {
     font-size: 1.25em;
@@ -55,4 +57,7 @@
 .lifecontainer {
     grid-area: panel;
     overflow: scroll;
+}
+.color-picker {
+    width: 100%;
 }

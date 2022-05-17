@@ -11,6 +11,8 @@ export type Params = {
 export type Props = Omit<Params, "colorCell"> & {
   onClick: (cell: Params) => void;
   probe?: ({}) => void;
+  minColor: string;
+  maxColor: string;
 };
 
 export type CalcColor = (

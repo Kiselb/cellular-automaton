@@ -1,14 +1,15 @@
 import React, { FC } from "react";
 import chroma from "chroma-js";
 
+import { DEF_MIN_COLOR, DEF_MAX_COLOR } from "../../domain/defaults";
 import { Params, Props, CalcColor } from "./types";
 
 import styles from "./cell.module.css";
 
 export const calcCellColor: CalcColor = (
   generation: number,
-  colorScaleMin = "yellow",
-  colorScaleMax = "darkgreen"
+  colorScaleMin = DEF_MIN_COLOR,
+  colorScaleMax = DEF_MAX_COLOR
 ) =>
   chroma
     .scale([colorScaleMin, colorScaleMax])((generation - 1) * 0.1)
@@ -21,8 +22,10 @@ export const Cell: FC<Props> = ({
   onClick,
   colorEmpty,
   probe,
+  minColor,
+  maxColor,
 }: Props) => {
-  const colorCell: string = calcCellColor(generation);
+  const colorCell: string = calcCellColor(generation, minColor, maxColor);
   const cellParams: Params = {
     generation,
     row,

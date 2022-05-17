@@ -10,3 +10,5 @@ export const DEF_FILL = 25;
 export const DEF_VELOCITY = 100;
 export const DEF_AUTOMATON = 15;
 export const EMPTY_CELL_COLOR = "#ececec";
+export const DEF_MIN_COLOR = "#FFFF00"; //yellow
+export const DEF_MAX_COLOR = "#006400"; //darkgreen
