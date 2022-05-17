@@ -6,7 +6,7 @@ import { StoreProvider } from "../services/store/StoreProvider";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Main from "./main/Main";
+import Main from "./main/Main.page";
 
 it("App renders correctly Native", () => {
   const { asFragment } = render(

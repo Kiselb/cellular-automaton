@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import SignIn from "./SignIn";
+import SignIn from "./SignIn.page";
 
 export default {
   title: "Application/SignIn",

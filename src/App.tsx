@@ -3,8 +3,8 @@ import React, { FC } from "react";
 // Never use BrowserRouter on GitHub Pages. There are some issues with it, it always shows blank screen. Use HashRouter instead, that will most probably work
 import { Routes, Route, HashRouter as Router } from "react-router-dom";
 
-import Main from "./pages/main/Main";
-import SignIn from "./pages/signin/SignIn";
+import Main from "./pages/main/Main.page";
+import SignIn from "./pages/signin/SignIn.page";
 
 import { AuthProvider, RequireAuth } from "./services/auth/Auth";
 import { StoreProvider } from "./services/store/StoreProvider";

@@ -9,7 +9,7 @@ import store from "../../store/ducks/store";
 import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Main from "./Main";
+import Main from "./Main.page";
 
 it("App renders correctly", () => {
   localStorage.setItem("cellular-automaton.user", "Test");

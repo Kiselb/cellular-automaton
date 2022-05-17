@@ -1,6 +1,6 @@
 import React from "react";
 
-import Main from "./main/Main";
+import Main from "./main/Main.page";
 import { AuthProvider, RequireAuth } from "../services/auth/Auth";
 import { StoreProvider } from "../services/store/StoreProvider";
 import { AppStoreMode } from "../domain/types";

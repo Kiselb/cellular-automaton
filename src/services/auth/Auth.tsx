@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 
-import SignIn from "../../pages/signin/SignIn";
+import SignIn from "../../pages/signin/SignIn.page";
 
 type AuthContext = {
   user: string;
