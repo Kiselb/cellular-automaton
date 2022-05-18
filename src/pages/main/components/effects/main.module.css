@@ -18,7 +18,7 @@
 .header {
     grid-area: header;
     display: flex;
-    justify-content:end;
+    justify-content: flex-end;
     font-size: 1em;
 }
 .header > p {

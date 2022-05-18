@@ -184,7 +184,6 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
   const setMinColor = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
     const color = event.currentTarget.value;
-    console.log(color);
     !!probe && probe({ color: event.currentTarget.value });
     !!event.currentTarget.value &&
       setState((prevState) => ({
@@ -195,7 +194,6 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
   const setMaxColor = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
     const color = event.currentTarget.value;
-    console.log(color);
     !!probe && probe({ color: event.currentTarget.value });
     !!event.currentTarget.value &&
       setState((prevState) => ({

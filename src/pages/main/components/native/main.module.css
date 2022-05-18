@@ -18,7 +18,7 @@
 .header {
     grid-area: header;
     display: flex;
-    justify-content:end;
+    justify-content: flex-end;
     font-size: 1em;
 }
 .header > p {
@@ -60,4 +60,13 @@
 }
 .color-picker {
     width: 100%;
+    appearance: none;
+    border: none;
+    padding: 0;
+}
+.color-picker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+.color-picker::-webkit-color-swatch {
+    border: none;
 }
