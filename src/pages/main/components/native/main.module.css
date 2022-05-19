@@ -64,6 +64,9 @@
     border: none;
     padding: 0;
 }
+/*
+    https://medium.com/@sadhananagori18/how-to-remove-input-type-color-extra-space-from-background-4a751fd4d76a
+*/
 .color-picker::-webkit-color-swatch-wrapper {
     padding: 0;
 }
