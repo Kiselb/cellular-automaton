@@ -17,34 +17,42 @@ const Main = ({ mode, probe, onModeChange }: MainProps) => {
     !!probe && probe({});
   };
 
-  const native = (
-    <MainNative probe={probe} onModeChange={onModeChangeHandler} />
+  return (
+    <>
+      {(() => {
+        switch (mode) {
+          case "Native":
+            return (
+              <MainNative probe={probe} onModeChange={onModeChangeHandler} />
+            );
+          case "ReduxThunk":
+            return (
+              <MainRedux
+                probe={probe}
+                onModeChange={onModeChangeHandler}
+                useSaga={false}
+              />
+            );
+          case "ReduxSaga":
+            return (
+              <MainRedux
+                probe={probe}
+                onModeChange={onModeChangeHandler}
+                useSaga
+              />
+            );
+          case "ReduxEffects":
+            return (
+              <MainEffects probe={probe} onModeChange={onModeChangeHandler} />
+            );
+          default:
+            return (
+              <MainNative probe={probe} onModeChange={onModeChangeHandler} />
+            );
+        }
+      })()}
+    </>
   );
-  const reduxThunk = (
-    <MainRedux
-      probe={probe}
-      onModeChange={onModeChangeHandler}
-      useSaga={false}
-    />
-  );
-  const reduxSaga = (
-    <MainRedux
-      probe={probe}
-      onModeChange={onModeChangeHandler}
-      useSaga={true}
-    />
-  );
-  const effects = (
-    <MainEffects probe={probe} onModeChange={onModeChangeHandler} />
-  );
-
-  const union: { [key in AppStoreMode]: JSX.Element } = {
-    Native: native,
-    ReduxThunk: reduxThunk,
-    ReduxSaga: reduxSaga,
-    ReduxEffects: effects,
-  };
-  return union[mode];
 };
 
 export default Main;
