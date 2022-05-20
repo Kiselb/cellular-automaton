@@ -51157,12 +51157,12 @@ exports[`App renders correctly 3`] = `
         data-testid="changeMode"
       >
         <option
+          selected=""
           value="Native"
         >
           Native
         </option>
         <option
-          selected=""
           value="ReduxThunk"
         >
           Redux (Thunk)
@@ -51181,6 +51181,9 @@ exports[`App renders correctly 3`] = `
       <p>
         Test
       </p>
+      <button>
+        Выйти
+      </button>
     </div>
     <div
       class="control"
@@ -51482,21 +51485,31 @@ exports[`App renders correctly 3`] = `
           Заполнить
         </button>
       </div>
-      <div>
-        <button
-          class="button control-inactive"
-          data-testid="actionSave"
-        >
-          Сохранить
-        </button>
+      <div
+        class="knob-label"
+      >
+        Младший:
       </div>
       <div>
-        <button
-          class="button control-inactive"
-          data-testid="actionRestore"
-        >
-          Восстановить
-        </button>
+        <input
+          class="color-picker"
+          data-testid="mincolor"
+          type="color"
+          value="#FFFF00"
+        />
+      </div>
+      <div
+        class="knob-label"
+      >
+        Старший:
+      </div>
+      <div>
+        <input
+          class="color-picker"
+          data-testid="maxcolor"
+          type="color"
+          value="#006400"
+        />
       </div>
     </div>
     <div
