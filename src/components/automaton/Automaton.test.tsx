@@ -8,20 +8,14 @@ import { AutomatonDescription, AutomatonsList } from "./types";
 
 it("Automaton renders correctly", () => {
   const { asFragment } = render(
-    <Automaton
-      defAutomaton={DEF_AUTOMATON}
-      onAutomatonChange={() => console.log("OK")}
-    />
+    <Automaton defAutomaton={DEF_AUTOMATON} onAutomatonChange={() => null} />
   );
   screen.debug();
   expect(asFragment()).toMatchSnapshot();
 });
 it("Automaton has style", () => {
   render(
-    <Automaton
-      defAutomaton={DEF_AUTOMATON}
-      onAutomatonChange={() => console.log("OK")}
-    />
+    <Automaton defAutomaton={DEF_AUTOMATON} onAutomatonChange={() => null} />
   );
   const div = screen.getByTestId("automaton");
   expect(div).toHaveClass("automaton");

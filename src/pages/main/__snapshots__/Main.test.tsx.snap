@@ -348,6 +348,7 @@ exports[`App renders correctly 1`] = `
       <div>
         <input
           class="color-picker"
+          data-testid="mincolor"
           type="color"
           value="#FFFF00"
         />
@@ -360,6 +361,7 @@ exports[`App renders correctly 1`] = `
       <div>
         <input
           class="color-picker"
+          data-testid="maxcolor"
           type="color"
           value="#006400"
         />

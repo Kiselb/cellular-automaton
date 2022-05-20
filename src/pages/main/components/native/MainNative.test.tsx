@@ -10,6 +10,8 @@ import {
   DEF_COLS,
   DEF_FILL,
   DEF_VELOCITY,
+  DEF_MIN_COLOR,
+  DEF_MAX_COLOR,
 } from "../../../../domain/defaults";
 import { AuthProvider } from "../../../../services/auth/Auth";
 
@@ -23,7 +25,7 @@ jest.mock("react-router-dom", () => ({
 it("App renders correctly", () => {
   const { asFragment } = render(
     <AuthProvider>
-      <Main onModeChange={() => console.log("OK")} />
+      <Main onModeChange={() => null} />
     </AuthProvider>
   );
   screen.debug();
@@ -35,7 +37,7 @@ it("Main should change X size", () => {
   });
   const utils = render(
     <AuthProvider>
-      <Main probe={probe} onModeChange={() => console.log("OK")} />
+      <Main probe={probe} onModeChange={() => null} />
     </AuthProvider>
   );
   const input = utils.getByTestId("sizex");
@@ -48,7 +50,7 @@ it("Main should change Y size", () => {
   });
   const utils = render(
     <AuthProvider>
-      <Main probe={probe} onModeChange={() => console.log("OK")} />
+      <Main probe={probe} onModeChange={() => null} />
     </AuthProvider>
   );
   const input = utils.getByTestId("sizey");
@@ -61,18 +63,60 @@ it("Main should change Fill factor", () => {
   });
   const utils = render(
     <AuthProvider>
-      <Main probe={probe} onModeChange={() => console.log("OK")} />
+      <Main probe={probe} onModeChange={() => null} />
     </AuthProvider>
   );
   const input = utils.getByTestId("fillfactor");
   fireEvent.change(input, { target: { value: DEF_FILL + 1 } });
   expect(probe).toBeCalled();
 });
+it("Main should change min color", () => {
+  const probe = jest.fn((color) => {
+    let expectedColor =
+      "000000" +
+      (parseInt(DEF_MIN_COLOR.replace("#", ""), 16) + 1).toString(16);
+    expectedColor = "#" + expectedColor.substring(expectedColor.length - 6);
+    expect(color).toEqual({ color: expectedColor });
+  });
+  const utils = render(
+    <AuthProvider>
+      <Main probe={probe} onModeChange={() => null} />
+    </AuthProvider>
+  );
+  const input = utils.getByTestId("mincolor");
+  const color =
+    "000000" + (parseInt(DEF_MIN_COLOR.replace("#", ""), 16) + 1).toString(16);
+  fireEvent.change(input, {
+    target: { value: "#" + color.substring(color.length - 6) },
+  });
+  expect(probe).toBeCalled();
+});
+it("Main should change max color", () => {
+  const probe = jest.fn((color) => {
+    let expectedColor =
+      "000000" +
+      (parseInt(DEF_MAX_COLOR.replace("#", ""), 16) + 1).toString(16);
+    expectedColor = "#" + expectedColor.substring(expectedColor.length - 6);
+    expect(color).toEqual({ color: expectedColor });
+  });
+  const utils = render(
+    <AuthProvider>
+      <Main probe={probe} onModeChange={() => null} />
+    </AuthProvider>
+  );
+  const input = utils.getByTestId("maxcolor");
+  const color =
+    "000000" + (parseInt(DEF_MAX_COLOR.replace("#", ""), 16) + 1).toString(16);
+  fireEvent.change(input, {
+    target: { value: "#" + color.substring(color.length - 6) },
+  });
+  expect(probe).toBeCalled();
+});
 it("Main should Run automaton", () => {
   const probe = jest.fn();
   const utils = render(
     <AuthProvider>
-      <Main probe={probe} onModeChange={() => console.log("OK")} />
+      <Main probe={probe} onModeChange={() => null} />
     </AuthProvider>
   );
   const button = utils.getByTestId("actionrun");
@@ -83,7 +127,7 @@ it("Main should Stop automaton", () => {
   const probe = jest.fn();
   const utils = render(
     <AuthProvider>
-      <Main probe={probe} onModeChange={() => console.log("OK")} />
+      <Main probe={probe} onModeChange={() => null} />
     </AuthProvider>
   );
   const button = utils.getByTestId("actionstop");
@@ -94,7 +138,7 @@ it("Main should Clear field", () => {
   const probe = jest.fn();
   const utils = render(
     <AuthProvider>
-      <Main probe={probe} onModeChange={() => console.log("OK")} />
+      <Main probe={probe} onModeChange={() => null} />
     </AuthProvider>
   );
   const button = utils.getByTestId("actionclear");
@@ -105,7 +149,7 @@ it("Main should Fill field", () => {
   const probe = jest.fn();
   const utils = render(
     <AuthProvider>
-      <Main probe={probe} onModeChange={() => console.log("OK")} />
+      <Main probe={probe} onModeChange={() => null} />
     </AuthProvider>
   );
   const button = utils.getByTestId("actionfill");
@@ -118,7 +162,7 @@ it("Main should Set Automaton", () => {
   });
   const utils = render(
     <AuthProvider>
-      <Main probe={probe} onModeChange={() => console.log("OK")} />
+      <Main probe={probe} onModeChange={() => null} />
     </AuthProvider>
   );
   const select = utils.getByTestId("automaton");
@@ -131,7 +175,7 @@ it("Main should Set Velocity", () => {
   });
   const utils = render(
     <AuthProvider>
-      <Main probe={probe} onModeChange={() => console.log("OK")} />
+      <Main probe={probe} onModeChange={() => null} />
     </AuthProvider>
   );
   const select = utils.getByTestId("velocity");
@@ -145,7 +189,7 @@ it("Main should click Cell", () => {
   });
   const utils = render(
     <AuthProvider>
-      <Main probe={probe} onModeChange={() => console.log("OK")} />
+      <Main probe={probe} onModeChange={() => null} />
     </AuthProvider>
   );
   const cell = utils.getByTestId("R0:C0");
@@ -176,7 +220,7 @@ it("Main should fire Tick", () => {
   act(() => {
     DOMRender(
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>,
       container
     );
@@ -206,7 +250,7 @@ it("Main should fire Tick", () => {
 //   const probe = jest.fn();
 //   render(
 //     <AuthProvider>
-//       <Main probe={probe} onModeChange={() => console.log("OK")} />
+//       <Main probe={probe} onModeChange={() => null} />
 //     </AuthProvider>
 //   );
 //   const control = screen.getByTestId("changeMode");

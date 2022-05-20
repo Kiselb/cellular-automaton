@@ -9,7 +9,7 @@ import { ButtonCaption } from "../../domain/types";
 it("Cell renders correctly", () => {
   const { asFragment } = render(
     <Button
-      onAction={() => console.log("OK")}
+      onAction={() => null}
       caption="Эволюция"
       status
       testId="actionbutton"
@@ -21,7 +21,7 @@ it("Cell renders correctly", () => {
 it("Button has style active", () => {
   render(
     <Button
-      onAction={() => console.log("OK")}
+      onAction={() => null}
       caption="Эволюция"
       status
       testId="actionbutton"
@@ -33,7 +33,7 @@ it("Button has style active", () => {
 it("Button has style inactive", () => {
   render(
     <Button
-      onAction={() => console.log("OK")}
+      onAction={() => null}
       caption="Эволюция"
       status={false}
       testId="actionbutton"
@@ -46,7 +46,7 @@ it("Button has valid caption (content)", () => {
   const caption: ButtonCaption = "Эволюция";
   render(
     <Button
-      onAction={() => console.log("OK")}
+      onAction={() => null}
       caption={caption}
       status={false}
       testId="actionbutton"

@@ -16,7 +16,7 @@ it("Cell renders correctly", () => {
       row={1}
       col={1}
       generation={1}
-      onClick={() => console.log("OK")}
+      onClick={() => null}
       colorEmpty={EMPTY_CELL_COLOR}
       minColor={DEF_MIN_COLOR}
       maxColor={DEF_MAX_COLOR}
@@ -31,7 +31,7 @@ it("Cell has style", () => {
       row={1}
       col={1}
       generation={1}
-      onClick={() => console.log("OK")}
+      onClick={() => null}
       colorEmpty={EMPTY_CELL_COLOR}
       minColor={DEF_MIN_COLOR}
       maxColor={DEF_MAX_COLOR}
@@ -46,7 +46,7 @@ it("Cell has style background color generation 0", () => {
       row={1}
       col={1}
       generation={0}
-      onClick={() => console.log("OK")}
+      onClick={() => null}
       colorEmpty={EMPTY_CELL_COLOR}
       minColor={DEF_MIN_COLOR}
       maxColor={DEF_MAX_COLOR}
@@ -61,7 +61,7 @@ it("Cell has style background color generation 1", () => {
       row={1}
       col={1}
       generation={1}
-      onClick={() => console.log("OK")}
+      onClick={() => null}
       colorEmpty={EMPTY_CELL_COLOR}
       minColor={DEF_MIN_COLOR}
       maxColor={DEF_MAX_COLOR}
@@ -76,7 +76,7 @@ it("Cell has style background color generation 10", () => {
       row={1}
       col={1}
       generation={10}
-      onClick={() => console.log("OK")}
+      onClick={() => null}
       colorEmpty={EMPTY_CELL_COLOR}
       minColor={DEF_MIN_COLOR}
       maxColor={DEF_MAX_COLOR}
@@ -91,7 +91,7 @@ it("Cell has style background color generation 20", () => {
       row={1}
       col={1}
       generation={20}
-      onClick={() => console.log("OK")}
+      onClick={() => null}
       colorEmpty={EMPTY_CELL_COLOR}
       minColor={DEF_MIN_COLOR}
       maxColor={DEF_MAX_COLOR}
@@ -124,7 +124,7 @@ it("Cell mouse double click event", () => {
       row={1}
       col={1}
       generation={1}
-      onClick={() => console.log("OK")}
+      onClick={() => null}
       colorEmpty={EMPTY_CELL_COLOR}
       probe={probe}
       minColor={DEF_MIN_COLOR}
@@ -142,7 +142,7 @@ it("Cell mouse over event with pressed button", () => {
       row={1}
       col={1}
       generation={1}
-      onClick={() => console.log("OK")}
+      onClick={() => null}
       colorEmpty={EMPTY_CELL_COLOR}
       probe={probe}
       minColor={DEF_MIN_COLOR}
@@ -160,7 +160,7 @@ it("Cell mouse over event without pressed button", () => {
       row={1}
       col={1}
       generation={1}
-      onClick={() => console.log("OK")}
+      onClick={() => null}
       colorEmpty={EMPTY_CELL_COLOR}
       probe={probe}
       minColor={DEF_MIN_COLOR}

@@ -1,5 +1,6 @@
 import { call, put } from "redux-saga/effects";
 import { expectSaga } from "redux-saga-test-plan";
+import * as matchers from "redux-saga-test-plan/matchers";
 
 import {
   actionSagaSaveState,
@@ -27,6 +28,7 @@ import {
   DEF_COLS,
   DEF_VELOCITY,
 } from "../../domain/defaults";
+import { throwError } from "redux-saga-test-plan/providers";
 
 const state: AppReduxState = {
   automaton: {
@@ -78,16 +80,18 @@ it("Save state saga works", () => {
 it("Restore state saga works", () => {
   expectSaga(restoreStateSaga).put(actionLoadStateConfirm()).run();
 });
-// it("Save reject state saga works", () => {
-//   expectSaga(saveStateSaga, actionSagaSaveState(state))
-//     .put(actionSaveStateReject("Test reject save state"))
-//     .run();
-// }); //*
-// it("Restore reject state saga works", () => {
-//   expectSaga(restoreStateSaga)
-//     .put(actionLoadStateReject("Test reject restore state"))
-//     .run();
-// }); //*
+it("Save reject state saga works", () => {
+  expectSaga(saveStateSaga, actionSagaSaveState(state))
+    .provide([[call(() => null), throwError(new Error("Save Error"))]])
+    .put(actionSaveStateReject("Test reject save state"))
+    .run();
+}); //*
+it("Restore reject state saga works", () => {
+  expectSaga(restoreStateSaga)
+    .provide([[call(() => null), throwError(new Error("Restore Error"))]])
+    .put(actionLoadStateReject("Test reject restore state"))
+    .run();
+}); //*
 it("Save state saga api call", () => {
   const iterator = saveStateSaga(actionSagaSaveState(state));
   const apiCall = call(saveState, state);
@@ -109,8 +113,7 @@ it("Restore state saga api call", () => {
 });
 it("Restore state saga api call correctly", () => {
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
-  console.log(localStorage.getItem(LOCAL_STORAGE_KEY) || "");
-  return expectSaga(restoreStateSaga).call(restoreState).run();
+  expectSaga(restoreStateSaga).call(restoreState).run();
 }); //
 it("Save state saga api throw", () => {
   const message = "Test save state error";
@@ -121,6 +124,13 @@ it("Save state saga api throw", () => {
     put(actionSaveStateReject(message))
   );
 });
+it("Save state saga api throw custom message", () => {
+  const iterator = saveStateSaga(actionSagaSaveState(state));
+  iterator.next();
+  expect(iterator.throw("Error").value).toEqual(
+    put(actionSaveStateReject("Local storage write error"))
+  );
+}); // **
 it("Restore state saga api throw", () => {
   const message = "Test restore state error";
   const iterator = restoreStateSaga();
@@ -129,4 +139,17 @@ it("Restore state saga api throw", () => {
   expect(iterator.throw(error).value).toEqual(
     put(actionLoadStateReject(message))
   );
+});
+it("Restore state saga api throw custom message", () => {
+  const iterator = restoreStateSaga();
+  iterator.next();
+  expect(iterator.throw("Error").value).toEqual(
+    put(actionLoadStateReject("Restore state from Local storage error"))
+  );
+});
+it("Restore state saga api localstorage empty", () => {
+  expectSaga(restoreStateSaga)
+    .provide([[matchers.call.fn(restoreState), ""]])
+    .put(actionLoadStateReject("Test reject restore state"))
+    .run();
 });

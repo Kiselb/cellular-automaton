@@ -32,7 +32,12 @@ import {
 } from "../sagas/StateSaga";
 
 it("Root saga works", () => {
-  return expectSaga(rootSaga).run();
+  expectSaga.DEFAULT_TIMEOUT = 500;
+  return expectSaga(rootSaga)
+    .provide({
+      all: () => null,
+    })
+    .run();
 });
 it("Root Saga Takes", () => {
   const saga = rootSaga();

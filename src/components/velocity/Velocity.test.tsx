@@ -6,13 +6,13 @@ import { Velocity } from "./types";
 
 it("Control Velocity renders correctly", () => {
   const { asFragment } = render(
-    <Velocity onVelocityChange={() => alert("OK")} defVelocity={100} />
+    <Velocity onVelocityChange={() => null} defVelocity={100} />
   );
   screen.debug();
   expect(asFragment()).toMatchSnapshot();
 });
 it("Control Velocity has style", () => {
-  render(<Velocity onVelocityChange={() => alert("OK")} defVelocity={100} />);
+  render(<Velocity onVelocityChange={() => null} defVelocity={100} />);
   const control = screen.getByTestId("velocity");
   expect(control).toHaveClass("velocity");
 });

@@ -12,7 +12,7 @@ it("Panel renders correctly", () => {
   const { asFragment } = render(
     <Panel
       data={data}
-      onChange={() => console.log("OK")}
+      onChange={() => null}
       minColor={DEF_MIN_COLOR}
       maxColor={DEF_MAX_COLOR}
     />

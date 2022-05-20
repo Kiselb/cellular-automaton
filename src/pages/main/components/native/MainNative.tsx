@@ -184,22 +184,20 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
   const setMinColor = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
     const color = event.currentTarget.value;
-    !!probe && probe({ color: event.currentTarget.value });
-    !!event.currentTarget.value &&
-      setState((prevState) => ({
-        ...prevState,
-        minColor: color,
-      }));
+    !!probe && probe({ color });
+    setState((prevState) => ({
+      ...prevState,
+      minColor: color,
+    }));
   };
   const setMaxColor = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
     const color = event.currentTarget.value;
-    !!probe && probe({ color: event.currentTarget.value });
-    !!event.currentTarget.value &&
-      setState((prevState) => ({
-        ...prevState,
-        maxColor: color,
-      }));
+    !!probe && probe({ color });
+    setState((prevState) => ({
+      ...prevState,
+      maxColor: color,
+    }));
   };
 
   return (
@@ -303,6 +301,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
         <div className={styles["knob-label"]}>Младший:</div>
         <div>
           <input
+            data-testid="mincolor"
             className={styles["color-picker"]}
             type="color"
             defaultValue={state.minColor}
@@ -312,6 +311,7 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
         <div className={styles["knob-label"]}>Старший:</div>
         <div>
           <input
+            data-testid="maxcolor"
             className={styles["color-picker"]}
             type="color"
             defaultValue={state.maxColor}

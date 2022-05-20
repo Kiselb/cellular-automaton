@@ -17,7 +17,7 @@ it("App renders correctly", () => {
     <StoreProvider mode={"Native"}>
       <AuthProvider>
         <RequireAuth>
-          <Main mode={"Native"} onModeChange={() => console.log("OK")} />
+          <Main mode={"Native"} onModeChange={() => null} />
         </RequireAuth>
       </AuthProvider>
     </StoreProvider>
@@ -31,7 +31,7 @@ it("App renders correctly", () => {
     <StoreProvider mode={"ReduxThunk"}>
       <AuthProvider>
         <RequireAuth>
-          <Main mode={"ReduxThunk"} onModeChange={() => console.log("OK")} />
+          <Main mode={"ReduxThunk"} onModeChange={() => null} />
         </RequireAuth>
       </AuthProvider>
     </StoreProvider>
@@ -45,7 +45,7 @@ it("App renders correctly", () => {
     <StoreProvider mode={"ReduxSaga"}>
       <AuthProvider>
         <RequireAuth>
-          <Main mode={"ReduxSaga"} onModeChange={() => console.log("OK")} />
+          <Main mode={"ReduxSaga"} onModeChange={() => null} />
         </RequireAuth>
       </AuthProvider>
     </StoreProvider>
@@ -59,7 +59,7 @@ it("App renders correctly", () => {
     <StoreProvider mode={"ReduxEffects"}>
       <AuthProvider>
         <RequireAuth>
-          <Main mode={"ReduxEffects"} onModeChange={() => console.log("OK")} />
+          <Main mode={"ReduxEffects"} onModeChange={() => null} />
         </RequireAuth>
       </AuthProvider>
     </StoreProvider>
@@ -68,30 +68,22 @@ it("App renders correctly", () => {
   expect(asFragment()).toMatchSnapshot();
 });
 it("Main Native selected correctly", () => {
-  expect(
-    Main({ mode: "Native", onModeChange: () => console.log("OK") })
-  ).not.toBe(null);
+  expect(Main({ mode: "Native", onModeChange: () => null })).not.toBe(null);
 });
 it("Main ReduxThunk selected correctly", () => {
-  expect(
-    Main({ mode: "ReduxThunk", onModeChange: () => console.log("OK") })
-  ).not.toBe(null);
+  expect(Main({ mode: "ReduxThunk", onModeChange: () => null })).not.toBe(null);
 });
 it("Main ReduxSaga selected correctly", () => {
-  expect(
-    Main({ mode: "ReduxSaga", onModeChange: () => console.log("OK") })
-  ).not.toBe(null);
+  expect(Main({ mode: "ReduxSaga", onModeChange: () => null })).not.toBe(null);
 });
 it("Main ReduxEffects selected correctly", () => {
-  expect(
-    Main({ mode: "ReduxEffects", onModeChange: () => console.log("OK") })
-  ).not.toBe(null);
+  expect(Main({ mode: "ReduxEffects", onModeChange: () => null })).not.toBe(
+    null
+  );
 });
 it("Main Native change mode", () => {
   const probe = jest.fn();
-  render(
-    <Main mode="Native" onModeChange={() => console.log("OK")} probe={probe} />
-  );
+  render(<Main mode="Native" onModeChange={() => null} probe={probe} />);
   const control = screen.getByTestId("changeMode");
   fireEvent.change(control);
   expect(probe).toBeCalled();
@@ -101,11 +93,7 @@ it("Main ReduxEffects change mode", () => {
   render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          mode="ReduxEffects"
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-        />
+        <Main mode="ReduxEffects" probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -118,11 +106,7 @@ it("Main ReduxThunk change mode", () => {
   render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          mode="ReduxThunk"
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-        />
+        <Main mode="ReduxThunk" probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -135,11 +119,7 @@ it("Main ReduxSaga change mode", () => {
   render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          mode="ReduxSaga"
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-        />
+        <Main mode="ReduxSaga" probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );

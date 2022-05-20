@@ -27,7 +27,7 @@ it("App renders correctly", () => {
   const { asFragment } = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main onModeChange={() => console.log("OK")} useSaga={false} />
+        <Main onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );
@@ -41,11 +41,7 @@ it("Main should change X size", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-          useSaga={false}
-        />
+        <Main probe={probe} onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );
@@ -60,11 +56,7 @@ it("MainRedux should change Y size", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-          useSaga={false}
-        />
+        <Main probe={probe} onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );
@@ -79,11 +71,7 @@ it("MainRedux should change Fill factor", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-          useSaga={false}
-        />
+        <Main probe={probe} onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );
@@ -96,11 +84,7 @@ it("MainRedux should Run automaton", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-          useSaga={false}
-        />
+        <Main probe={probe} onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );
@@ -113,11 +97,7 @@ it("MainRedux should Stop automaton", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-          useSaga={false}
-        />
+        <Main probe={probe} onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );
@@ -130,11 +110,7 @@ it("MainRedux should Clear field", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-          useSaga={false}
-        />
+        <Main probe={probe} onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );
@@ -147,11 +123,7 @@ it("MainRedux should Fill field", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-          useSaga={false}
-        />
+        <Main probe={probe} onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );
@@ -184,11 +156,7 @@ it("MainRedux should fire Tick", () => {
     DOMRender(
       <Provider store={store}>
         <AuthProvider>
-          <Main
-            probe={probe}
-            onModeChange={() => console.log("OK")}
-            useSaga={false}
-          />
+          <Main probe={probe} onModeChange={() => null} useSaga={false} />
         </AuthProvider>
       </Provider>,
       container
@@ -216,11 +184,7 @@ it("MainRedux should Set Automaton", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-          useSaga={false}
-        />
+        <Main probe={probe} onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );
@@ -235,11 +199,7 @@ it("MainRedux should Set Velocity", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-          useSaga={false}
-        />
+        <Main probe={probe} onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );
@@ -255,11 +215,7 @@ it("MainRedux should click Cell", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main
-          probe={probe}
-          onModeChange={() => console.log("OK")}
-          useSaga={false}
-        />
+        <Main probe={probe} onModeChange={() => null} useSaga={false} />
       </AuthProvider>
     </Provider>
   );

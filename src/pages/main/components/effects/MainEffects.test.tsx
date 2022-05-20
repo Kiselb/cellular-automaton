@@ -27,7 +27,7 @@ it("App renders correctly", () => {
   const { asFragment } = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main onModeChange={() => console.log("OK")} />
+        <Main onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -41,7 +41,7 @@ it("MainEffects should change X size", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -56,7 +56,7 @@ it("MainEffects should change Y size", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -71,7 +71,7 @@ it("MainEffects should change Fill factor", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -84,7 +84,7 @@ it("MainEffects should Run automaton", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -97,7 +97,7 @@ it("MainEffects should Stop automaton", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -110,7 +110,7 @@ it("MainEffects should Clear field", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -123,7 +123,7 @@ it("MainEffects should Fill field", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -156,7 +156,7 @@ it("MainEffects should fire Tick", () => {
     DOMRender(
       <Provider store={store}>
         <AuthProvider>
-          <Main probe={probe} onModeChange={() => console.log("OK")} />
+          <Main probe={probe} onModeChange={() => null} />
         </AuthProvider>
       </Provider>,
       container
@@ -184,7 +184,7 @@ it("MainEffects should Set Automaton", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -199,7 +199,7 @@ it("MainEffects should Set Velocity", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );
@@ -215,7 +215,7 @@ it("MainEffects should click Cell", () => {
   const utils = render(
     <Provider store={store}>
       <AuthProvider>
-        <Main probe={probe} onModeChange={() => console.log("OK")} />
+        <Main probe={probe} onModeChange={() => null} />
       </AuthProvider>
     </Provider>
   );

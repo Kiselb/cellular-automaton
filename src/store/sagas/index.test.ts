@@ -11,7 +11,9 @@ import {
 } from "./StateSaga";
 
 it("Root saga works", () => {
-  return expectSaga(rootSaga).run();
+  return expectSaga(rootSaga)
+    .provide({ all: () => null })
+    .run();
 });
 it("Root Saga Takes", () => {
   const saga = rootSaga();
