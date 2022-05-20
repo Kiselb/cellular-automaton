@@ -53,26 +53,11 @@ const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(rootSaga);
 
-export { sagaSetAutomaton, createSagaSetAutomaton } from "./automaton";
-export {
-  sagaIncEpoch,
-  sagaResetEpoch,
-  createSagaActionIncEpoch,
-  createSagaActionResetEpoch,
-} from "./epoch";
-export { sagaSetFactor, createSagaSetFactor } from "./factor";
-export {
-  sagaClearField,
-  sagaFillField,
-  createSagaClearField,
-  createSagaFillField,
-} from "./gamelife";
-export {
-  sagaSetSizeX,
-  sagaSetSizeY,
-  createSagaActionSetSizeX,
-  createSagaActionSetSizeY,
-} from "./sizes";
-export { sagaSetVelocity, createSagaSetVelocity } from "./velocity";
+export { createSagaSetAutomaton } from "./automaton";
+export { createSagaActionIncEpoch, createSagaActionResetEpoch } from "./epoch";
+export { createSagaSetFactor } from "./factor";
+export { createSagaClearField, createSagaFillField } from "./gamelife";
+export { createSagaActionSetSizeX, createSagaActionSetSizeY } from "./sizes";
+export { createSagaSetVelocity } from "./velocity";
 
 export default store;

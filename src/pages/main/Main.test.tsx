@@ -68,18 +68,16 @@ it("App renders correctly", () => {
   expect(asFragment()).toMatchSnapshot();
 });
 it("Main Native selected correctly", () => {
-  expect(Main({ mode: "Native", onModeChange: () => null })).not.toBe(null);
+  expect(<Main mode="Native" onModeChange={() => null} />).not.toBe(null);
 });
 it("Main ReduxThunk selected correctly", () => {
-  expect(Main({ mode: "ReduxThunk", onModeChange: () => null })).not.toBe(null);
+  expect(<Main mode="ReduxThunk" onModeChange={() => null} />).not.toBe(null);
 });
 it("Main ReduxSaga selected correctly", () => {
-  expect(Main({ mode: "ReduxSaga", onModeChange: () => null })).not.toBe(null);
+  expect(<Main mode="ReduxSaga" onModeChange={() => null} />).not.toBe(null);
 });
 it("Main ReduxEffects selected correctly", () => {
-  expect(Main({ mode: "ReduxEffects", onModeChange: () => null })).not.toBe(
-    null
-  );
+  expect(<Main mode="ReduxEffects" onModeChange={() => null} />).not.toBe(null);
 });
 it("Main Native change mode", () => {
   const probe = jest.fn();

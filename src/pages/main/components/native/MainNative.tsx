@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, memo } from "react";
 import { useRouter } from "next/router";
-
-import { HexColorPicker } from "react-colorful";
 
 import {
   AutomatonDescription,
@@ -82,7 +80,7 @@ type MainProps = {
   probe?: ({}) => void;
 };
 
-export const Main = ({ probe, onModeChange }: MainProps) => {
+export const Main = memo(({ probe, onModeChange }: MainProps) => {
   let timerId: number | null = null;
 
   const context = useContext(authContext);
@@ -329,4 +327,4 @@ export const Main = ({ probe, onModeChange }: MainProps) => {
       </div>
     </div>
   );
-};
+});
