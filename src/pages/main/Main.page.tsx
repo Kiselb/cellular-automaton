@@ -16,25 +16,55 @@ const Main = ({ mode, probe, onModeChange }: MainProps) => {
     onModeChange(event.currentTarget.value as AppStoreMode);
     !!probe && probe({});
   };
-  if (mode === "Native") {
-    return <MainNative probe={probe} onModeChange={onModeChangeHandler} />;
-  }
-  if (mode === "ReduxThunk") {
-    return (
-      <MainRedux
-        probe={probe}
-        onModeChange={onModeChangeHandler}
-        useSaga={false}
-      />
-    );
-  }
-  if (mode === "ReduxSaga") {
-    <MainRedux probe={probe} onModeChange={onModeChangeHandler} useSaga />;
-  }
-  if (mode === "ReduxEffects") {
-    return <MainEffects probe={probe} onModeChange={onModeChangeHandler} />;
-  }
-  return <MainNative probe={probe} onModeChange={onModeChangeHandler} />;
+
+  const native = (
+    <MainNative probe={probe} onModeChange={onModeChangeHandler} />
+  );
+  const reduxThunk = (
+    <MainRedux
+      probe={probe}
+      onModeChange={onModeChangeHandler}
+      useSaga={false}
+    />
+  );
+  const reduxSaga = (
+    <MainRedux
+      probe={probe}
+      onModeChange={onModeChangeHandler}
+      useSaga={true}
+    />
+  );
+  const effects = (
+    <MainEffects probe={probe} onModeChange={onModeChangeHandler} />
+  );
+  const union: { [key in AppStoreMode]: JSX.Element } = {
+    Native: native,
+    ReduxThunk: reduxThunk,
+    ReduxSaga: reduxSaga,
+    ReduxEffects: effects,
+  };
+
+  return <>{union[mode]}</>;
+
+  // if (mode === "Native") {
+  //   return <MainNative probe={probe} onModeChange={onModeChangeHandler} />;
+  // }
+  // if (mode === "ReduxThunk") {
+  //   return (
+  //     <MainRedux
+  //       probe={probe}
+  //       onModeChange={onModeChangeHandler}
+  //       useSaga={false}
+  //     />
+  //   );
+  // }
+  // if (mode === "ReduxSaga") {
+  //   <MainRedux probe={probe} onModeChange={onModeChangeHandler} useSaga />;
+  // }
+  // if (mode === "ReduxEffects") {
+  //   return <MainEffects probe={probe} onModeChange={onModeChangeHandler} />;
+  // }
+  // return <MainNative probe={probe} onModeChange={onModeChangeHandler} />;
 
   // return (
   //   <>
