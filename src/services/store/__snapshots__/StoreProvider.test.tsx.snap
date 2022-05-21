@@ -2,24 +2,24 @@
 
 exports[`App renders correctly 1`] = `
 <DocumentFragment>
-  Test
+  Native
 </DocumentFragment>
 `;
 
 exports[`App renders correctly 2`] = `
 <DocumentFragment>
-  Test
+  ReduxThunk
 </DocumentFragment>
 `;
 
 exports[`App renders correctly 3`] = `
 <DocumentFragment>
-  Test
+  ReduxSaga
 </DocumentFragment>
 `;
 
 exports[`App renders correctly 4`] = `
 <DocumentFragment>
-  Test
+  ReduxEffects
 </DocumentFragment>
 `;

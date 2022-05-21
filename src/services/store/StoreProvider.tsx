@@ -20,7 +20,5 @@ export const StoreProvider = ({ mode, children }: StoreProviderProps) => {
       return <Provider store={storeSaga}>{children}</Provider>;
     case "ReduxEffects":
       return <Provider store={storeEffects}>{children}</Provider>;
-    default:
-      return <>{children}</>;
   }
 };
