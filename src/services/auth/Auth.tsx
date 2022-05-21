@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Link from "next/link";
 
 import SignIn from "../../pages/signin/SignIn.page";
 
@@ -46,11 +45,7 @@ export const AuthConsumer = () => {
 export const RequireAuth = ({ children }: { children: JSX.Element }) => {
   const { user } = useAuth();
   if (!user) {
-    return (
-      // <Link href="/" replace>
-      <SignIn />
-      // </Link>
-    );
+    return <SignIn />;
   }
   return children;
 };
