@@ -1,6 +1,9 @@
 type Kinds = "loading" | "error" | "success";
 
-type EventBase<K extends Kinds, T> = { kind: K; data: T };
+interface EventBase<K extends Kinds, T> {
+  kind: K;
+  data: T;
+}
 
 type EventLoading = EventBase<"loading", void>;
 type EventError = EventBase<"error", Error>;
@@ -21,9 +24,14 @@ type DataByKind<Kind, Items extends { kind: string }> = Items extends any
 
 type TestDataType = DataByKind<"success", Events>;
 
+// type EventData<
+//   Kind,
+//   Event extends { data: any } = DataByKind<Kind, Events>
+// > = Event["data"];
+
 type EventData<
   Kind,
-  Event extends { data: any } = DataByKind<Kind, Events>
+  Event extends EventBase<Kinds, unknown> = DataByKind<Kind, Events>
 > = Event["data"];
 
 function send(kind: Kinds, data: unknown) {
