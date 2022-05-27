@@ -13,17 +13,17 @@ type EventSuccess = EventBase<"success", string>;
 
 type Events = EventLoading | EventError | EventSuccess;
 
-type NarrowByKind<Kind, Items extends { kind: string }> = Items extends any
+type DataByKind<Kind, Items extends { kind: string }> = Items extends any
   ? Items["kind"] extends Kind
     ? Items
     : never
   : never;
 
-type TestDataType = NarrowByKind<"success", Events>;
+type TestDataType = DataByKind<"success", Events>;
 
 type EventData<
   Kind,
-  Event extends { data: any } = NarrowByKind<Kind, Events>
+  Event extends { data: any } = DataByKind<Kind, Events>
 > = Event["data"];
 
 function send(kind: Kinds, data: unknown) {
