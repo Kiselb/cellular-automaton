@@ -30,10 +30,8 @@ function send(kind: Kinds, data: unknown) {
   return false;
 }
 
-function sendEvent<K extends Events["kind"], D extends EventData<K>>(
-  kind: K,
-  data: D
-) {
+//function sendEvent<K extends Events["kind"], D extends EventData<K>>(
+function sendEvent<K extends Kinds, D extends EventData<K>>(kind: K, data: D) {
   send(kind, data);
 }
 
